@@ -17,6 +17,8 @@ class FirestoreClass {
     fun registerUser(activity: RegisterActivity,userInfo: User) {
 
 
+
+//teste  t
         mFireStore.collection("users")
             .document(userInfo.id)
             .set(userInfo, SetOptions.merge())
