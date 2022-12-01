@@ -16,6 +16,8 @@ import com.google.firebase.ktx.Firebase
 
 class FirestoreClass {
 
+
+    
     private val mFireStore = FirebaseFirestore.getInstance()
     //val mFireStore = Firebase.firestore
 
