@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import io.grpc.Context
 import org.w3c.dom.Text
 
 
@@ -55,11 +57,24 @@ open class MainActivity : AppCompatActivity() {
         mProgressDialog.setCanceledOnTouchOutside(false)
 
     }
+
     fun hideProgressDialog(){
         mProgressDialog.dismiss()
 
     }
 
+
+
+    //val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
+    //val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+
+
+
+    //Colocar para se poder usar o  id do text view
+    //val bbb: TextView = findViewById(R.id.tv_main_mostrar_nome)
+
+    //Mostar Nome ao inciar app
+    //bbb. = "Ola  $username."
 
 
 }

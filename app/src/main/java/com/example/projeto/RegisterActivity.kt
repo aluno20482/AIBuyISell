@@ -21,7 +21,6 @@ class RegisterActivity : MainActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -44,9 +43,15 @@ class RegisterActivity : MainActivity() {
     }
 
 
+
+    //register user
     private fun performSignUp(){
 
         //showProgressDialog()
+
+
+        val firebaseUser: FirebaseUser = taskId.
+
 
         var email = findViewById<EditText>(R.id.editText_Email)
         var password = findViewById<EditText>(R.id.editText_Password)
@@ -67,19 +72,22 @@ class RegisterActivity : MainActivity() {
 
                 showProgressDialog();
 
+                //If the registartion is sucessfuly done
                 if (task.isSuccessful) {
 
                     //aqui vai se guardar os dados do utilizador e colocar uma progress bar
                     val firebaseUser: FirebaseUser = task.result!!.user!!
 
                     val userInfo = User(
+                        //nota deviam ser aqui os nomes igual a base de dados
                         firebaseUser.uid,
                         primeiroNome.text.toString().trim{ it <= ' '},
-                        ultimoNome.text.toString().trim{ it <= ' '}
+                        ultimoNome.text.toString().trim{ it <= ' '},
+                        email.text.toString().trim{ it <= ' '}
                     )
 
 
-                    //FirestoreClass().registerUser(this@RegisterActivity,userInfo)
+                    FirestoreClass().registerUser(this@RegisterActivity,userInfo)
 
                     val mFireStore = Firebase.firestore
 
@@ -130,10 +138,10 @@ class RegisterActivity : MainActivity() {
             }
     }
 
+    //Devolve a mensagem quando o user se regista
     fun userResgistrationSucess(){
-
         //Hide the progress bar
-        //hideProgressDialog()
+        hideProgressDialog()
 
         Toast.makeText(
             this@RegisterActivity,
