@@ -50,7 +50,7 @@ class RegisterActivity : MainActivity() {
         //showProgressDialog()
 
 
-        val firebaseUser: FirebaseUser = taskId.
+  
 
 
         var email = findViewById<EditText>(R.id.editText_Email)
@@ -107,7 +107,6 @@ class RegisterActivity : MainActivity() {
                                 "Error while registering the user.",
                                 e
                             )
-
                             Toast.makeText(baseContext ,"deu erro",
                                 Toast.LENGTH_SHORT
                             ).show()
