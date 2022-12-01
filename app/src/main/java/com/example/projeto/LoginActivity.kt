@@ -70,7 +70,7 @@ class LoginActivity : MainActivity() {
 
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-
+                    hideProgressDialog();
                 }
             }
             .addOnFailureListener{
