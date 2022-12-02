@@ -32,11 +32,18 @@ open class MainActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             performLogout()
         }
+
+
+        val editarDadosButton = findViewById<Button>(R.id.button_Editar_Dados_Perfil)
+        editarDadosButton.setOnClickListener {
+            abrirEditarDados()
+        }
     }
+
+
     private fun performLogout(){
 
         FirebaseAuth.getInstance().signOut();
-
         // Sign in success, agora vamos para a proxima activity
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
@@ -45,6 +52,19 @@ open class MainActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
+
+    private fun abrirEditarDados(){
+
+
+
+        // Sign in success, agora vamos para a proxima activity
+        val intent = Intent(this, UserProfileActivity::class.java)
+        startActivity(intent)
+
+    }
+
+
+
 
     fun showProgressDialog(){
         mProgressDialog = Dialog(this)
@@ -64,17 +84,21 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
+    //aparecer nome do user quando faz login
 
-    //val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
-    //val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-
-
+    /*
+    val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
+    val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
 
     //Colocar para se poder usar o  id do text view
+
+    val principalTXT = findViewById<TextView>(R.id.tv_main_mostrar_nome)
+
+
     //val bbb: TextView = findViewById(R.id.tv_main_mostrar_nome)
 
     //Mostar Nome ao inciar app
-    //bbb. = "Ola  $username."
-
+    principalTXT. = "Ola  $username."
+*/
 
 }

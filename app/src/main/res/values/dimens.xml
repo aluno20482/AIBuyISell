@@ -9,4 +9,19 @@
 
 
 
+    <!--USADAS EM USER PROFILE -->
+
+    <dimen name="toolbar_title_text_size">5dp</dimen>
+    <dimen name="toolbar_title_paddingStart">25dp</dimen>
+    <dimen name="user_image_backgorund_stroke">4dp</dimen>
+    <dimen name="user_image_backgorund_corner_radius">10dp</dimen>
+    <dimen name="profile_user_image_size">150dp</dimen>
+    <dimen name="profile_user_image_marginTop">50dp</dimen>
+    <dimen name="profile_user_photo_margin">3dp</dimen>
+    <dimen name="profile_radio_button_height">40dp</dimen>
+    <dimen name="profile_radio_button_marginStartEnd">3dp</dimen>
+    <dimen name="gender_radio_button_radius">5dp</dimen>
+    <dimen name="gender_radio_button_stroke_width">1dp</dimen>
+
+
 </resources>

@@ -21,7 +21,7 @@ class FirestoreClass {
     fun registerUser(activity: RegisterActivity, userInfo: User) {
         //mFireStore.collection("users")
 
-        //O "users" é o nome da coleção. Se a coleção já estiver criada então não será criada então não vai criar a mesma um de novo
+        //O "users" é o nome da coleção. Se a coleção já estiver criada então não será criada então não vai criar a mesma  de novo
         mFireStore.collection(Constants.USERS)
              //ID do documento para campos de usuários. Aqui o documento é o User ID
             .document(userInfo.id)
@@ -59,6 +59,7 @@ class FirestoreClass {
     }
 
 
+    // Mostar detalhes do user
     fun getUsersDetails(activity: Activity){
 
         // Aqui passamos o nome da coleção da qual queremos os dados
@@ -95,6 +96,7 @@ class FirestoreClass {
                     "${user.firstName} ${user.lastName}"
                 )
                 editor.apply()
+
                 //INICIO
                 when(activity){
                     is LoginActivity -> {

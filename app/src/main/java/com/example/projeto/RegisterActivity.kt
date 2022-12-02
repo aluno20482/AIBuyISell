@@ -86,7 +86,7 @@ class RegisterActivity : MainActivity() {
                         ultimoNome.text.toString().trim{ it <= ' '},
                         email.text.toString().trim{ it <= ' '}
                     )
-                    
+
                     FirestoreClass().registerUser(this@RegisterActivity,userInfo)
 
 
