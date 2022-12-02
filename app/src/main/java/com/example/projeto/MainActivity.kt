@@ -36,8 +36,10 @@ open class MainActivity : AppCompatActivity() {
 
         val editarDadosButton = findViewById<Button>(R.id.button_Editar_Dados_Perfil)
         editarDadosButton.setOnClickListener {
-            abrirEditarDados()
+            //Metedo ir  para a tela
+            IrParaJanelaEditarDados()
         }
+
     }
 
 
@@ -53,15 +55,21 @@ open class MainActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun abrirEditarDados(){
+
+    private fun IrParaJanelaEditarDados(){
 
 
+        //passar contexto + class
+        val JanelaEditar = Intent(this, UserProfileActivity::class.java)
+        startActivity(JanelaEditar)
 
-        // Sign in success, agora vamos para a proxima activity
-        val intent = Intent(this, UserProfileActivity::class.java)
-        startActivity(intent)
-
+        Toast.makeText(baseContext, "Edite os seus dados.",
+            Toast.LENGTH_SHORT
+        ).show()
     }
+
+
+
 
 
 
