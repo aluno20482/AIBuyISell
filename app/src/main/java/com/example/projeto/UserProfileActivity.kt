@@ -11,17 +11,12 @@ import com.google.firebase.ktx.Firebase
 
 class UserProfileActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
 
-
-
-        // Initialize Firebase Auth
-        auth = Firebase.auth
 
 
 

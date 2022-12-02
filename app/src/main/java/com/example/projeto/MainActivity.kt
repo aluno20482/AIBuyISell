@@ -60,7 +60,7 @@ open class MainActivity : AppCompatActivity() {
 
 
         //passar contexto + class
-        val JanelaEditar = Intent(this, UserProfileActivity::class.java)
+        val JanelaEditar = Intent(this,UserProfileActivity ::class.java)
         startActivity(JanelaEditar)
 
         Toast.makeText(baseContext, "Edite os seus dados.",
