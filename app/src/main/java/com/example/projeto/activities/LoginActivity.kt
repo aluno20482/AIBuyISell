@@ -8,7 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+<<<<<<< HEAD:app/src/main/java/com/example/projeto/activities/LoginActivity.kt
 import com.example.projeto.R
+=======
+import com.example.projeto.firestore.FirestoreClass
+>>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d:app/src/main/java/com/example/projeto/LoginActivity.kt
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -57,6 +61,7 @@ class LoginActivity : MainActivity() {
         Log.i("Email", user.email)
 
 
+        /*
         //IDEIA
         //Se o utlizador não tiver os dados completos ao iniciar a aplicação
         //Quando iniciar a mesma vai para a pagina para completar os dados
@@ -71,8 +76,10 @@ class LoginActivity : MainActivity() {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
+*/
+
         //redirecionar o usuário para a tela principal após o login
-        //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         finish()
     }
 
@@ -103,6 +110,10 @@ class LoginActivity : MainActivity() {
             .addOnCompleteListener(this) { task ->
 
                 if (task.isSuccessful) {
+
+                    //Mostra os detalhes do user
+                    FirestoreClass().getUsersDetails(this@LoginActivity)
+
 
                     // Sign in success, agora vamos para a proxima activity
                     val intent = Intent(this, MainActivity::class.java)

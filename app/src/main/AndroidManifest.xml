@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,17 +11,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projeto"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".activities.ShoppingActivity"
-            android:exported="false" >
+            android:name=".ForgotPasswordActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+            android:name=".teste"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+<<<<<<< HEAD
+            android:name=".activities.ShoppingActivity"
+            android:exported="false" >
+=======
+            android:name=".UserProfileActivity"
+            android:exported="false">
+>>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+<<<<<<< HEAD
             android:name=".activities.UserProfileActivity"
             android:exported="false" >
+=======
+            android:name=".FirestoreClass"
+            android:exported="false">
+>>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -37,7 +61,7 @@
             android:name=".activities.LoginActivity"
             android:exported="true"
             android:theme="@style/LoginPage"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,15 +73,25 @@
                 android:value="" />
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".activities.RegisterActivity"
             android:exported="false" >
+=======
+            android:name=".RegisterActivity"
+            android:exported="false">
+>>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".activities.MainActivity"
             android:exported="false" >
+=======
+            android:name=".MainActivity"
+            android:exported="false">
+>>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

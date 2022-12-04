@@ -17,7 +17,7 @@
             android:id="@+id/tv_main_mostrar_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WELCOME!"
+            android:text="Bem vindo!"
             android:textAlignment="center"
             android:textSize="30dp"
             android:layout_centerVertical="true"
@@ -31,6 +31,17 @@
             android:textSize="30dp"
             android:layout_centerVertical="true"
             />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_Editar_Dados_Perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:text="Editar Dados Perfil"
+            android:textAllCaps="false"
+            android:textSize="21sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_Logout"
