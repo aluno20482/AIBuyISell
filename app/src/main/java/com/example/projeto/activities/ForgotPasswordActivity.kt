@@ -57,11 +57,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
     }
 
+    //Mostra msg de erro
     fun showErrorSnackBar(message: String, errorMessage: Boolean) {
         val snackBar =
             Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
 
+        //se tiver um erro, mostra a cor erro
         if (errorMessage) {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
@@ -69,6 +71,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     R.color.colorSnackBarError
                 )
             )
+        //senão tiver  erro, mostra a cor de sucesso
         } else {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
