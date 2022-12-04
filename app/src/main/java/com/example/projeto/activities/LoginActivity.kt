@@ -8,11 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-<<<<<<< HEAD:app/src/main/java/com/example/projeto/activities/LoginActivity.kt
 import com.example.projeto.R
-=======
 import com.example.projeto.firestore.FirestoreClass
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d:app/src/main/java/com/example/projeto/LoginActivity.kt
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

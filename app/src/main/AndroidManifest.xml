@@ -19,33 +19,21 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-            android:name=".teste"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-<<<<<<< HEAD
+
             android:name=".activities.ShoppingActivity"
             android:exported="false" >
-=======
-            android:name=".UserProfileActivity"
-            android:exported="false">
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
+
             android:name=".activities.UserProfileActivity"
             android:exported="false" >
-=======
-            android:name=".FirestoreClass"
-            android:exported="false">
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -73,25 +61,20 @@
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".activities.RegisterActivity"
             android:exported="false" >
-=======
-            android:name=".RegisterActivity"
-            android:exported="false">
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
+
+
             android:name=".activities.MainActivity"
             android:exported="false" >
-=======
-            android:name=".MainActivity"
-            android:exported="false">
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d
+
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

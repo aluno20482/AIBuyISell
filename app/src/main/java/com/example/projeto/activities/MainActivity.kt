@@ -43,12 +43,12 @@ open class MainActivity : AppCompatActivity() {
     private fun performLogout(){
 
         FirebaseAuth.getInstance().signOut();
-<<<<<<< HEAD:app/src/main/java/com/example/projeto/activities/MainActivity.kt
+
 
         //Logout success, voltar para a activity do login
-=======
+
         // Sign in success, agora vamos para a proxima activity
->>>>>>> 566006dcc4f7a6f7b3108534f0de71196a34988d:app/src/main/java/com/example/projeto/MainActivity.kt
+
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
 
