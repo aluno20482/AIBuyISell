@@ -4,13 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.compose.ui.graphics.Color
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,12 +30,42 @@ class LoginActivity : MainActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
+        //Botao Registar Redireciona para a pagina de registo
         val registerText:TextView = findViewById(R.id.textView_registerNow)
-
         registerText.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+
+        //nao funcional
+        val button:TextView = findViewById(R.id.textView_recuperar_pass)
+        button.setOnClickListener{
+
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+        //Clicar em recupear pass
+        val recuperarPass:TextView = findViewById(R.id.textView_recuperar_pass)
+        recuperarPass.setOnClickListener{
+
+            try {
+                val intent2 = Intent(this, ForgotPasswordActivity::class.java)
+                //metedo a abrir
+                startActivity(intent2)
+            }
+            catch (ex: Exception )
+            {
+                Log.i("Primeiro Nome", "user.firstName");
+            }
+        }
+
+
+
+
 
         val loginButton = findViewById<Button>(R.id.button_login)
 
@@ -45,6 +78,12 @@ class LoginActivity : MainActivity() {
         loginButton.setOnClickListener {
             performLogin()
         }
+
+
+
+
+
+
     }
 
     //nova funcao
@@ -95,10 +134,12 @@ class LoginActivity : MainActivity() {
         var password = findViewById<EditText>(R.id.editText_Password)
 
         if(email.text.isEmpty() || password.text.isEmpty()){
-            Toast.makeText(this,"Please fill all the fields",
+            Toast.makeText(this,"Por favor preencha todos os campos",
                 Toast.LENGTH_SHORT
             ).show()
+
         }
+
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
@@ -112,6 +153,9 @@ class LoginActivity : MainActivity() {
                     FirestoreClass().getUsersDetails(this@LoginActivity)
 
 
+
+
+
                     // Sign in success, agora vamos para a proxima activity
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
@@ -123,15 +167,57 @@ class LoginActivity : MainActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Falha na autenticação.",
                         Toast.LENGTH_SHORT).show()
                     hideProgressDialog();
                 }
             }
+
+                /*
+
+            //tartamento de execões ao criar conta
+            .addOnFailureListener{exececao ->
+                val mensagemErro = when(exececao){
+                    is FirebaseAuthWeakPasswordException -> "Introduza uma palavra-passe com o mínimo 6 digitos"
+                    is FirebaseAuthInvalidCredentialsException -> "Digite um email válido"
+                    is FirebaseAuthUserCollisionException -> "Conta Registada"
+                    is FirebaseNetworkException -> "Sem ligação a Internet"
+                    else -> "Erro ao registar utilizador"
+                }
+                Toast.makeText(this,mensagemErro,
+                    Toast.LENGTH_SHORT
+                ).show()
+                 */
+
+
             .addOnFailureListener{
-                Toast.makeText(baseContext,"Authentication failed.${it.localizedMessage}",
+                Toast.makeText(baseContext,"Falha na autenticação.${it.localizedMessage}",
                 Toast.LENGTH_SHORT).show()
             }
 
     }
+
+/*
+    //CLICAR
+    override fun onClick(view: View?){
+        if(view !=null){
+            when(view.id){
+
+                R.id.textView_recuperar_pass -> {
+                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+                    startActivity(intent)
+
+                }
+
+                R.id.button_login -> {
+
+                }
+
+
+
+            }
+        }
+    }
+*/
+
 }

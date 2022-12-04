@@ -2,8 +2,11 @@ package com.example.projeto.firestore
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
+import android.widget.TextView
+import com.example.projeto.R
 import com.example.projeto.activities.LoginActivity
 import com.example.projeto.activities.RegisterActivity
 
@@ -60,6 +63,15 @@ class FirestoreClass {
     }
 
 
+    // Alterar dados na BD
+    fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String ){
+
+        mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("firstName" , firstName, "lastName", lastName, "mobile", mobile)
+
+    }
+
+
+
     // Mostar detalhes do user
     fun getUsersDetails(activity: Activity){
 
@@ -75,6 +87,11 @@ class FirestoreClass {
 
                 // Aqui recebemos o instantâneo do documento que é convertido no objeto do modelo de dados do usuário
                 val user = document.toObject(User::class.java)!!
+
+
+                //teste update base de dados
+               // mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("lastName", "John")
+
 
                 //Context.getSharedPreferences("mySharedPrefData",MODE_PRIVATE)
 

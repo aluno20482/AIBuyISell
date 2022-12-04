@@ -5,6 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="colorSnackBarSuccess">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
@@ -20,6 +21,7 @@
     <color name="g_line">#E9EAEC</color>
     <color name="g_circle_shadow">#B8D9FA</color>
     <color name="g_red">#FF0000</color>
+    <color name="colorSnackBarError">#FF0000</color>
     <color name="g_text_hint">#969899</color>
     <color name="g_orange">#F8BA00</color>
 </resources>

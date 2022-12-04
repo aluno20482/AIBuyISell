@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="center_horizontal"
-                android:text="REGISTER"
+                android:text="O registo é fácil e grátis!"
                 android:textColor="@color/white"
                 android:textSize="31sp"/>
 
@@ -69,7 +69,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Password"
+                android:hint="Palavra-Passe"
                 android:drawablePadding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button_background"
 
-                android:text="Create Account"
+                android:text="CRIAR CONTA"
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
@@ -92,7 +92,7 @@
                 android:id="@+id/textView_loginNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I already have an account. Login Now"
+                android:text="Eu já tenho uma conta. Entrar agora"
                 android:textSize="15sp"
                 android:layout_gravity="center_horizontal" />
 

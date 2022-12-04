@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Projeto</string>
+    <string name="app_name">AI Shop</string>
     <string name="register_sucess">Registo com Sucesso!</string>
     <string name="please_wait"> Please Wait&#8230;</string>
 
@@ -23,4 +23,7 @@
 
 
     </style>
+
+
+    <string name="email_sent_sucess"> Email enviado com Sucesso</string>
 </resources>
