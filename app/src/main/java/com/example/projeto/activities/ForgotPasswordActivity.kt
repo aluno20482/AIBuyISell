@@ -3,9 +3,12 @@ package com.example.projeto.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.projeto.R
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -13,29 +16,30 @@ import com.google.firebase.ktx.Firebase
 class ForgotPasswordActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
 
-/*
+        //botao para submeter email
+        val btn_enviar_email: TextView = findViewById(R.id.button_Recuperar_Pass)
+        btn_enviar_email.setOnClickListener {
 
-        //botao para subemeter email
-        val pass: TextView = findViewById(R.id.et_email_forgot_pw)
 
-        pass.setOnClickListener{
-            val email: String = et_email_forgot_pw.text.toString().trim{ it <= '' }
-            // se tiver vazio tem de digitar o email
-            if(email.isEmpty()){
-                //showErrorSnackBar(resources.getString(androidx.compose.ui.R.string.default_error_message), true)
-            }else{
-                    //showProgressDialog(resources.getString(R.string.please_wait))
-                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                    .addOnCompleteListener{ task ->
+            var email = findViewById<EditText>(R.id.email_forgot_pw)
+            val inputEmail = email.text.toString().trim { it <= ' ' }
+            if (inputEmail.isEmpty()) {
+
+
+                showErrorSnackBar(resources.getString(androidx.compose.ui.R.string.default_error_message),
+                    true)
+            } else {
+                //showProgressDialog(resources.getString(R.string.please_wait))
+                FirebaseAuth.getInstance().sendPasswordResetEmail(inputEmail)
+                    .addOnCompleteListener { task ->
                         //hideProgressDialog()
                         //Sucesso mostra mesagem
-                        if (task.isSuccessful){
+                        if (task.isSuccessful) {
 
                             Toast.makeText(
                                 this@ForgotPasswordActivity,
@@ -45,20 +49,35 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                             //terminar a atividade
                             finish()
-                        }else{
+                        } else {
                             //showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
-
-
                     }
             }
-
         }
-
-*/
-
-
-
-
     }
+
+    fun showErrorSnackBar(message: String, errorMessage: Boolean) {
+        val snackBar =
+            Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
+        val snackBarView = snackBar.view
+
+        if (errorMessage) {
+            snackBarView.setBackgroundColor(
+                ContextCompat.getColor(
+                    this@ForgotPasswordActivity,
+                    R.color.colorSnackBarError
+                )
+            )
+        } else {
+            snackBarView.setBackgroundColor(
+                ContextCompat.getColor(
+                    this@ForgotPasswordActivity,
+                    R.color.colorSnackBarSuccess
+                )
+            )
+        }
+        snackBar.show()
+    }
+
 }

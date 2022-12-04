@@ -25,7 +25,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="O registo é fácil e grátis!"
                 android:textColor="@color/white"
-                android:textSize="31sp"/>
+                android:textSize="31sp"
+                />
 
 
             <EditText

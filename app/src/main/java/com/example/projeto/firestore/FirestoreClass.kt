@@ -27,9 +27,9 @@ class FirestoreClass {
 
         //O "users" é o nome da coleção. Se a coleção já estiver criada então não será criada então não vai criar a mesma  de novo
         mFireStore.collection(Constants.USERS)
-             //ID do documento para campos de usuários. Aqui o documento é o User ID
+            //ID do documento para campos de usuários. Aqui o documento é o User ID
             .document(userInfo.id)
-             //Aqui, as userInfo são Field e SetOption está definido para merge. É para se quisermos fundir mais tarde em vez de substituir os campos
+            //Aqui, as userInfo são Field e SetOption está definido para merge. É para se quisermos fundir mais tarde em vez de substituir os campos
             .set(userInfo, SetOptions.merge())
             .addOnSuccessListener {
 
@@ -49,14 +49,14 @@ class FirestoreClass {
     }
 
 
-    fun getCurrentUserID():String{
+    fun getCurrentUserID(): String {
 
         //Uma instância do usuário atual usando Firebase Auth
-        val currentUser  = FirebaseAuth.getInstance().currentUser
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
         //Uma variável para atribuir o currentUserId se não for nulo ou então ficará em branco
         var currentUserID = ""
-        if(currentUser != null) {
+        if (currentUser != null) {
             currentUserID = currentUser.uid
         }
         return currentUserID
@@ -64,16 +64,16 @@ class FirestoreClass {
 
 
     // Alterar dados na BD
-    fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String ){
+    fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String) {
 
-        mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("firstName" , firstName, "lastName", lastName, "mobile", mobile)
+        mFireStore.collection(Constants.USERS).document(getCurrentUserID())
+            .update("firstName", firstName, "lastName", lastName, "mobile", mobile)
 
     }
 
 
-
     // Mostar detalhes do user
-    fun getUsersDetails(activity: Activity){
+    fun getUsersDetails(activity: Activity) {
 
         // Aqui passamos o nome da coleção da qual queremos os dados
         mFireStore.collection(Constants.USERS)
@@ -90,13 +90,12 @@ class FirestoreClass {
 
 
                 //teste update base de dados
-               // mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("lastName", "John")
+                // mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("lastName", "John")
 
 
                 //Context.getSharedPreferences("mySharedPrefData",MODE_PRIVATE)
 
                 val sharedPreferences =
-
                     activity.getSharedPreferences(
                         Constants.MINHALOJA,
                         //ver qual o tipo de import para context
@@ -116,7 +115,7 @@ class FirestoreClass {
                 editor.apply()
 
                 //INICIO
-                when(activity){
+                when (activity) {
                     is LoginActivity -> {
 
                         //Chamar uma função de atividade base para transferir o resultado para ela
@@ -126,7 +125,7 @@ class FirestoreClass {
 
                 //FIM
             }
-            .addOnFailureListener {  e ->
+            .addOnFailureListener { e ->
 
             }
     }
