@@ -1,24 +1,24 @@
-package com.example.projeto
+package com.example.projeto.activities
 
-import android.content.ContentValues.TAG
+import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.projeto.R
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : MainActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,10 +35,14 @@ class LoginActivity : MainActivity() {
 
         val loginButton = findViewById<Button>(R.id.button_login)
 
-        loginButton.setOnClickListener {
-            showProgressDialog()
-            performLogin()
+        val homeButton = findViewById<Button>(R.id.button_muda)
 
+        homeButton.setOnClickListener {
+           verHome()
+        }
+
+        loginButton.setOnClickListener {
+            performLogin()
         }
     }
 
@@ -73,9 +77,16 @@ class LoginActivity : MainActivity() {
     }
 
 
+    private fun verHome(){
+        // Sign in success, agora vamos para a proxima activity
+        val intent = Intent(this, ShoppingActivity::class.java)
+        startActivity(intent)
 
+    }
 
     private fun performLogin(){
+        showProgressDialog()
+
         var email = findViewById<EditText>(R.id.editText_Email)
         var password = findViewById<EditText>(R.id.editText_Password)
 
@@ -90,6 +101,7 @@ class LoginActivity : MainActivity() {
 
         auth.signInWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->
+
                 if (task.isSuccessful) {
 
                     // Sign in success, agora vamos para a proxima activity

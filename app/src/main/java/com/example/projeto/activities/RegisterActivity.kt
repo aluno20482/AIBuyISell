@@ -1,13 +1,13 @@
-package com.example.projeto
+package com.example.projeto.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.projeto.R
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -46,12 +46,7 @@ class RegisterActivity : MainActivity() {
 
     //register user
     private fun performSignUp(){
-
         //showProgressDialog()
-
-
-  
-
 
         var email = findViewById<EditText>(R.id.editText_Email)
         var password = findViewById<EditText>(R.id.editText_Password)

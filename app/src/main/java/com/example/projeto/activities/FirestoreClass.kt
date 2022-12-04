@@ -1,18 +1,15 @@
-package com.example.projeto
+package com.example.projeto.activities
 
 
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import android.widget.Toast
 import com.example.projeto.models.User
 import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class FirestoreClass {
 
@@ -22,7 +19,7 @@ class FirestoreClass {
     //val mFireStore = Firebase.firestore
 
     //Regista o user na base de dados
-    fun registerUser(activity: RegisterActivity,userInfo: User) {
+    fun registerUser(activity: RegisterActivity, userInfo: User) {
         //mFireStore.collection("users")
           mFireStore.collection(Constants.USERS)
             .document(userInfo.id)

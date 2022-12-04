@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -82,8 +82,17 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button_background"
-
                 android:text="Login"
+                android:textAllCaps="false"
+                android:textSize="21sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_muda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="Home"
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 

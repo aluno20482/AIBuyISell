@@ -1,18 +1,15 @@
-package com.example.projeto
+package com.example.projeto.activities
 
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import com.example.projeto.utils.Constants
+import com.example.projeto.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import io.grpc.Context
-import org.w3c.dom.Text
 
 
 open class MainActivity : AppCompatActivity() {
@@ -37,7 +34,7 @@ open class MainActivity : AppCompatActivity() {
 
         FirebaseAuth.getInstance().signOut();
 
-        // Sign in success, agora vamos para a proxima activity
+        //Logout success, voltar para a activity do login
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
 
