@@ -9,6 +9,7 @@ import com.example.projeto.R
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.projeto.firestore.FirestoreClass
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -37,8 +38,28 @@ class UserProfileActivity : AppCompatActivity() {
             val mobileText : EditText = findViewById(R.id.editText_telemovel_user_bd)
             val mobileTextValue = mobileText.text.toString();  //converter para string
 
+            //Passar  valor introduzido no  editText_morada_user_bd
+            val addressText : EditText = findViewById(R.id.editText_morada_user_bd)
+            val addressTextValue = addressText.text.toString();  //converter para string
+
             //chamar a função para carregar os dados na BD
-            FirestoreClass().alterarDados(this@UserProfileActivity, firstNameTextValue,lastNameTextValue, mobileTextValue)
+            FirestoreClass().alterarDados(this@UserProfileActivity, firstNameTextValue,lastNameTextValue, mobileTextValue, addressTextValue)
+
+            //hideProgressDialog();
+            Toast.makeText(baseContext, "Dados alterados .",
+                Toast.LENGTH_SHORT
+            ).show()
+
+
+            //se os 2 campos primeiro nome e ultimo nome estiverem vazios, devolve a mensagem ao ultizador
+            if (firstNameText.text.isEmpty() || lastNameText.text.isEmpty() || mobileText.text.isEmpty()) {
+                Toast.makeText(this, "Por favor preencha todos os campos",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+
+
 
 
         }

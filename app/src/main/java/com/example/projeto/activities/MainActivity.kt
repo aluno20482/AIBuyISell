@@ -55,19 +55,29 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun displayUserData(){
         val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+        val telefone = sharedPreferences.getString(Constants.LOGGED_IN_CONTACTO, "")!!
+        val morada = sharedPreferences.getString(Constants.LOGGED_IN_MORADA, "")!!
 
         //Colocar para se poder usar o  id do text view
-
         val principalTXT = findViewById<TextView>(R.id.tv_main_mostrar_nome)
+        val telefoneTXT = findViewById<TextView>(R.id.tv_main_mostrar_contacto)
+        val moradaTXT = findViewById<TextView>(R.id.tv_main_mostrar_morada)
 
 
         //val bbb: TextView = findViewById(R.id.tv_main_mostrar_nome)
 
         //Mostar Nome ao inciar app
-        principalTXT.text = "Ola  $username."
+        principalTXT.text = "Bem vindo:  $username."
+
+        //Mostar Nome ao inciar app
+        telefoneTXT.text = "Telefone : $telefone."
+
+        //Mostar Nome ao inciar app
+        moradaTXT.text = "Morada : $morada."
 
 
     }

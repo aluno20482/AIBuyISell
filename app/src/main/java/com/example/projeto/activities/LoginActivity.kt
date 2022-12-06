@@ -145,7 +145,7 @@ class LoginActivity : MainActivity() {
                     startActivity(intent)
 
                     hideProgressDialog();
-                    Toast.makeText(baseContext, "Login Sucess.",
+                    Toast.makeText(baseContext, "Login efetuado com sucesso.",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {

@@ -9,6 +9,7 @@
 
 
 <!--android:background="@drawable/app_gradient_color_backgorund"-->
+  <!--
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar_user_profile_Activity"
       android:layout_width="match_parent"
@@ -32,7 +33,7 @@
         />
 
   </androidx.appcompat.widget.Toolbar>
-
+-->
 
 
 
@@ -45,6 +46,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toTopOf="parent">
 
+    <!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,7 +54,7 @@
         android:background="@color/colorBlue"
         android:scaleType="fitXY"
         android:src="@drawable/ic_user_placeholder"/>
-
+-->
 
   </FrameLayout>
 
@@ -106,6 +108,18 @@
           android:padding="10dp"/>
 
       <EditText
+          android:id="@+id/editText_morada_user_bd"
+          android:layout_marginStart="20dp"
+          android:layout_marginEnd="20dp"
+          android:layout_marginTop="10dp"
+          android:hint="Morada"
+          android:drawablePadding="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/login_edit_background"
+          android:padding="10dp"/>
+
+      <EditText
           android:id="@+id/editText_telemovel_user_bd"
           android:layout_marginStart="20dp"
           android:layout_marginEnd="20dp"
@@ -131,15 +145,14 @@
           android:textAllCaps="false"
           android:textSize="21sp" />
 
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@drawable/user_image_background" />
 
 
     </LinearLayout>
   </ScrollView>
-
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@drawable/user_image_background" />
 
 
 </RelativeLayout>

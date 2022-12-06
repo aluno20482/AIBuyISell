@@ -64,10 +64,10 @@ class FirestoreClass {
 
 
     // Alterar dados na BD
-    fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String) {
+    fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String, address: String) {
 
         mFireStore.collection(Constants.USERS).document(getCurrentUserID())
-            .update("firstName", firstName, "lastName", lastName, "mobile", mobile)
+            .update("firstName", firstName, "lastName", lastName, "mobile", mobile, "address", address)
 
     }
 
@@ -105,14 +105,30 @@ class FirestoreClass {
 
                 //context.getSharedPreferences("CASPreferences", Context.MODE_PRIVATE);
 
-                val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
+                val editorNome: SharedPreferences.Editor = sharedPreferences.edit()
                 //key :         LOGGED_IN_USERNAME  Telmo Silva
-                editor.putString(
+                editorNome.putString(
                     Constants.LOGGED_IN_USERNAME,
                     "${user.firstName} ${user.lastName}"
                 )
-                editor.apply()
+                editorNome.apply()
+
+                val editortelefone: SharedPreferences.Editor = sharedPreferences.edit()
+                editortelefone.putString(
+                    Constants.LOGGED_IN_CONTACTO,
+                    "${user.mobile}"
+                )
+                editortelefone.apply()
+
+                val editorMorada: SharedPreferences.Editor = sharedPreferences.edit()
+                //key :         LOGGED_IN_USERNAME  Telmo Silva
+                editorMorada.putString(
+                    Constants.LOGGED_IN_MORADA,
+                    " ${user.address}"
+                )
+                editorMorada.apply()
+
+
 
                 //INICIO
                 when (activity) {
