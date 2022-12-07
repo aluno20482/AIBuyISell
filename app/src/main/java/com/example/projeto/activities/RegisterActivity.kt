@@ -37,7 +37,6 @@ class RegisterActivity : MainActivity() {
         }
 
         val registerButton = findViewById<Button>(R.id.button_Create)
-
         registerButton.setOnClickListener {
             performSignUp()
         }

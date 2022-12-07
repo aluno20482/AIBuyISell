@@ -8,16 +8,17 @@
     tools:context=".activities.UserProfileActivity">
 
 
-
+<!--android:background="@drawable/app_gradient_color_backgorund"-->
+  <!--
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar_user_profile_Activity"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       android:layout_marginTop="4dp"
-      android:background="@drawable/app_gradient_color_backgorund"
+
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+    >
 
     <TextView
         android:id="@+id/tv_title"
@@ -32,7 +33,7 @@
         />
 
   </androidx.appcompat.widget.Toolbar>
-
+-->
 
 
 
@@ -45,6 +46,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toTopOf="parent">
 
+    <!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,12 +54,7 @@
         android:background="@color/colorBlue"
         android:scaleType="fitXY"
         android:src="@drawable/ic_user_placeholder"/>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/user_image_background"/>
+-->
 
   </FrameLayout>
 
@@ -87,7 +84,7 @@
 
 
       <EditText
-          android:id="@+id/editText_primeiroNome_user"
+          android:id="@+id/editText_primeiroNome_user_bd"
           android:layout_marginStart="20dp"
           android:layout_marginEnd="20dp"
           android:layout_marginTop="10dp"
@@ -99,7 +96,7 @@
           android:padding="10dp"/>
 
       <EditText
-          android:id="@+id/editText_ultimoNome_user"
+          android:id="@+id/editText_ultimoNome_user_bd"
           android:layout_marginStart="20dp"
           android:layout_marginEnd="20dp"
           android:layout_marginTop="10dp"
@@ -111,11 +108,11 @@
           android:padding="10dp"/>
 
       <EditText
-          android:id="@+id/editText_Email_user"
+          android:id="@+id/editText_morada_user_bd"
           android:layout_marginStart="20dp"
           android:layout_marginEnd="20dp"
           android:layout_marginTop="10dp"
-          android:hint="Email"
+          android:hint="Morada"
           android:drawablePadding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -123,7 +120,7 @@
           android:padding="10dp"/>
 
       <EditText
-          android:id="@+id/editText_Telefone_user"
+          android:id="@+id/editText_telemovel_user_bd"
           android:layout_marginStart="20dp"
           android:layout_marginEnd="20dp"
           android:layout_marginTop="10dp"
@@ -134,8 +131,10 @@
           android:background="@drawable/login_edit_background"
           android:padding="10dp"/>
 
+
+
       <androidx.appcompat.widget.AppCompatButton
-          android:id="@+id/button_Editar_Dados"
+          android:id="@+id/user_profile_button_Editar_Dados"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginTop="30dp"
@@ -146,6 +145,10 @@
           android:textAllCaps="false"
           android:textSize="21sp" />
 
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@drawable/user_image_background" />
 
 
     </LinearLayout>

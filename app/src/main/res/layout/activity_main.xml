@@ -13,24 +13,38 @@
         android:layout_centerVertical="true">
 
 
+
+
+
         <TextView
             android:id="@+id/tv_main_mostrar_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bem vindo!"
+            android:text=""
             android:textAlignment="center"
             android:textSize="30dp"
             android:layout_centerVertical="true"
             />
 
         <TextView
+            android:id="@+id/tv_main_mostrar_contacto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WELCOME!"
+            android:text=""
             android:textAlignment="center"
             android:textSize="30dp"
             android:layout_centerVertical="true"
             />
+        <TextView
+            android:id="@+id/tv_main_mostrar_morada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_Editar_Dados_Perfil"

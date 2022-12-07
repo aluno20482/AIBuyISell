@@ -5,9 +5,12 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.projeto.R
+import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -32,14 +35,57 @@ open class MainActivity : AppCompatActivity() {
             performLogout()
         }
 
+        displayUserData();
+
 
         val editarDadosButton = findViewById<Button>(R.id.button_Editar_Dados_Perfil)
         editarDadosButton.setOnClickListener {
             //Metedo ir  para a tela
+
+
+
+        try {
+
             IrParaJanelaEditarDados()
+        }
+<<<<<<< HEAD
+=======
+        catch (ex: Exception )
+        {
+            Log.i("Primeiro Nome", "user.firstName");
         }
     }
 
+
+>>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+    }
+
+
+    private fun displayUserData(){
+        val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
+        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+        val telefone = sharedPreferences.getString(Constants.LOGGED_IN_CONTACTO, "")!!
+        val morada = sharedPreferences.getString(Constants.LOGGED_IN_MORADA, "")!!
+
+        //Colocar para se poder usar o  id do text view
+        val principalTXT = findViewById<TextView>(R.id.tv_main_mostrar_nome)
+        val telefoneTXT = findViewById<TextView>(R.id.tv_main_mostrar_contacto)
+        val moradaTXT = findViewById<TextView>(R.id.tv_main_mostrar_morada)
+
+
+        //val bbb: TextView = findViewById(R.id.tv_main_mostrar_nome)
+
+        //Mostar Nome ao inciar app
+        principalTXT.text = "Bem vindo:  $username."
+
+        //Mostar Nome ao inciar app
+        telefoneTXT.text = "Telefone : $telefone."
+
+        //Mostar Nome ao inciar app
+        moradaTXT.text = "Morada : $morada."
+
+
+    }
 
     private fun performLogout(){
 
@@ -61,14 +107,10 @@ open class MainActivity : AppCompatActivity() {
 
     private fun IrParaJanelaEditarDados(){
 
-
         //passar contexto + class
-        val JanelaEditar = Intent(this,UserProfileActivity ::class.java)
+        val JanelaEditar = Intent(this, UserProfileActivity::class.java)
         startActivity(JanelaEditar)
 
-        Toast.makeText(baseContext, "Edite os seus dados.",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
 
@@ -97,19 +139,7 @@ open class MainActivity : AppCompatActivity() {
 
     //aparecer nome do user quando faz login
 
-    /*
-    val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
-    val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-
-    //Colocar para se poder usar o  id do text view
-
-    val principalTXT = findViewById<TextView>(R.id.tv_main_mostrar_nome)
 
 
-    //val bbb: TextView = findViewById(R.id.tv_main_mostrar_nome)
-
-    //Mostar Nome ao inciar app
-    principalTXT. = "Ola  $username."
-*/
 
 }

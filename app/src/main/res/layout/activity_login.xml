@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,9 +20,9 @@
             android:layout_centerVertical="true">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/android"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:src="@drawable/foguetesemfundo"
                 android:layout_gravity="center_horizontal" />
 
 
@@ -30,7 +31,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Username"
+                android:hint="E-mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edit_background"
@@ -46,7 +47,7 @@
                     android:id="@+id/editText_Password"
                     android:layout_marginTop="10dp"
                     android:inputType="textPassword"
-                    android:hint="Password"
+                    android:hint="Palavra-Passe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_edit_background"
@@ -67,11 +68,12 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/textView_recuperar_pass"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot Password?"
+                android:text="Esqueceste-te da palavra-passe?"
                 android:layout_gravity="end"
                 android:padding="10dp" />
 
@@ -82,9 +84,18 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button_background"
-                android:text="Login"
+                android:text="INICIAR SESSÃO"
                 android:textAllCaps="false"
                 android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/textView_registerNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CRIAR CONTA"
+                android:textSize="21sp"
+                android:layout_gravity="center_horizontal" />
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_muda"
@@ -96,6 +107,7 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
+<<<<<<< HEAD
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_addProduct"
                 android:layout_width="wrap_content"
@@ -113,6 +125,8 @@
                 android:text="Sign up"
                 android:textSize="21sp"
                 android:layout_gravity="center_horizontal" />
+=======
+>>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
 
         </LinearLayout>
     </ScrollView>

@@ -5,7 +5,7 @@ class User (
     val firstName: String="",
     val lastName: String="",
     val email: String ="",
-    val image: Long=0,
+    val address: String="",
     val mobile: String="",
     val gender: String="",
     val profileCompleted: Int = 0
