@@ -8,7 +8,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.projeto.R
 import com.example.projeto.databinding.ActivityShoppingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ShoppingActivity : FragmentActivity() {
 
     //criação do bind
@@ -19,6 +21,7 @@ class ShoppingActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
 
     //criação da controlador que vai gerir os fragmentos
     val navController = findNavController(R.id.host_fragment)

@@ -22,8 +22,5 @@ class UserProfileActivity : AppCompatActivity() {
 
 
 
-
-
-
     }
 }

@@ -94,11 +94,11 @@
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
         app:tabRippleColor="@color/white"
-        app:tabSelectedTextColor="@color/black"
->
+        app:tabSelectedTextColor="@color/black">
 
 
     </com.google.android.material.tabs.TabLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"

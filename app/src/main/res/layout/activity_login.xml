@@ -96,6 +96,16 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_addProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="Adicionar Produto"
+                android:textAllCaps="false"
+                android:textSize="21sp" />
+
             <TextView
                 android:id="@+id/textView_registerNow"
                 android:layout_width="wrap_content"

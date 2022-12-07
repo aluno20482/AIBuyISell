@@ -1,5 +1,6 @@
 package com.example.projeto.activities
 
+import android.app.Application
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.example.projeto.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.HiltAndroidApp
 
 
 open class MainActivity : AppCompatActivity() {
@@ -36,7 +38,6 @@ open class MainActivity : AppCompatActivity() {
             //Metedo ir  para a tela
             IrParaJanelaEditarDados()
         }
-
     }
 
 

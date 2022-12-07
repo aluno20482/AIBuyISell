@@ -25,7 +25,6 @@
         android:layout_height="40dp"
         android:background="@color/colorPrimary"
         app:elevation="0dp"
-
         app:itemPaddingBottom="10dp"
         app:itemPaddingTop="10dp"
         app:itemRippleColor="@color/g_white"

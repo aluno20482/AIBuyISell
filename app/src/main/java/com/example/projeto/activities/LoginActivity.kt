@@ -1,6 +1,7 @@
 package com.example.projeto.activities
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,14 +9,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
-class LoginActivity : MainActivity() {
+
+
+class LoginActivity : MainActivity(){
 
     private lateinit var auth: FirebaseAuth
 
@@ -37,6 +43,12 @@ class LoginActivity : MainActivity() {
         val loginButton = findViewById<Button>(R.id.button_login)
 
         val homeButton = findViewById<Button>(R.id.button_muda)
+
+        val addProduct = findViewById<Button>(R.id.button_addProduct)
+
+        addProduct.setOnClickListener {
+            verAddProduct()
+        }
 
         homeButton.setOnClickListener {
            verHome()
@@ -80,6 +92,11 @@ class LoginActivity : MainActivity() {
         finish()
     }
 
+
+    private fun verAddProduct(){
+        val intent = Intent(this, AddItemActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun verHome(){
         // Sign in success, agora vamos para a proxima activity
