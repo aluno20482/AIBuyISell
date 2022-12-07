@@ -48,8 +48,7 @@ open class MainActivity : AppCompatActivity() {
 
             IrParaJanelaEditarDados()
         }
-<<<<<<< HEAD
-=======
+
         catch (ex: Exception )
         {
             Log.i("Primeiro Nome", "user.firstName");
@@ -57,7 +56,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
     }
 
 

@@ -88,13 +88,6 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
-            <TextView
-                android:id="@+id/textView_registerNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CRIAR CONTA"
-                android:textSize="21sp"
-                android:layout_gravity="center_horizontal" />
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -107,7 +100,7 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
-<<<<<<< HEAD
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_addProduct"
                 android:layout_width="wrap_content"
@@ -125,8 +118,7 @@
                 android:text="Sign up"
                 android:textSize="21sp"
                 android:layout_gravity="center_horizontal" />
-=======
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
 
         </LinearLayout>
     </ScrollView>

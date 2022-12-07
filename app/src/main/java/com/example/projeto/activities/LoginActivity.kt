@@ -10,11 +10,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-<<<<<<< HEAD
 
-=======
 import androidx.compose.ui.graphics.Color
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
@@ -47,7 +45,6 @@ class LoginActivity : MainActivity(){
         }
 
 
-<<<<<<< HEAD
         val homeButton = findViewById<Button>(R.id.button_muda)
 
         val addProduct = findViewById<Button>(R.id.button_addProduct)
@@ -57,14 +54,15 @@ class LoginActivity : MainActivity(){
         }
 
         homeButton.setOnClickListener {
-           verHome()
-=======
+            verHome()
+
+        }
         /*
         val button: TextView = findViewById(R.id.textView_recuperar_pass)
         button.setOnClickListener {
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
         }
 
          */
@@ -84,12 +82,6 @@ class LoginActivity : MainActivity(){
         loginButton.setOnClickListener {
             performLogin()
         }
-
-        val homeButton = findViewById<Button>(R.id.button_muda)
-        homeButton.setOnClickListener {
-            verHome()
-        }
-
 
     }
 
@@ -127,16 +119,14 @@ class LoginActivity : MainActivity(){
     }
 
 
-<<<<<<< HEAD
     private fun verAddProduct(){
         val intent = Intent(this, AddItemActivity::class.java)
         startActivity(intent)
     }
 
-    private fun verHome(){
-=======
+
+
     private fun verHome() {
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
         // Sign in success, agora vamos para a proxima activity
         val intent = Intent(this, ShoppingActivity::class.java)
         startActivity(intent)

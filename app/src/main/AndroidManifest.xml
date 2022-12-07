@@ -24,11 +24,6 @@
         </activity>
 
         <activity
-<<<<<<< HEAD
-            android:name=".activities.ShoppingActivity"
-            android:exported="false" >
-
-=======
             android:name=".activities.ForgotPasswordActivity"
             android:exported="false">
             <meta-data
@@ -38,18 +33,15 @@
         <activity
             android:name=".activities.ShoppingActivity"
             android:exported="false">
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".activities.UserProfileActivity"
-<<<<<<< HEAD
             android:exported="false" >
-=======
-            android:exported="false">
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -84,11 +76,7 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-<<<<<<< HEAD
             android:exported="false" >
-=======
-            android:exported="false">
->>>>>>> 6e3a79e5511e8fafdc12fbc4742cf258d964ccb2
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
