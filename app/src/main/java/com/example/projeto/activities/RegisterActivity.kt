@@ -77,13 +77,12 @@ class RegisterActivity : MainActivity() {
                     val userInfo = User(
                         //nota deviam ser aqui os nomes igual a base de dados
                         firebaseUser.uid,
-                        primeiroNome.text.toString().trim{ it <= ' '},
-                        ultimoNome.text.toString().trim{ it <= ' '},
-                        email.text.toString().trim{ it <= ' '}
+                        primeiroNome.text.toString().trim { it <= ' ' },
+                        ultimoNome.text.toString().trim { it <= ' ' },
+                        email.text.toString().trim { it <= ' ' }
                     )
 
-                    FirestoreClass().registerUser(this@RegisterActivity,userInfo)
-
+                    FirestoreClass().registerUser(this@RegisterActivity, userInfo)
 
 
                     val mFireStore = Firebase.firestore
@@ -104,7 +103,7 @@ class RegisterActivity : MainActivity() {
                                 "Error while registering the user.",
                                 e
                             )
-                            Toast.makeText(baseContext ,"deu erro",
+                            Toast.makeText(baseContext, "deu erro",
                                 Toast.LENGTH_SHORT
                             ).show()
 
@@ -115,17 +114,21 @@ class RegisterActivity : MainActivity() {
                     //val intent = Intent(this, MainActivity::class.java)
                     //startActivity(intent)
 
-                    //Toast.makeText(baseContext, "Authentication Sucess.",
-                    //    Toast.LENGTH_SHORT
-                    //).show()
+                    /*
+                    Toast.makeText(baseContext, "Authentication Sucess.",
+                       Toast.LENGTH_SHORT
+                    ).show()
 
                 } else {
 
                     hideProgressDialog()
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Falha na autenticação",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                */
+                }
+
             }
             .addOnFailureListener{
                 hideProgressDialog()

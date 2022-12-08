@@ -30,10 +30,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
             val inputEmail = email.text.toString().trim { it <= ' ' }
             if (inputEmail.isEmpty()) {
 
-
-                showErrorSnackBar(resources.getString(androidx.compose.ui.R.string.default_error_message),
+                showErrorSnackBar("Introduza os dados",
                     true)
             } else {
+
                 //showProgressDialog(resources.getString(R.string.please_wait))
                 FirebaseAuth.getInstance().sendPasswordResetEmail(inputEmail)
                     .addOnCompleteListener { task ->
