@@ -45,6 +45,14 @@ class LoginActivity : MainActivity(){
         }
 
 
+        //Botao  Redireciona para a pagina de informacao
+        val infoText: TextView = findViewById(R.id.textView_informacao)
+        infoText.setOnClickListener {
+            val intent = Intent(this, InformationActivity::class.java)
+            startActivity(intent)
+        }
+
+
         val homeButton = findViewById<Button>(R.id.button_muda)
 
         val addProduct = findViewById<Button>(R.id.button_addProduct)
@@ -111,11 +119,11 @@ class LoginActivity : MainActivity(){
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
 
-*/
+
 
         //redirecionar o usuário para a tela principal após o login
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        finish()
+        finish()*/
     }
 
 
@@ -148,6 +156,7 @@ class LoginActivity : MainActivity(){
                 Toast.LENGTH_SHORT
             ).show()
         }
+
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
