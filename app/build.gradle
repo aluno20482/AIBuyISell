@@ -59,6 +59,7 @@ dependencies {
 
 
     implementation("com.google.dagger:hilt-android:2.44")
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     //Glide
@@ -95,6 +96,14 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    //glide for imgs
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //coroutines-> especie de thread para sacar infor da firebase
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")

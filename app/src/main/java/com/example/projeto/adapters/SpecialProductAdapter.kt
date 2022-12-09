@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.bumptech.glide.Glide
 import com.example.projeto.databinding.FragmentMainCategoryBinding
 import com.example.projeto.databinding.ProductItemBinding
 import com.example.projeto.models.Product
@@ -20,16 +21,19 @@ class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.Special
 
             fun bind(product: Product){
                 binding.apply {
-                  tvName.text = product.name
+                    //o glide auxiliar na transição das imagens para a view
+                    Glide.with(itemView).load(product.images?.get(0)).into(binding.imgProduct)
+                    tvName.text = product.name
                     tvPrice.text = product.price.toString()
-                    tvName.text = product.name.toString()
+                    tvName.text = product.name
+
                 }
             }
         }
 
     val diffCallback = object :DiffUtil.ItemCallback<Product>(){
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-           return oldItem.id == newItem.id
+           return oldItem.Id == newItem.Id
         }
 
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {

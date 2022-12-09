@@ -18,6 +18,7 @@ import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,8 @@ class LoginActivity : MainActivity(){
 
         // Initialize Firebase Auth
         auth = Firebase.auth
+
+
 
         //Botao Registar Redireciona para a pagina de registo
         val registerText: TextView = findViewById(R.id.textView_registerNow)
@@ -151,6 +154,8 @@ class LoginActivity : MainActivity(){
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
+
+
 
         auth.signInWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->

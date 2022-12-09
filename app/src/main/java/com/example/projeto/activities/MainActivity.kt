@@ -1,5 +1,6 @@
 package com.example.projeto.activities
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.app.Dialog
 import android.content.Intent
@@ -22,6 +23,7 @@ open class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var mProgressDialog :Dialog
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,6 +38,18 @@ open class MainActivity : AppCompatActivity() {
         }
 
         displayUserData();
+
+        val homeButton = findViewById<Button>(R.id.button_home)
+
+        homeButton.setOnClickListener {
+            verHome()
+
+        }
+        val addProduct = findViewById<Button>(R.id.button_addProduct)
+
+        addProduct.setOnClickListener {
+            verAddProduct()
+        }
 
 
         val editarDadosButton = findViewById<Button>(R.id.button_Editar_Dados_Perfil)
@@ -56,6 +70,18 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
+
+    }
+    private fun verAddProduct(){
+        val intent = Intent(this, AddItemActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    private fun verHome() {
+        // Sign in success, agora vamos para a proxima activity
+        val intent = Intent(this, ShoppingActivity::class.java)
+        startActivity(intent)
 
     }
 

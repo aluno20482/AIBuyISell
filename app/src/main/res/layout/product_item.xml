@@ -8,15 +8,14 @@
 
     >
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_product"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/icon_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +39,9 @@
                 android:fontFamily="@font/poppins_light"
                 android:text="Chair"
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="12dp"
                 android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:layout_weight="10"/>
 
 
         </LinearLayout>
