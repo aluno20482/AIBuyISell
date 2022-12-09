@@ -115,9 +115,18 @@
                 android:id="@+id/textView_registerNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
-                android:textSize="21sp"
+                android:text="Inscrever-se"
+                android:textSize="35sp"
                 android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/textView_informacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACERCA DA AI SHOP"
+                android:textSize="15sp"
+                android:layout_gravity="center_horizontal" />
+
 
 
         </LinearLayout>

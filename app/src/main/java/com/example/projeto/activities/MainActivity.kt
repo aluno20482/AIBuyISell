@@ -56,18 +56,8 @@ open class MainActivity : AppCompatActivity() {
         editarDadosButton.setOnClickListener {
             //Metedo ir  para a tela
 
-
-
-        try {
-
-            IrParaJanelaEditarDados()
+              IrParaJanelaEditarDados()
         }
-
-        catch (ex: Exception )
-        {
-            Log.i("Primeiro Nome", "user.firstName");
-        }
-    }
 
 
 

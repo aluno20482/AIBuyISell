@@ -3,6 +3,11 @@
     <string name="register_sucess">Registo com Sucesso!</string>
     <string name="please_wait"> Please Wait&#8230;</string>
 
+    <string name="informacaoCurso"> Desenvolvimento de Aplicações Móveis</string>
+    <string name="informacaoCurso2"> Licenciatura em Eng. Informática 3º ano, 1º semestre Ano Letivo 2022/23</string>
+    <string name="alunoAfonso"> Afonso Graça nº 20944</string>
+    <string name="alunoIvan"> Ivan Ferreira nº 20482</string>
+
     <!--Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat">
         <!--Customize your theme here. -->
