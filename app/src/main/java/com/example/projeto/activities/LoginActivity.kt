@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.compose.ui.graphics.Color
 
 import com.example.projeto.R
+import com.example.projeto.databinding.ActivitySubmitEmailBinding
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.android.material.snackbar.Snackbar
@@ -68,6 +69,13 @@ class LoginActivity : MainActivity(){
             verHome()
 
         }
+
+        val enviarEmail = findViewById<Button>(R.id.button_email)
+        enviarEmail.setOnClickListener {
+            verEmailAEnviar()
+
+        }
+
         /*
         val button: TextView = findViewById(R.id.textView_recuperar_pass)
         button.setOnClickListener {
@@ -140,6 +148,12 @@ class LoginActivity : MainActivity(){
     private fun verHome() {
         // Sign in success, agora vamos para a proxima activity
         val intent = Intent(this, ShoppingActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    private fun verEmailAEnviar() {
+        val intent = Intent(this, SubmitEmailActivity::class.java)
         startActivity(intent)
 
     }

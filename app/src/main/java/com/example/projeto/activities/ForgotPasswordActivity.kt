@@ -51,6 +51,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             finish()
                         } else {
                             //showErrorSnackBar(task.exception!!.message.toString(), true)
+                            Toast.makeText(
+                                this@ForgotPasswordActivity,
+                                "Introduza um email registado na AI",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
             }

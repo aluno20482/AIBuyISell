@@ -13,6 +13,8 @@ plugins {
     //id 'dagger.hilt.android.plugin'
 }
 
+
+
 android {
     namespace 'com.example.projeto'
     compileSdk 32
@@ -38,6 +40,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
