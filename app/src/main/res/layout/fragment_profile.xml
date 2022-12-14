@@ -11,15 +11,63 @@
         android:orientation="vertical"
         android:layout_centerVertical="true">
 
+
         <TextView
-            android:id="@+id/frag_profile_mostrar_nome"
+            android:id="@+id/frag_profile__mostrar_Nome_Completo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ola: "
+            android:text=""
             android:textAlignment="center"
             android:textSize="30dp"
             android:layout_centerVertical="true"
             />
+
+
+        <TextView
+            android:id="@+id/frag_profile__mostrar_contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/frag_profile_n_mostrar_morada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_Editar_Dados_Perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:text="Editar Dados Perfil"
+            android:textAllCaps="false"
+            android:textSize="21sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_Logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textSize="21sp"
+            />
+
+
 
 
     </LinearLayout>

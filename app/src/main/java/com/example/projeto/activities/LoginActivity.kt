@@ -190,7 +190,7 @@ class LoginActivity : MainActivity(){
                     FirestoreClass().getUsersDetails(this@LoginActivity)
 
                     // Sign in success, agora vamos para a proxima activity
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, ShoppingActivity::class.java)
                     startActivity(intent)
 
                     hideProgressDialog();
