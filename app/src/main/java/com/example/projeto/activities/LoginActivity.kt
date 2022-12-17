@@ -191,6 +191,7 @@ class LoginActivity : MainActivity(){
 
                     // Sign in success, agora vamos para a proxima activity
                     val intent = Intent(this, ShoppingActivity::class.java)
+                    //val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
                     hideProgressDialog();

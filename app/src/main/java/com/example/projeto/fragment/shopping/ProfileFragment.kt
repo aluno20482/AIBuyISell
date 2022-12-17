@@ -32,6 +32,23 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater)
         return binding.root
+
+/*
+        //BOTAO EDITAR DADOS
+        val editarDadosButton = binding.buttonEditarDadosPerfil
+        editarDadosButton.setOnClickListener {
+            //Metedo ir  para a tela
+           // IrParaJanelaEditarDados()
+        }
+
+        //BOTAO LOGOUT
+
+        val loginButton = binding.buttonLogout
+        loginButton.setOnClickListener {
+           // performLogout()
+        }
+
+*/
     }
 
 
@@ -58,14 +75,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
 
-    //BOTAO EDITAR DADOS
     /*
-    val editarDadosButton = binding.buttonEditarDadosPerfil
-    editarDadosButton.setOnClickListener {
-        //Metedo ir  para a tela
-        IrParaJanelaEditarDados()
-    }
-
     private fun IrParaJanelaEditarDados() {
 
         //passar contexto + class
@@ -73,23 +83,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         startActivity(JanelaEditar)
 
     }
-     */
 
-
-    //BOTAO LOGOUT
-   /*
-    val loginButton = binding.buttonLogout
-    loginButton.setOnClickListener {
-        performLogout()
-    }
 
     private fun performLogout() {
 
         FirebaseAuth.getInstance().signOut();
-
-
         //Logout success, voltar para a activity do login
-
         // Sign in success, agora vamos para a proxima activity
 
         val intent = Intent(this, LoginActivity::class.java)
@@ -101,6 +100,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
      */
-    
+
 
 }
