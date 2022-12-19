@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.example.projeto.R
+import com.example.projeto.databinding.ActivitySubmitEmailBinding
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -59,6 +60,13 @@ class LoginActivity : MainActivity(){
             verHome()
 
         }
+
+        val enviarEmail = findViewById<Button>(R.id.button_email)
+        enviarEmail.setOnClickListener {
+            verEmailAEnviar()
+
+        }
+
         /*
         val button: TextView = findViewById(R.id.textView_recuperar_pass)
         button.setOnClickListener {
@@ -143,6 +151,12 @@ class LoginActivity : MainActivity(){
 
     }
 
+    private fun verEmailAEnviar() {
+        val intent = Intent(this, SubmitEmailActivity::class.java)
+        startActivity(intent)
+
+    }
+
 
     //Efetuar Login
     private fun performLogin() {
@@ -175,7 +189,8 @@ class LoginActivity : MainActivity(){
                     FirestoreClass().getUsersDetails(this@LoginActivity)
 
                     // Sign in success, agora vamos para a proxima activity
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, ShoppingActivity::class.java)
+                    //val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
 
                     hideProgressDialog();

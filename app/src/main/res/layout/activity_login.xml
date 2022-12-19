@@ -101,12 +101,20 @@
                 android:textSize="21sp" />
 
             <androidx.appcompat.widget.AppCompatButton
+<<<<<<< HEAD
                 android:id="@+id/button_mudaPSlider"
+=======
+                android:id="@+id/button_email"
+>>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button_background"
+<<<<<<< HEAD
                 android:text="Menu Slider"
+=======
+                android:text="Enviar mensgem ao vendedor"
+>>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 

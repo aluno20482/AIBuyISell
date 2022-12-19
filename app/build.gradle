@@ -13,6 +13,8 @@ plugins {
     //id 'dagger.hilt.android.plugin'
 }
 
+
+
 android {
     namespace 'com.example.projeto'
     compileSdk 32
@@ -38,6 +40,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +57,17 @@ android {
 }
 
 dependencies {
+
+    // https://osmdroid.github.io/osmdroid/How-to-use-the-osmdroid-library.html
+    // https://osmdroid.github.io/osmdroid/How-to-add-the-osmdroid-library-via-Gradle
+    // recursos para o acesso aos mapas
+    implementation 'org.osmdroid:osmdroid-android:6.1.14'
+    implementation 'org.osmdroid:osmdroid-wms:6.1.14'
+    implementation 'org.osmdroid:osmdroid-mapsforge:6.1.14'
+    implementation 'org.osmdroid:osmdroid-geopackage:6.1.14'
+
+
+
     implementation 'javax.inject:javax.inject:1'
 
 

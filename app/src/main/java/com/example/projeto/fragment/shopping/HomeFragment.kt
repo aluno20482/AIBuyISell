@@ -8,7 +8,14 @@ import androidx.fragment.app.Fragment
 import com.example.projeto.R
 import com.example.projeto.databinding.FragmentHomeBinding
 import com.example.projeto.adapters.HomeViewPagerAdapter
+<<<<<<< HEAD
 import com.example.projeto.fragment.categories.*
+=======
+import com.example.projeto.fragment.shopping.categories.LaptopCategoryFragment
+import com.example.projeto.fragment.shopping.categories.MainCategoryFragment
+import com.example.projeto.fragment.shopping.categories.PhoneCategoryFragment
+import com.example.projeto.fragment.shopping.categories.RamCategoryFragment
+>>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment(R.layout.fragment_home) {

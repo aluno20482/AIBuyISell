@@ -1,4 +1,4 @@
-package com.example.projeto.fragment.categories
+package com.example.projeto.fragment.shopping.categories
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
