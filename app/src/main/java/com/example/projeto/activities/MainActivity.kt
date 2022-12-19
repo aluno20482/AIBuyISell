@@ -7,12 +7,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD
-=======
+
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
->>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -23,17 +21,9 @@ import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-<<<<<<< HEAD
-=======
 import dagger.hilt.android.HiltAndroidApp
-import org.osmdroid.config.Configuration
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.util.GeoPoint
-import org.osmdroid.views.CustomZoomButtonsController
-import org.osmdroid.views.MapView
-import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.compass.CompassOverlay
->>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
+
+
 
 
 open class MainActivity : AppCompatActivity() {
@@ -45,7 +35,7 @@ open class MainActivity : AppCompatActivity() {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
 
     //var global para toda a class
-    private lateinit var map: MapView
+    //private lateinit var map: MapView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

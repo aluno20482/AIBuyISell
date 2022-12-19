@@ -22,11 +22,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
+
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        tools:targetApi="31">
-=======
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31"
         tools:replace="android:allowBackup">
 
@@ -37,7 +34,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
->>>>>>> 21940eb3a240a1c5bb594133341fbc0364095ca7
         <activity
             android:name=".activities.InformationActivity"
             android:exported="false">

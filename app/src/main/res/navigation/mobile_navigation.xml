@@ -7,19 +7,14 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.projeto.fragment.categories.MainCategoryFragment"
+        android:name="com.example.projeto.fragment.shopping.categories.MainCategoryFragment"
         android:label="Home"
         tools:layout="@layout/fragment_main_category" />
-
-    <fragment
-        android:id="@+id/nav_diversos"
-        android:name="com.example.projeto.fragment.categories.LaptopCategoryFragment"
-        android:label="Pcs"
-        tools:layout="@layout/fragment_diversos" />
+    
     <fragment
         android:id="@+id/nav_telemoveis"
         android:name="com.example.projeto.fragment.categories.TelemoveisFragment"
-        android:label="Pcs"
+        android:label="Telemóveis"
         tools:layout="@layout/fragment_telemoveis" />
     <include app:graph="@navigation/shopping_graph" />
 
