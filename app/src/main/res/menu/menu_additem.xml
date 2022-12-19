@@ -4,9 +4,15 @@
 
         <item
             android:id="@+id/menu_option1"
-            android:title="pc"/>
+            android:title="Pc"/>
         <item
             android:id="@+id/menu_option2"
-            android:title="diversos"/>
+            android:title="Telemóveis"/>
+        <item
+            android:id="@+id/menu_option3"
+            android:title="Desporto"/>
+        <item
+            android:id="@+id/menu_option4"
+            android:title="lazer"/>
 
 </menu>

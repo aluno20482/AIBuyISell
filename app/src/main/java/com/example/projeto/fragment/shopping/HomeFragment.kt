@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.projeto.R
 import com.example.projeto.databinding.FragmentHomeBinding
 import com.example.projeto.adapters.HomeViewPagerAdapter
-import com.example.projeto.fragment.categories.LaptopCategoryFragment
-import com.example.projeto.fragment.categories.MainCategoryFragment
-import com.example.projeto.fragment.categories.PhoneCategoryFragment
-import com.example.projeto.fragment.categories.RamCategoryFragment
+import com.example.projeto.fragment.categories.*
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -34,22 +31,29 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         //criar o array de fragmentos populado com as categorias, categorias estas que sao fragmentos
         val categoriesFragments = arrayListOf<Fragment>(
             MainCategoryFragment(),
+            SportCategoryFragment(),
+            PhoneCategoryFragment(),
             LaptopCategoryFragment(),
             RamCategoryFragment(),
-            PhoneCategoryFragment()
+
         )
 
         //utilização do adaptador HomeViewPagerAdapter
         //passsamos o adaptador para uma variavel e fazemos o binding com essa variavel
         val viewPagerToAdapter = HomeViewPagerAdapter(categoriesFragments,childFragmentManager, lifecycle)
         binding.viewpagerHome.adapter = viewPagerToAdapter
+        //nao permite fazer scroll dentro do viewPager, apenas através do TabLayout
+        binding.viewpagerHome.isUserInputEnabled = false
+        //binding.viewpagerHome.beginFakeDrag();
         //aqui vai ser feito o switch entre os fragmentos
         TabLayoutMediator(binding.tabLayout,binding.viewpagerHome){tab, position ->
             when(position){
                 0 -> tab.text = "Main"
-                1 -> tab.text = "Laptops"
-                2 -> tab.text = "Ram"
-                3 -> tab.text = "Phones"
+                1 -> tab.text = "Telemóveis"
+                2 -> tab.text = "Desporto"
+                3 -> tab.text = "Carros"
+                4 -> tab.text = "Lazer"
+                5 -> tab.text = "Carros"
             }
         }.attach()
         //ligação do tablayout com a viewPage

@@ -54,6 +54,7 @@ class AddItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //categorias
         mostraMenu()
 
         val selecImagesActivityResult =
@@ -77,6 +78,11 @@ class AddItemActivity : AppCompatActivity() {
             intent.type="image/"
             selecImagesActivityResult.launch(intent)
         }
+        binding.saveProduct.setOnClickListener{
+            saveProduct()
+        }
+
+
     }
 
     fun mostraMenu() : String{
@@ -93,6 +99,7 @@ class AddItemActivity : AppCompatActivity() {
                     }
                     R.id.menu_option2 -> {
                         Toast.makeText(this, "opcao2",Toast.LENGTH_SHORT).show()
+                        cat = "Telemóveis"
                         true
                     }
                     else -> false
@@ -125,7 +132,6 @@ class AddItemActivity : AppCompatActivity() {
             }
 
             saveProduct()
-            Log.e("INFOIMAGEN","segunda parte")
         }
         return super.onOptionsItemSelected(item)
     }

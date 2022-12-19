@@ -1,12 +1,10 @@
 package com.example.projeto.activities
 
 import android.annotation.SuppressLint
-import android.app.Application
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -15,7 +13,6 @@ import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import dagger.hilt.android.HiltAndroidApp
 
 
 open class MainActivity : AppCompatActivity() {

@@ -8,4 +8,7 @@
     android:title="Add product"
         android:iconTint="@color/white"/>
 
+
+
+
 </menu>

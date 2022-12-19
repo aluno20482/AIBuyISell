@@ -1,20 +1,30 @@
 package com.example.projeto.adapters
 
+import android.R
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
-import com.example.projeto.databinding.FragmentMainCategoryBinding
+import com.example.projeto.activities.ProductDetailActivity
 import com.example.projeto.databinding.ProductItemBinding
 import com.example.projeto.models.Product
 
-class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.SpecialProductViewHolder>(){
+
+class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.SpecialProductViewHolder>() {
+
+    var context: Context? = null
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        context = recyclerView.context
+    }
 
     inner class SpecialProductViewHolder(private val binding: ProductItemBinding):
         RecyclerView.ViewHolder(binding.root){
@@ -54,6 +64,20 @@ class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.Special
     override fun onBindViewHolder(holder: SpecialProductViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
+
+        //passar os dados para a view do detalhe ao se clicar em qualquer produto. Cada produto está dentro da recyclerview
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                val intent = Intent(context, ProductDetailActivity::class.java)
+                intent.putExtra("nome", product.name)
+                intent.putExtra("image", product.images?.get(0))
+                intent.putExtra("price", product.price.toString())
+
+                context!!.startActivity(intent)
+
+            }
+        })
+
     }
 
     override fun getItemCount(): Int {

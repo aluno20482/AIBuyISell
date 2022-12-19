@@ -50,6 +50,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             //terminar a atividade
                             finish()
                         } else {
+                            Toast.makeText(
+                                this@ForgotPasswordActivity,
+                                "Ainda nao é nosso cliente, por favor registe-se!",
+                                Toast.LENGTH_LONG
+                            ).show()
                             //showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     }

@@ -1,29 +1,20 @@
 package com.example.projeto.activities
 
 import android.annotation.SuppressLint
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
-import androidx.compose.ui.graphics.Color
-
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-
 
 
 class LoginActivity : MainActivity(){
@@ -78,7 +69,6 @@ class LoginActivity : MainActivity(){
 
          */
 
-
         //Clicar em recupear pass
         val recuperarPass: TextView = findViewById(R.id.textView_recuperar_pass)
         recuperarPass.setOnClickListener {
@@ -94,7 +84,16 @@ class LoginActivity : MainActivity(){
             performLogin()
         }
 
+        val loginMenu = findViewById<Button>(R.id.button_mudaPSlider)
+        loginMenu.setOnClickListener{
+            val intent3 = Intent(this, MenuActivity::class.java)
+            //metedo a abrir
+            startActivity(intent3)
+        }
+
     }
+
+
 
     //nova funcao
     fun userLoggedInSucess(user: User) {
