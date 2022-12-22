@@ -5,20 +5,12 @@ buildscript {
         mavenCentral()  // Maven Central repository
         //noinspection JcenterRepositoryObsolete
         jcenter()
+        //slider de imagens
+
+
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'
-
-
-
-
-        //dependencias 2 video
-        ///////////////////////////////
-        //safe args
-        //def nav_version = "2.4.1"
-        //classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-        //classpath 'com.google.dagger:hilt-android-gradle-plugin:2.38.1'
-        ////////////////////////////////
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 

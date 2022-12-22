@@ -59,15 +59,6 @@
             app:layout_constraintStart_toStartOf="@id/img_product"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name" />
 
-        <Button
-            android:id="@+id/button_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tv_price"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

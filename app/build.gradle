@@ -2,18 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
-
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-
-
-    //plugins do segundo video
-    //id 'kotlin-parcelize'
-    //id 'androidx.navigation.safeargs.kotlin'
-    //id 'dagger.hilt.android.plugin'
 }
-
-
 
 android {
     namespace 'com.example.projeto'
@@ -41,9 +32,6 @@ android {
         }
     }
 
-
-
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -66,38 +54,15 @@ dependencies {
     implementation 'org.osmdroid:osmdroid-mapsforge:6.1.14'
     implementation 'org.osmdroid:osmdroid-geopackage:6.1.14'
 
-
-
     implementation 'javax.inject:javax.inject:1'
 
 
     //dependencias do segundo video
-
-
-
     implementation("com.google.dagger:hilt-android:2.44")
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
-    //Glide
-    //implementation 'com.github.bumptech.glide:glide:4.13.0'
 
-    //circular image
-    //implementation 'de.hdodenhof:circleimageview:3.1.0'
-
-    //viewpager2 indicatior
-    //implementation 'io.github.vejei.viewpagerindicator:viewpagerindicator:1.0.0-alpha.1'
-
-    //stepView
-    //implementation 'com.shuhart.stepview:stepview:1.5.1'
-
-    //Android Ktx
-    //implementation "androidx.fragment:fragment-ktx:1.4.1"
-
-    //Dagger hilt
-
-    //implementation "com.google.dagger:hilt-android:2.38.1"
-    //kapt "com.google.dagger:hilt-compiler:2.38.1"
     def nav_version = "2.5.3"
 
     // Java language implementation

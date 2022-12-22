@@ -30,6 +30,7 @@
             android:id="@+id/rMelhoresOportunidades"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"

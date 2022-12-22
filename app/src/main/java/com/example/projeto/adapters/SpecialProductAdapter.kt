@@ -1,12 +1,9 @@
 package com.example.projeto.adapters
 
-import android.R
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -20,6 +17,7 @@ import com.example.projeto.models.Product
 class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.SpecialProductViewHolder>() {
 
     var context: Context? = null
+    lateinit var  imagesArray : Array<String>
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -66,17 +64,19 @@ class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.Special
         holder.bind(product)
 
         //passar os dados para a view do detalhe ao se clicar em qualquer produto. Cada produto está dentro da recyclerview
-        holder.itemView.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View?) {
-                val intent = Intent(context, ProductDetailActivity::class.java)
-                intent.putExtra("nome", product.name)
-                intent.putExtra("image", product.images?.get(0))
-                intent.putExtra("price", product.price.toString())
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ProductDetailActivity::class.java)
+            intent.putExtra("nome", product.name)
+            intent.putExtra("image", product.images?.get(0))
+            intent.putExtra("price", product.price.toString())
+            //intent.putExtra("imagens", product.images.toString())
 
-                context!!.startActivity(intent)
+            imagesArray  = product.images?.toTypedArray()!!
+            intent.putExtra("imagens", imagesArray)
+            //intent.putStringArrayListExtra("")
 
-            }
-        })
+            context!!.startActivity(intent)
+        }
 
     }
 

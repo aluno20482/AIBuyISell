@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProductDetailActivity">
 
-    <ImageView
-        android:id="@+id/img_detail"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/idViewPager"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:scaleType="fitXY"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_name_detail"
@@ -26,7 +25,7 @@
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/idViewPager" />
 
     <TextView
         android:id="@+id/textView2"
