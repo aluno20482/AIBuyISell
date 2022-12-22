@@ -2,7 +2,6 @@ package com.example.projeto.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -14,7 +13,7 @@ import com.example.projeto.databinding.ProductItemBinding
 import com.example.projeto.models.Product
 
 
-class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.SpecialProductViewHolder>() {
+class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHolder>() {
 
     var context: Context? = null
     lateinit var  imagesArray : Array<String>
@@ -69,11 +68,9 @@ class SpecialProductAdapter : RecyclerView.Adapter<SpecialProductAdapter.Special
             intent.putExtra("nome", product.name)
             intent.putExtra("image", product.images?.get(0))
             intent.putExtra("price", product.price.toString())
-            //intent.putExtra("imagens", product.images.toString())
 
             imagesArray  = product.images?.toTypedArray()!!
             intent.putExtra("imagens", imagesArray)
-            //intent.putStringArrayListExtra("")
 
             context!!.startActivity(intent)
         }

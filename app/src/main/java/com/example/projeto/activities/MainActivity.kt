@@ -23,9 +23,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.HiltAndroidApp
 
-
-
-
 open class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
@@ -102,7 +99,6 @@ open class MainActivity : AppCompatActivity() {
         // Sign in success, agora vamos para a proxima activity
         val intent = Intent(this, ShoppingActivity::class.java)
         startActivity(intent)
-
     }
 
 

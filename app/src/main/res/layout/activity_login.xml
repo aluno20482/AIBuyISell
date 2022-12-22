@@ -133,6 +133,7 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
+
             <TextView
                 android:id="@+id/textView_registerNow"
                 android:layout_width="wrap_content"

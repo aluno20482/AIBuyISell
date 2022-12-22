@@ -2,10 +2,10 @@ package com.example.projeto.viewmodel
 
 
 
-import androidx.compose.ui.geometry.Size.Companion.Unspecified
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projeto.models.Product
+import com.example.projeto.utils.Constants
 import com.example.projeto.utils.Resource
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class OtherCategoryViewModel @Inject constructor (
+class PhoneCategoryViewModel @Inject constructor (
     private val firestore: FirebaseFirestore
 ) :ViewModel() {
 
@@ -44,6 +44,22 @@ class OtherCategoryViewModel @Inject constructor (
                     _normalProducs.emit(Resource.Error(it.message.toString()))
                 }
             }
+
+        //val userId = "CcnfvDUuvTeGX9mBGukVCgkyEoC2"
+
+        //firestore.collection("favorites").whereEqualTo("userId", userId)
+        //   .get().addOnSuccessListener { result ->
+        //       //conversao da informaçao da firebase numa lista de objetos de produtos
+        //       val specialProductList = result.toObjects(Product::class.java)
+        //       viewModelScope.launch {
+        //           _normalProducs.emit(Resource.Success(specialProductList))
+        //       }
+        //   }.addOnFailureListener{
+        ///       viewModelScope.launch {
+        //          _normalProducs.emit(Resource.Error(it.message.toString()))
+        //      }
+        //  }
+
     }
 
 }

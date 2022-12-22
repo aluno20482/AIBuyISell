@@ -65,10 +65,8 @@ class FirestoreClass {
 
     // Alterar dados na BD
     fun alterarDados(activity: Activity, firstName: String, lastName: String, mobile: String, address: String) {
-
         mFireStore.collection(Constants.USERS).document(getCurrentUserID())
             .update("firstName", firstName, "lastName", lastName, "mobile", mobile, "address", address)
-
     }
 
 

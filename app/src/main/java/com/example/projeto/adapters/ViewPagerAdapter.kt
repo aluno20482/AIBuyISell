@@ -15,53 +15,45 @@ import com.example.projeto.activities.ProductDetailActivity
 import java.util.*
 
 class ViewPagerAdapter(var context: Context, val imageList: List<Uri>) : PagerAdapter() {
-    // on below line we are creating a method
-    // as get count to return the size of the list.
+
+    //retorna o tamanho da lista
     override fun getCount(): Int {
         return imageList.size
     }
 
-    // on below line we are returning the object
+    //retornar o objeto
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view === `object` as RelativeLayout
     }
 
-    // on below line we are initializing
-    // our item and inflating our layout file
+    //inicializar o item e fazer o inflate do layout file
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        // on below line we are initializing
-        // our layout inflater.
+
+        //inicializar o inflater
         val mLayoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        // on below line we are inflating our custom
-        // layout file which we have created.
+
+        // fazer o inflate do image_slider_item.
         val itemView: View = mLayoutInflater.inflate(R.layout.image_slider_item, container, false)
 
-        // on below line we are initializing
-        // our image view with the id.
+        //buscar a view dentro do slider
         val imageView: ImageView = itemView.findViewById<View>(R.id.idIVImage) as ImageView
-
-        // on below line we are setting
-        // image resource for image view.
-        //imageView.setImageURI(imageList.get(position))
 
         Glide.with(context)
             .load(imageList[position])
             .into(imageView)
 
-        // on the below line we are adding this
-        // item view to the container.
+        //adicionar o item ao container.
         Objects.requireNonNull(container).addView(itemView)
 
-        // on below line we are simply
-        // returning our item view.
+        // devolver a item view.
         return itemView
     }
 
-    // on below line we are creating a destroy item method.
+    //apagar um item
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        // on below line we are removing view
+        //remover a view
         container.removeView(`object` as RelativeLayout)
     }
 }

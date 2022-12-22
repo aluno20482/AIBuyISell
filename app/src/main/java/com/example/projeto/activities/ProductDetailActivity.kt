@@ -1,16 +1,28 @@
 package com.example.projeto.activities
 
+import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewModelScope
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.projeto.R
 import com.example.projeto.adapters.ViewPagerAdapter
+import com.example.projeto.models.Product
+import com.example.projeto.utils.Constants
+import com.example.projeto.utils.Resource
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 class ProductDetailActivity() : AppCompatActivity() {
@@ -18,13 +30,16 @@ class ProductDetailActivity() : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var viewPagerAdapter: ViewPagerAdapter
     lateinit var imageList : List<Uri>
-    //companion object ViewPagerAdapter
 
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
         val intent = intent
+
 
         val product_name = intent.getStringExtra("nome")
         val product_price = intent.getStringExtra("price")
@@ -33,20 +48,8 @@ class ProductDetailActivity() : AppCompatActivity() {
 
         val product_name_view = findViewById<TextView>(R.id.tv_name_detail)
         val product_price_view = findViewById<TextView>(R.id.tv_elevation_detail)
-
-        product_name_view.text = product_name
-        product_price_view.text = product_price.toString() + "€"
-
-        //passar a string para Uri
-        // val product_image = intent.getStringExtra("image")
-        // val product_image_view = findViewById<ImageView>(R.id.img_detail)
-        //val myUri = Uri.parse(product_image)
-        //uso do glide mas pode ser de outra forma para passar a imagem à view
-        //Glide.with(this)
-         //   .load(myUri)
-         //   .into(product_image_view);
-
-        //product_image_view.setImageURI(myUri)
+        val btnAdicionaFavoritos = findViewById<Button>(R.id.btn_adicionarFavoritos)
+        viewPager = findViewById(R.id.idViewPager)
 
         //fazer o parse para Uri do array de strings que vem do intent do productAdapter
         imageList = arrayListOf()
@@ -57,17 +60,44 @@ class ProductDetailActivity() : AppCompatActivity() {
             }
         }
 
-        viewPager = findViewById(R.id.idViewPager)
-
         //iniciar o viewPager e passar a lista de imagens
         viewPagerAdapter = ViewPagerAdapter(this, imageList)
 
+
+        product_name_view.text = product_name
+        product_price_view.text = product_price.toString() + "€"
         viewPager.adapter = viewPagerAdapter
 
-
-
-
-
+        btnAdicionaFavoritos.setOnClickListener{
+            if (product_name != null) {
+                adFavs(product_name)
+                Toast.makeText(this, "Produto Adicionado aos favoritos", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
+
+    fun adFavs(product_name : String){
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
+        val product = product_name // currentProduct is the product that the user wants to add to their favorites
+        val product_name = intent.getStringExtra("nome")
+        val product_price = intent.getStringExtra("price")
+
+
+        val favorite = hashMapOf(
+            "userId" to userId,
+            "productName" to product,
+            "images" to imageList
+
+        )
+
+        FirebaseFirestore.getInstance().collection("favorites").add(favorite)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "Favorite product added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding favorite product", e)
+            }
+
+    }
 }

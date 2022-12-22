@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.example.projeto.R
-import com.example.projeto.databinding.ActivitySubmitEmailBinding
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -57,7 +56,7 @@ class LoginActivity : MainActivity(){
         }
 
         homeButton.setOnClickListener {
-            verHome()
+            //verFavs()
 
         }
 
@@ -148,8 +147,15 @@ class LoginActivity : MainActivity(){
         // Sign in success, agora vamos para a proxima activity
         val intent = Intent(this, ShoppingActivity::class.java)
         startActivity(intent)
-
     }
+
+    private fun verFavs() {
+        // Sign in success, agora vamos para a proxima activity
+        //val intent = Intent(this, FavoriteCategoryFragment::class.java)
+       // startActivity(intent)
+    }
+
+
 
     private fun verEmailAEnviar() {
         val intent = Intent(this, SubmitEmailActivity::class.java)

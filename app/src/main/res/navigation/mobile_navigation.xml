@@ -16,6 +16,7 @@
         android:name="com.example.projeto.fragment.categories.TelemoveisFragment"
         android:label="Telemóveis"
         tools:layout="@layout/fragment_telemoveis" />
+
     <include app:graph="@navigation/shopping_graph" />
 
 

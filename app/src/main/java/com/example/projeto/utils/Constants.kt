@@ -10,9 +10,8 @@ object Constants {
     const val LOGGED_IN_CONTACTO: String = "logged_in_contacto"
     const val LOGGED_IN_MORADA: String = "logged_in_morada"
 
+    const val FAVORITOS : String = "favoritos"
 
-    //const val EXTRA_USER_DETAILS: String = "extra_user_details"
 
-    //public static final int MODE_PRIVATE = 0x0000;
 
 }

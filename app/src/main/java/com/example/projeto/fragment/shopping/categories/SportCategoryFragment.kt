@@ -12,10 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projeto.R
-import com.example.projeto.adapters.SpecialProductAdapter
+import com.example.projeto.adapters.ProductAdapter
 import com.example.projeto.databinding.FragmentSportCategoryBinding
 import com.example.projeto.utils.Resource
-import com.example.projeto.viewmodel.OtherCategoryViewModel
+import com.example.projeto.viewmodel.PhoneCategoryViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -26,9 +26,9 @@ class SportCategoryFragment : Fragment(R.layout.fragment_sport_category){
 
     private val firestore = FirebaseFirestore.getInstance()
     private lateinit var binding : FragmentSportCategoryBinding
-    private lateinit var specialPrductAdapter : SpecialProductAdapter
+    private lateinit var specialPrductAdapter : ProductAdapter
 
-    private val viewModel by viewModels<OtherCategoryViewModel>()
+    private val viewModel by viewModels<PhoneCategoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,7 +76,7 @@ class SportCategoryFragment : Fragment(R.layout.fragment_sport_category){
 
     //preparar o layout para receber os dados (layoutManager + adapter)
     private fun setupProductRv() {
-        specialPrductAdapter = SpecialProductAdapter()
+        specialPrductAdapter = ProductAdapter()
         binding.rTodosOsProdutos.apply {
             layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL, false)
