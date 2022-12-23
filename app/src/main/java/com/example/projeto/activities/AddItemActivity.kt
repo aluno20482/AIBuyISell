@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -81,6 +82,14 @@ class AddItemActivity : AppCompatActivity() {
         binding.saveProduct.setOnClickListener{
             saveProduct()
         }
+
+
+        //Botao Registar Redireciona para a pagina de registo
+        binding.buttonTirarFoto.setOnClickListener {
+            val intent = Intent(this, CamaraActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

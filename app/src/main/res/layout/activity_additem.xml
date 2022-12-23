@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product general information:"
+                android:text="Informações gerais do produto:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -47,7 +47,7 @@
                 android:id="@+id/edName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="Nome"
                 android:layout_marginTop="10dp"/>
 
 
@@ -55,27 +55,27 @@
                 android:id="@+id/edCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category"/>
+                android:hint="Categoria"/>
 
             <EditText
                 android:id="@+id/edDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Product description (Optional)"
+                android:hint="Descrição do produto (Opcional)"
                 />
 
             <EditText
                 android:id="@+id/edPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Price"
+                android:hint="Preço"
                 android:inputType="number"/>
 
             <EditText
                 android:id="@+id/offerPercentage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Offer Percentage (Optional)"
+                android:hint="Porcentagem da oferta (opcional)"
                 android:inputType="number"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product details:"
+                android:text="Detalhes do produto:"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -103,7 +103,7 @@
                 android:id="@+id/edSizes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Sizes (Optional) | use , between each new size"
+                android:hint="Tamanhos (Opcional) | use , entre cada novo tamanho"
                 android:inputType="number"/>
 
             <LinearLayout
@@ -145,6 +145,29 @@
                     android:gravity="center"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/buttonTirarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tirar Foto"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/tvTirarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

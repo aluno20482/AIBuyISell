@@ -40,7 +40,8 @@ class MenuActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_telemoveis, R.id.nav_diversos,R.id.cartFragment,R.id.profileFragment
+                //Ids menu
+                R.id.nav_home, R.id.nav_telemoveis,  R.id.nav_favoritos,R.id.cartFragment,R.id.profileFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -48,14 +49,17 @@ class MenuActivity : AppCompatActivity() {
         navBottomView.setupWithNavController(navController)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflar o menu; isso adiciona itens à barra de ação, se estiver presente.
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }

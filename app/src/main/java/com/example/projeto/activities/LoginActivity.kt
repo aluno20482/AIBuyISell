@@ -17,7 +17,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class LoginActivity : MainActivity(){
+class LoginActivity : MainActivity() {
 
     private lateinit var auth: FirebaseAuth
 
@@ -28,7 +28,6 @@ class LoginActivity : MainActivity(){
 
         // Initialize Firebase Auth
         auth = Firebase.auth
-
 
 
         //Botao Registar Redireciona para a pagina de registo
@@ -92,14 +91,13 @@ class LoginActivity : MainActivity(){
         }
 
         val loginMenu = findViewById<Button>(R.id.button_mudaPSlider)
-        loginMenu.setOnClickListener{
+        loginMenu.setOnClickListener {
             val intent3 = Intent(this, MenuActivity::class.java)
             //metedo a abrir
             startActivity(intent3)
         }
 
     }
-
 
 
     //nova funcao
@@ -113,34 +111,13 @@ class LoginActivity : MainActivity(){
         Log.i("Email", user.email)
 
 
-        /*
-        //IDEIA
-        //Se o utlizador não tiver os dados completos ao iniciar a aplicação
-        //Quando iniciar a mesma vai para a pagina para completar os dados
-        if(user.profileCompleted == 0){
-
-            //Se o perfil do usuário estiver incompleto, inicie a atividade do perfil do usuário
-            val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
-            //intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
-            startActivity(intent)
-        } else {
-            //Se o perfil do usuário estiver Completo, redirecione o usuário para a tela principal após o login
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        }
-
-
-
-        //redirecionar o usuário para a tela principal após o login
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        finish()*/
     }
 
 
-    private fun verAddProduct(){
+    private fun verAddProduct() {
         val intent = Intent(this, AddItemActivity::class.java)
         startActivity(intent)
     }
-
 
 
     private fun verHome() {
@@ -152,9 +129,8 @@ class LoginActivity : MainActivity(){
     private fun verFavs() {
         // Sign in success, agora vamos para a proxima activity
         //val intent = Intent(this, FavoriteCategoryFragment::class.java)
-       // startActivity(intent)
+        //startActivity(intent)
     }
-
 
 
     private fun verEmailAEnviar() {
@@ -172,17 +148,19 @@ class LoginActivity : MainActivity(){
         var email = findViewById<EditText>(R.id.editText_Email)
         var password = findViewById<EditText>(R.id.editText_Password)
 
+
         //se os 2 campos email e password estiverem vazios, devolve a mensagem ao ultizador
         if (email.text.isEmpty() || password.text.isEmpty()) {
             Toast.makeText(this, "Por favor preencha todos os campos",
-                Toast.LENGTH_SHORT
-            ).show()
+                Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+
         }
 
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()
-
 
 
         auth.signInWithEmailAndPassword(inputEmail, inputPassword)
@@ -195,14 +173,15 @@ class LoginActivity : MainActivity(){
                     FirestoreClass().getUsersDetails(this@LoginActivity)
 
                     // Sign in success, agora vamos para a proxima activity
-                    val intent = Intent(this, ShoppingActivity::class.java)
-                    //val intent = Intent(this, MainActivity::class.java)
+                    //val intent = Intent(this, ShoppingActivity::class.java)
+                    val intent = Intent(this, MenuActivity::class.java)
                     startActivity(intent)
 
                     hideProgressDialog();
                     Toast.makeText(baseContext, "Login efetuado com sucesso.",
                         Toast.LENGTH_SHORT
                     ).show()
+
                 } else {
                     // If sign in fails, display a message to the user.
 
@@ -212,23 +191,6 @@ class LoginActivity : MainActivity(){
                 }
             }
 
-            /*
-
-        //tartamento de execões ao criar conta
-        .addOnFailureListener{exececao ->
-            val mensagemErro = when(exececao){
-                is FirebaseAuthWeakPasswordException -> "Introduza uma palavra-passe com o mínimo 6 digitos"
-                is FirebaseAuthInvalidCredentialsException -> "Digite um email válido"
-                is FirebaseAuthUserCollisionException -> "Conta Registada"
-                is FirebaseNetworkException -> "Sem ligação a Internet"
-                else -> "Erro ao registar utilizador"
-            }
-            Toast.makeText(this,mensagemErro,
-                Toast.LENGTH_SHORT
-            ).show()
-             */
-
-
             .addOnFailureListener {
                 Toast.makeText(baseContext, "Falha na autenticação.${it.localizedMessage}",
                     Toast.LENGTH_SHORT).show()
@@ -236,3 +198,20 @@ class LoginActivity : MainActivity(){
 
     }
 }
+
+
+/*
+
+ //tartamento de execões ao criar conta
+ .addOnFailureListener{exececao ->
+     val mensagemErro = when(exececao){
+         is FirebaseAuthWeakPasswordException -> "Introduza uma palavra-passe com o mínimo 6 digitos"
+         is FirebaseAuthInvalidCredentialsException -> "Digite um email válido"
+         is FirebaseAuthUserCollisionException -> "Conta Registada"
+         is FirebaseNetworkException -> "Sem ligação a Internet"
+         else -> "Erro ao registar utilizador"
+     }
+     Toast.makeText(this,mensagemErro,
+         Toast.LENGTH_SHORT
+     ).show()
+      */

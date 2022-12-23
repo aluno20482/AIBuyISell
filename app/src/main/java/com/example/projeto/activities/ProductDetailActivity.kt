@@ -2,6 +2,7 @@ package com.example.projeto.activities
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
@@ -49,6 +50,7 @@ class ProductDetailActivity() : AppCompatActivity() {
         val product_name_view = findViewById<TextView>(R.id.tv_name_detail)
         val product_price_view = findViewById<TextView>(R.id.tv_elevation_detail)
         val btnAdicionaFavoritos = findViewById<Button>(R.id.btn_adicionarFavoritos)
+        val btn_contactarVendedor = findViewById<Button>(R.id.btn_contactarVendedor)
         viewPager = findViewById(R.id.idViewPager)
 
         //fazer o parse para Uri do array de strings que vem do intent do productAdapter
@@ -73,6 +75,12 @@ class ProductDetailActivity() : AppCompatActivity() {
                 adFavs(product_name)
                 Toast.makeText(this, "Produto Adicionado aos favoritos", Toast.LENGTH_SHORT).show()
             }
+        }
+
+
+        btn_contactarVendedor.setOnClickListener{
+            val intent = Intent(this, SubmitEmailActivity::class.java)
+            startActivity(intent)
         }
     }
 

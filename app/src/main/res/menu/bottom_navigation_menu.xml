@@ -5,6 +5,7 @@
     <item android:id="@+id/homeFragment"
         android:icon="@drawable/icon_home"
         android:title="Home"/>
+
     <item android:id="@+id/cartFragment"
         android:icon="@drawable/icon_cart"
         android:title="Cart"/>

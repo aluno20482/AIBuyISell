@@ -6,16 +6,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/icon_micro"
-            android:title="Home" />
+            android:icon="@drawable/icone_home"
+            android:title="Destaques no AI" />
         <item
             android:id="@+id/nav_telemoveis"
-            android:icon="@drawable/icon_profile"
-            android:title="Telemóveis" />
+            android:icon="@drawable/icone_telemovel"
+            android:title="Telemóveis e Tablets" />
+
         <item
-            android:id="@+id/nav_diversos"
-            android:icon="@drawable/icon_search"
-            android:title="Diversos" />
+            android:id="@+id/nav_moveis"
+            android:icon="@drawable/icone_moveis"
+            android:title="Móveis, Casa e Jardim" />
+
+        <item
+            android:id="@+id/nav_carros_motos_barcos"
+            android:icon="@drawable/icone_carro"
+            android:title="Carros, motos e barcos" />
+
+        <item
+            android:id="@+id/outras_vendas"
+            android:icon="@drawable/icone_outras_vendas"
+            android:title="Outras Vendas" />
+
+
+        <item
+            android:id="@+id/nav_favoritos"
+            android:icon="@drawable/icone_favorito"
+            android:title="Favoritos" />
 
         <item
             android:id="@+id/nav_perfil"
