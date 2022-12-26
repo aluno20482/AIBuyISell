@@ -50,6 +50,7 @@ class ProductDetailActivity() : AppCompatActivity() {
         val product_name_view = findViewById<TextView>(R.id.tv_name_detail)
         val product_price_view = findViewById<TextView>(R.id.tv_elevation_detail)
         val btnAdicionaFavoritos = findViewById<Button>(R.id.btn_adicionarFavoritos)
+        val btnRemoverFavoritos = findViewById<Button>(R.id.btn_removerFavoritos)
         val btn_contactarVendedor = findViewById<Button>(R.id.btn_contactarVendedor)
         viewPager = findViewById(R.id.idViewPager)
 
@@ -77,6 +78,14 @@ class ProductDetailActivity() : AppCompatActivity() {
             }
         }
 
+        btnRemoverFavoritos.setOnClickListener{
+            if (product_name != null) {
+               removeFavs(product_name)
+                Toast.makeText(this, "Produto Removido aos favoritos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
 
         btn_contactarVendedor.setOnClickListener{
             val intent = Intent(this, SubmitEmailActivity::class.java)
@@ -85,9 +94,10 @@ class ProductDetailActivity() : AppCompatActivity() {
     }
 
 
+    //Adicona aos favoritos
     fun adFavs(product_name : String){
-        val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
-        val product = product_name // currentProduct is the product that the user wants to add to their favorites
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid // Obter o ID do usuário
+        val product = product_name // currentProduct é o produto que o usuário deseja adicionar aos seus favoritos
         val product_name = intent.getStringExtra("nome")
         val product_price = intent.getStringExtra("price")
 
@@ -108,4 +118,38 @@ class ProductDetailActivity() : AppCompatActivity() {
             }
 
     }
+
+
+
+
+
+
+    //Adicona aos favoritos
+    fun removeFavs(product_name : String){
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
+        val product = product_name // currentProduct is the product that the user wants to add to their favorites
+        val product_name = intent.getStringExtra("nome")
+        val product_price = intent.getStringExtra("price")
+
+
+        val favorite = hashMapOf(
+            "userId" to userId,
+            "productName" to product,
+            "images" to imageList
+
+        )
+
+        //remover artigo clicado
+        FirebaseFirestore.getInstance().collection("favorites").document("BOV71XmqSCOtwmLYIwSv")
+            .delete()
+            .addOnCompleteListener { documentReference ->
+                Log.d(TAG, "Sucesso ao Remover")
+            }
+
+    }
+
+
+
+
+
 }

@@ -70,6 +70,9 @@ class FirestoreClass {
     }
 
 
+
+
+
     // Mostar detalhes do user
     fun getUsersDetails(activity: Activity) {
 

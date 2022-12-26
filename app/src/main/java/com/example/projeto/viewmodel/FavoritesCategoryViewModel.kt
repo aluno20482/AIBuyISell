@@ -46,12 +46,13 @@ class FavoritesCategoryViewModel @Inject constructor (
             }
 
 
-        //favoritos
+        // adiconar favoritos
 
         val userId = "sgVc3WkIuRf2BPjf3KRnxuj5Wf02"
 
         firestore.collection("favorites").whereEqualTo("userId", userId)
            .get().addOnSuccessListener { result ->
+
                //conversao da informaçao da firebase numa lista de objetos de produtos
                val specialProductList = result.toObjects(Product::class.java)
                viewModelScope.launch {
@@ -62,6 +63,27 @@ class FavoritesCategoryViewModel @Inject constructor (
                   _normalProducs.emit(Resource.Error(it.message.toString()))
               }
           }
+
+
+        // remover favoritos
+
+
+
+        firestore.collection("favorites").whereEqualTo("userId", userId)
+            .get().addOnSuccessListener { result ->
+
+                //conversao da informaçao da firebase numa lista de objetos de produtos
+                val specialProductList = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _normalProducs.emit(Resource.Success(specialProductList))
+                }
+
+            }.addOnFailureListener{
+                viewModelScope.launch {
+                    _normalProducs.emit(Resource.Error(it.message.toString()))
+                }
+            }
+
 
     }
 

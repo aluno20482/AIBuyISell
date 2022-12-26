@@ -65,6 +65,15 @@
             android:textColor="@color/g_circle_shadow"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Icones https://www.flaticon.com"
+            android:textAlignment="center"
+            android:textSize="22dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/g_circle_shadow"
+            />
 
         <org.osmdroid.views.MapView
             android:id="@+id/map"
@@ -73,10 +82,6 @@
 
 
 
-
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

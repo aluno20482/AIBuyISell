@@ -47,7 +47,7 @@ class PhoneCategoryViewModel @Inject constructor (
 
 
         //favoritos
-/*
+/**/
         val userId = "sgVc3WkIuRf2BPjf3KRnxuj5Wf02"
 
         firestore.collection("favorites").whereEqualTo("userId", userId)
@@ -61,7 +61,7 @@ class PhoneCategoryViewModel @Inject constructor (
                viewModelScope.launch {
                   _normalProducs.emit(Resource.Error(it.message.toString()))
               }
-          }*/
+          }
 
     }
 

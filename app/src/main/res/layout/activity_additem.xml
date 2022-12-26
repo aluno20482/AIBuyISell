@@ -126,26 +126,6 @@
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/buttonImagesPicker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Imagens"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:id="@+id/tvSelectedImages"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"/>
-            </LinearLayout>
-
 
 
             <LinearLayout
@@ -167,6 +147,29 @@
                     android:gravity="center"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/buttonImagesPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carregar Fotos"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/tvSelectedImages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
