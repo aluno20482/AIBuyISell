@@ -4,14 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projeto.activities.ProductDetailActivity
+import com.example.projeto.activities.SubmitEmailActivity
 import com.example.projeto.databinding.ProductItemBinding
 import com.example.projeto.models.Product
+import com.example.projeto.utils.Constants
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHolder>() {
@@ -71,14 +74,24 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
         //passar os dados para a view do detalhe ao se clicar em qualquer produto. Cada produto está dentro da recyclerview
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)
+            val intent2 = Intent(context, SubmitEmailActivity::class.java)
+            intent2.putExtra("email",product.userEmail)
             intent.putExtra("nome", product.name)
             intent.putExtra("image", product.images?.get(0))
             intent.putExtra("price", product.price.toString())
 
+
             imagesArray  = product.images?.toTypedArray()!!
             intent.putExtra("imagens", imagesArray)
 
-            context!!.startActivity(intent)
+            context!!.startActivity(intent2)
+
+            val preferences = context!!
+                .getSharedPreferences(Constants.USEREMAIL, AppCompatActivity.MODE_PRIVATE)
+
+            val editor = preferences.edit()
+            editor.putString("email", product.userEmail)
+            editor.apply()
         }
 
     }

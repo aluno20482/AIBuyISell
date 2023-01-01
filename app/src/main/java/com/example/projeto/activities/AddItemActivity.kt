@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.projeto.R
 import com.example.projeto.databinding.ActivityAdditemBinding
 import com.example.projeto.models.Product
+import com.example.projeto.models.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +36,7 @@ class AddItemActivity : AppCompatActivity() {
 
     private val binding by lazy {ActivityAdditemBinding.inflate(layoutInflater) }
     val mFireStore = FirebaseFirestore.getInstance()
+
     private val selectedImages = mutableListOf<Uri>()
     val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
     val storage : FirebaseStorage = FirebaseStorage.getInstance()
@@ -146,6 +148,7 @@ class AddItemActivity : AppCompatActivity() {
             }
 
             saveProduct()
+            Log.e("INFO", FirebaseAuth.getInstance().currentUser!!.email.toString())
         }
         return super.onOptionsItemSelected(item)
     }
@@ -202,6 +205,7 @@ class AddItemActivity : AppCompatActivity() {
             cat,
             price.toFloat(),
             userId,
+            userEmail =  FirebaseAuth.getInstance().currentUser!!.email.toString(),
             images
         )
 
@@ -213,6 +217,13 @@ class AddItemActivity : AppCompatActivity() {
         }
         }
     }
+
+
+
+
+
+
+
 
     fun getImageToByte():List<ByteArray>{
         val imgByteArray = mutableListOf<ByteArray>()

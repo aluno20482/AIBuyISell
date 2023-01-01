@@ -4,10 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.projeto.R
 import com.example.projeto.databinding.ActivityAdditemBinding
 import com.example.projeto.databinding.ActivitySubmitEmailBinding
+import com.example.projeto.utils.Constants
+import kotlin.math.log
 
 class SubmitEmailActivity : AppCompatActivity() {
 
@@ -20,6 +23,14 @@ class SubmitEmailActivity : AppCompatActivity() {
         binding = ActivitySubmitEmailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //val intent = intent
+        //val userEmail = intent.getStringExtra("email")
+
+        val preferences = this
+            .getSharedPreferences(Constants.USEREMAIL, AppCompatActivity.MODE_PRIVATE)
+
+        val userEmail = preferences.getString("email", "noEmail@gmail.com")
+        binding.activitySubmitEmailEmailDestinatario.setText(userEmail.toString())
 
         //Ao clicar no botão obetem os valores de entrada e chama o metedo enviarEmail
         binding.activitySubmitEmailBotaoEnviarEmail.setOnClickListener {

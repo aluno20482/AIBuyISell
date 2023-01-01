@@ -101,6 +101,17 @@
                 android:textAllCaps="false"
                 android:textSize="21sp" />
 
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:id="@+id/button_CriaProd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="Vender Produto"
+                android:textAllCaps="false"
+                android:textSize="21sp" />
+
 
 
             <TextView

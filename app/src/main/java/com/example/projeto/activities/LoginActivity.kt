@@ -66,6 +66,12 @@ class LoginActivity : MainActivity() {
             startActivity(intent3)
         }
 
+        val BtnCriaProd = findViewById<Button>(R.id.button_CriaProd)
+        BtnCriaProd.setOnClickListener{
+            verAddProduct()
+        }
+
+
     }
 
 
@@ -150,33 +156,17 @@ class LoginActivity : MainActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
 
-                    Toast.makeText(baseContext, "Falha na autenticação.",
+                    Toast.makeText(baseContext, "Dados de login incorretos",
                         Toast.LENGTH_SHORT).show()
                     hideProgressDialog();
                 }
             }
 
             .addOnFailureListener {
-                Toast.makeText(baseContext, "Falha na autenticação.${it.localizedMessage}",
+                Toast.makeText(baseContext, "Falha de login, tente mais tarde",
                     Toast.LENGTH_SHORT).show()
             }
 
     }
 }
 
-
-/*
-
- //tartamento de execões ao criar conta
- .addOnFailureListener{exececao ->
-     val mensagemErro = when(exececao){
-         is FirebaseAuthWeakPasswordException -> "Introduza uma palavra-passe com o mínimo 6 digitos"
-         is FirebaseAuthInvalidCredentialsException -> "Digite um email válido"
-         is FirebaseAuthUserCollisionException -> "Conta Registada"
-         is FirebaseNetworkException -> "Sem ligação a Internet"
-         else -> "Erro ao registar utilizador"
-     }
-     Toast.makeText(this,mensagemErro,
-         Toast.LENGTH_SHORT
-     ).show()
-      */

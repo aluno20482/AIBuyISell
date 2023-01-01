@@ -6,6 +6,7 @@ data class Product(
     val category: String,
     val price: Float,
     val userID: String,
+    val userEmail: String,
     //val offerPercentage: Float? = null,
     //val description: String? = null,
     //val colors: List<String>? = null,
@@ -14,5 +15,5 @@ data class Product(
 
 ){
 
-    constructor():this("1","","",0f,"1",listOf("1"))
+    constructor():this("1","","",0f,"1","1@gmail.com",listOf("1"))
 }

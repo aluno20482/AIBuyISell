@@ -52,6 +52,12 @@
         android:name="com.example.projeto.fragment.shopping.categories.DecoracaoFragment"
         android:label="Decoração"
         tools:layout="@layout/fragment_decoracao"/>
+    <activity
+        android:id="@+id/nav_vender"
+        android:name="com.example.projeto.activities.AddItemActivity"
+        android:label="Decoração"
+        tools:layout="@layout/activity_additem"
+        />
 
     <include app:graph="@navigation/shopping_graph" />
 

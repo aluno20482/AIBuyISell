@@ -131,6 +131,7 @@ class ProductDetailActivity() : AppCompatActivity() {
             if (task.isSuccessful) {
                 val querySnapshot = task.result
                 if (querySnapshot.size() > 0) {
+
                     //Produto já existe nos favoritos
                     Toast.makeText(this, "Este produto já foi adicionado aos favoritos", Toast.LENGTH_SHORT).show()
                 } else {
