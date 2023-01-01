@@ -10,12 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projeto.adapters.ProductAdapter
 import com.example.projeto.databinding.FragmentTelemoveisBinding
 import com.example.projeto.utils.Resource
-import com.example.projeto.viewmodel.PhoneCategoryViewModel
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.projeto.viewmodel.TemeloveisViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -23,11 +22,10 @@ import kotlinx.coroutines.flow.collectLatest
 class TelemoveisFragment : Fragment() {
 
 
-    private val firestore = FirebaseFirestore.getInstance()
     private lateinit var binding : FragmentTelemoveisBinding
-    private lateinit var specialPrductAdapter : ProductAdapter
+    private lateinit var ProductAdapter : ProductAdapter
 
-    private val viewModel by viewModels<PhoneCategoryViewModel>()
+    private val viewModel by viewModels<TemeloveisViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +47,7 @@ class TelemoveisFragment : Fragment() {
                         showLoading()
                     }
                     is Resource.Success->{
-                        specialPrductAdapter.differ.submitList(it.data)
+                        ProductAdapter.differ.submitList(it.data)
                         hideLoading()
                     }
                     is Resource.Error->{
@@ -75,11 +73,10 @@ class TelemoveisFragment : Fragment() {
 
     //preparar o layout para receber os dados (layoutManager + adapter)
     private fun setupProductRv() {
-        specialPrductAdapter = ProductAdapter()
+        ProductAdapter = ProductAdapter()
         binding.rTodosOsProdutos.apply {
-            layoutManager = LinearLayoutManager(requireContext(),
-                LinearLayoutManager.HORIZONTAL, false)
-            adapter = specialPrductAdapter
+            layoutManager = GridLayoutManager(requireContext(),2)
+            adapter = ProductAdapter
         }
 
     }

@@ -37,7 +37,6 @@ class LoginActivity : MainActivity() {
             startActivity(intent)
         }
 
-
         //Botao  Redireciona para a pagina de informacao
         val infoText: TextView = findViewById(R.id.textView_informacao)
         infoText.setOnClickListener {
@@ -45,35 +44,6 @@ class LoginActivity : MainActivity() {
             startActivity(intent)
         }
 
-
-        val homeButton = findViewById<Button>(R.id.button_muda)
-
-        val addProduct = findViewById<Button>(R.id.button_addProduct)
-
-        addProduct.setOnClickListener {
-            verAddProduct()
-        }
-
-        homeButton.setOnClickListener {
-            //verFavs()
-
-        }
-
-        val enviarEmail = findViewById<Button>(R.id.button_email)
-        enviarEmail.setOnClickListener {
-            verEmailAEnviar()
-
-        }
-
-        /*
-        val button: TextView = findViewById(R.id.textView_recuperar_pass)
-        button.setOnClickListener {
-            val intent = Intent(this, ForgotPasswordActivity::class.java)
-            startActivity(intent)
-
-        }
-
-         */
 
         //Clicar em recupear pass
         val recuperarPass: TextView = findViewById(R.id.textView_recuperar_pass)
@@ -83,7 +53,6 @@ class LoginActivity : MainActivity() {
             //metedo a abrir
             startActivity(intent2)
         }
-
 
         val loginButton = findViewById<Button>(R.id.button_login)
         loginButton.setOnClickListener {
@@ -120,11 +89,7 @@ class LoginActivity : MainActivity() {
     }
 
 
-    private fun verHome() {
-        // Sign in success, agora vamos para a proxima activity
-        val intent = Intent(this, ShoppingActivity::class.java)
-        startActivity(intent)
-    }
+
 
     private fun verFavs() {
         // Sign in success, agora vamos para a proxima activity

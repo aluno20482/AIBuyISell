@@ -17,6 +17,42 @@
         android:label="Telemóveis"
         tools:layout="@layout/fragment_telemoveis" />
 
+    <fragment
+        android:id="@+id/nav_favoritos"
+        android:name="com.example.projeto.fragment.categories.FavoritesFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_favorites"/>
+
+    <fragment
+        android:id="@+id/nav_meusProdutos"
+        android:name="com.example.projeto.fragment.shopping.categories.ArtigosVendaFragment"
+        android:label="Meus Artigos"
+        tools:layout="@layout/fragment_artigos_venda"/>
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.projeto.fragment.shopping.categories.ProfileFragment"
+        android:label="O Meu Perfil"
+        tools:layout="@layout/fragment_profile"/>
+
+    <fragment
+        android:id="@+id/nav_diversos"
+        android:name="com.example.projeto.fragment.shopping.categories.DiversosFragment"
+        android:label="Outras Vendas"
+        tools:layout="@layout/fragment_diversos"/>
+
+    <fragment
+        android:id="@+id/nav_carros_motos_barcos"
+        android:name="com.example.projeto.fragment.shopping.categories.CarrosFragment"
+        android:label="Carros Motas e Barcos"
+        tools:layout="@layout/fragment_carros"/>
+
+    <fragment
+        android:id="@+id/nav_decoracao"
+        android:name="com.example.projeto.fragment.shopping.categories.DecoracaoFragment"
+        android:label="Decoração"
+        tools:layout="@layout/fragment_decoracao"/>
+
     <include app:graph="@navigation/shopping_graph" />
 
 

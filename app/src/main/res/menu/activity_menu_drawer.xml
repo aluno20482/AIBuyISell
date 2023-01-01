@@ -14,7 +14,7 @@
             android:title="Telemóveis e Tablets" />
 
         <item
-            android:id="@+id/nav_moveis"
+            android:id="@+id/nav_decoracao"
             android:icon="@drawable/icone_moveis"
             android:title="Móveis, Casa e Jardim" />
 
@@ -24,10 +24,9 @@
             android:title="Carros, motos e barcos" />
 
         <item
-            android:id="@+id/outras_vendas"
+            android:id="@+id/nav_diversos"
             android:icon="@drawable/icone_outras_vendas"
             android:title="Outras Vendas" />
-
 
         <item
             android:id="@+id/nav_favoritos"
@@ -38,6 +37,10 @@
             android:id="@+id/nav_perfil"
             android:icon="@drawable/icon_profile"
             android:title="Perfil" />
+        <item
+            android:id="@+id/nav_meusProdutos"
+            android:icon="@drawable/icon_profile"
+            android:title="Meus Artigos à Venda" />
 
     </group>
 </menu>

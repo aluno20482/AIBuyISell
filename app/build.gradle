@@ -57,10 +57,12 @@ dependencies {
 
     implementation 'javax.inject:javax.inject:1'
 
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
 
-    //dependencias do segundo video
+
     implementation("com.google.dagger:hilt-android:2.44")
     implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
 
@@ -85,7 +87,7 @@ dependencies {
 
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
 
-    //coroutines-> especie de thread para sacar infor da firebase
+    //coroutines-> especie de thread para sacar info da firebase
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
     // Jetpack Compose Integration

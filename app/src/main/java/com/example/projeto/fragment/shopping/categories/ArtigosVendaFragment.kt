@@ -1,4 +1,4 @@
-package com.example.projeto.fragment.categories
+package com.example.projeto.fragment.shopping.categories
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -10,32 +10,29 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.projeto.R
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projeto.adapters.ProductAdapter
-import com.example.projeto.databinding.FragmentSportCategoryBinding
+import com.example.projeto.databinding.FragmentArtigosVendaBinding
 import com.example.projeto.utils.Resource
-import com.example.projeto.viewmodel.PhoneCategoryViewModel
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.projeto.viewmodel.ArtigosVendaViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class SportCategoryFragment : Fragment(R.layout.fragment_sport_category){
+class ArtigosVendaFragment : Fragment() {
 
+    private lateinit var binding : FragmentArtigosVendaBinding
+    private lateinit var ProductAdapter : ProductAdapter
 
-    private val firestore = FirebaseFirestore.getInstance()
-    private lateinit var binding : FragmentSportCategoryBinding
-    private lateinit var specialPrductAdapter : ProductAdapter
-
-    private val viewModel by viewModels<PhoneCategoryViewModel>()
+    private val viewModel by viewModels<ArtigosVendaViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSportCategoryBinding.inflate(inflater)
+        binding = FragmentArtigosVendaBinding.inflate(inflater)
         return binding.root
     }
 
@@ -50,7 +47,7 @@ class SportCategoryFragment : Fragment(R.layout.fragment_sport_category){
                         showLoading()
                     }
                     is Resource.Success->{
-                        specialPrductAdapter.differ.submitList(it.data)
+                        ProductAdapter.differ.submitList(it.data)
                         hideLoading()
                     }
                     is Resource.Error->{
@@ -66,21 +63,20 @@ class SportCategoryFragment : Fragment(R.layout.fragment_sport_category){
 
     fun showLoading(){
 
-        binding.sportCategoryPB.visibility =View.VISIBLE
+        binding.mainCategoryPB.visibility = View.VISIBLE
     }
 
     fun  hideLoading(){
-        binding.sportCategoryPB.visibility =View.INVISIBLE
+        binding.mainCategoryPB.visibility = View.INVISIBLE
     }
 
 
     //preparar o layout para receber os dados (layoutManager + adapter)
     private fun setupProductRv() {
-        specialPrductAdapter = ProductAdapter()
-        binding.rTodosOsProdutos.apply {
-            layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.HORIZONTAL, false)
-            adapter = specialPrductAdapter
+        ProductAdapter = ProductAdapter()
+        binding.rMelhoresOportunidades.apply {
+            layoutManager = GridLayoutManager(requireContext(),2)
+            adapter = ProductAdapter
         }
 
     }

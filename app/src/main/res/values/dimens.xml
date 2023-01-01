@@ -13,6 +13,7 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="marginStartRV">30dp</dimen>
 
     <!--USADAS EM USER PROFILE -->
 

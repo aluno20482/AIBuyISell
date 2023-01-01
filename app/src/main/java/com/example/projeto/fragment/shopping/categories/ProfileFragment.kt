@@ -1,4 +1,4 @@
-package com.example.projeto.fragment.shopping
+package com.example.projeto.fragment.shopping.categories
 
 
 import android.content.Context

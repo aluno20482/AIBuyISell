@@ -13,13 +13,14 @@
 
         <ImageView
             android:id="@+id/img_product"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_profile"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="fitCenter"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linear_product_name"
@@ -36,9 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="Chair"
+                android:text="Produto"
                 android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_weight="10"/>
 
@@ -52,9 +53,9 @@
             android:layout_marginTop="3dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/sf_pro_display"
-            android:text="$1600"
+            android:text="333€"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/img_product"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name" />

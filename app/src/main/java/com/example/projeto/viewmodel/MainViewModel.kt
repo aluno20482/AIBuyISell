@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MainCategoryViewModel @Inject constructor (
+class MainViewModel @Inject constructor (
     private val firestore: FirebaseFirestore
 ) :ViewModel() {
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projeto.activities.ProductDetailActivity
@@ -21,9 +22,12 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
+
     }
 
+
     inner class SpecialProductViewHolder(private val binding: ProductItemBinding):
+
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(product: Product){
@@ -31,7 +35,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
                     //o glide auxiliar na transição das imagens para a view
                     Glide.with(itemView).load(product.images?.get(0)).into(binding.imgProduct)
                     tvName.text = product.name
-                    tvPrice.text = product.price.toString()
+                    tvPrice.text = product.price.toString() + " €"
                     tvName.text = product.name
 
                 }
@@ -57,6 +61,8 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
             )
         )
     }
+
+
 
     override fun onBindViewHolder(holder: SpecialProductViewHolder, position: Int) {
         val product = differ.currentList[position]

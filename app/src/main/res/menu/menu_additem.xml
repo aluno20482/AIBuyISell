@@ -3,16 +3,15 @@
 
 
         <item
-            android:id="@+id/menu_option1"
-            android:title="Pc"/>
-        <item
             android:id="@+id/menu_option2"
-            android:title="Telemóveis"/>
+            android:title="Telemóveis e Tablets"/>
         <item
             android:id="@+id/menu_option3"
-            android:title="Desporto"/>
+            android:title="Decoração"/>
         <item
             android:id="@+id/menu_option4"
-            android:title="lazer"/>
-
+            android:title="Carros, motas e barcos"/>
+        <item
+            android:id="@+id/menu_option5"
+            android:title="Diversos"/>
 </menu>

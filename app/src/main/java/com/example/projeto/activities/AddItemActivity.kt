@@ -19,6 +19,7 @@ import com.example.projeto.R
 import com.example.projeto.databinding.ActivityAdditemBinding
 import com.example.projeto.models.Product
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -33,19 +34,12 @@ import java.util.*
 class AddItemActivity : AppCompatActivity() {
 
     private val binding by lazy {ActivityAdditemBinding.inflate(layoutInflater) }
-    //private val productStorage = Firebase.storage.reference
     val mFireStore = FirebaseFirestore.getInstance()
-    //val storage = FirebaseStorage.getInstance();
     private val selectedImages = mutableListOf<Uri>()
-    //var storageRef = storage.reference
-
-
+    val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
     val storage : FirebaseStorage = FirebaseStorage.getInstance()
     val storageRef : StorageReference = storage.reference
-
     var cat = ""
-
-
 
     companion object{
          val IMAGE_REQUEST_CODE=100
@@ -56,7 +50,7 @@ class AddItemActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //categorias
-        mostraMenu()
+        mostraCategorias()
 
         val selecImagesActivityResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -94,21 +88,32 @@ class AddItemActivity : AppCompatActivity() {
 
     }
 
-    fun mostraMenu() : String{
+    fun mostraCategorias() : String{
         val categoria = ""
         binding.buttonColorPicker.setOnClickListener {
             val popupMenu = PopupMenu(this,it)
             popupMenu.setOnMenuItemClickListener{ item ->
                 when (item.itemId){
-                    R.id.menu_option1  -> {
-                        Toast.makeText(this, "opcao1",Toast.LENGTH_SHORT).show()
-                        //val categoria = R.id.menu_option1.toString()
-                        cat = "pc"
+
+                    R.id.menu_option2 -> {
+                        Toast.makeText(this, "Telemóveis e Tablets",Toast.LENGTH_SHORT).show()
+                        cat = "Telemóveis"
                         true
                     }
-                    R.id.menu_option2 -> {
-                        Toast.makeText(this, "opcao2",Toast.LENGTH_SHORT).show()
-                        cat = "Telemóveis"
+                    R.id.menu_option3  -> {
+                        Toast.makeText(this, "Decoração",Toast.LENGTH_SHORT).show()
+                        //val categoria = R.id.menu_option1.toString()
+                        cat = "Decoracao"
+                        true
+                    }
+                    R.id.menu_option4 -> {
+                        Toast.makeText(this, "Carros, motas e barcos",Toast.LENGTH_SHORT).show()
+                        cat = "Carros"
+                        true
+                    }
+                    R.id.menu_option5 -> {
+                        Toast.makeText(this, "Diversos",Toast.LENGTH_SHORT).show()
+                        cat = "Diversos"
                         true
                     }
                     else -> false
@@ -150,10 +155,10 @@ class AddItemActivity : AppCompatActivity() {
 
         val name = binding.edName.text.toString().trim()
         val category = binding.edCategory.text.toString().trim()
-        //val category = mostraMenu()
         val price = binding.edPrice.text.toString().trim()
         val imgByteArray = getImageToByte()
         val images = mutableListOf<String>()
+
 
         //nomenclatura para as instruçoes seguirem a ordem especifica
         lifecycleScope.launch (Dispatchers.IO){
@@ -196,6 +201,7 @@ class AddItemActivity : AppCompatActivity() {
             name,
             cat,
             price.toFloat(),
+            userId,
             images
         )
 

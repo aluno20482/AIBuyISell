@@ -52,10 +52,7 @@ open class MainActivity : AppCompatActivity() {
 
         val homeButton = findViewById<Button>(R.id.button_home)
 
-        homeButton.setOnClickListener {
-            verHome()
 
-        }
         val addProduct = findViewById<Button>(R.id.button_addProduct)
 
         addProduct.setOnClickListener {
@@ -95,11 +92,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun verHome() {
-        // Sign in success, agora vamos para a proxima activity
-        val intent = Intent(this, ShoppingActivity::class.java)
-        startActivity(intent)
-    }
+
 
 
     private fun displayUserData() {

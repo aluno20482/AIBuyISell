@@ -25,23 +25,12 @@
             app:layout_constraintTop_toTopOf="parent"
             android:indeterminateTint="@color/colorBlue"/>
 
-        <TextView
-            android:id="@+id/tTodosOsProdutos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Todos os Produtos"
-            android:fontFamily="@font/poppins_light"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rTodosOsProdutos"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rTodosOsProdutos"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/marginStartRV"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

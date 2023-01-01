@@ -6,38 +6,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projeto.R
 import com.example.projeto.adapters.ProductAdapter
 import com.example.projeto.databinding.FragmentArtigosVendaBinding
-
-import com.example.projeto.databinding.FragmentDiversosBinding
 import com.example.projeto.utils.Resource
-import com.example.projeto.viewmodel.ArtigosVendaViewModel
-import com.example.projeto.viewmodel.DiversosViewModel
+import com.example.projeto.viewmodel.CarrosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class DiversosFragment : Fragment(R.layout.fragment_diversos) {
+class CarrosFragment : Fragment(R.layout.fragment_carros) {
 
-        private lateinit var binding : FragmentDiversosBinding
+
+        private lateinit var binding : FragmentArtigosVendaBinding
         private lateinit var ProductAdapter : ProductAdapter
 
-        private val viewModel by viewModels<DiversosViewModel>()
+        private val viewModel by viewModels<CarrosViewModel>()
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            binding = FragmentDiversosBinding.inflate(inflater)
+            binding = FragmentArtigosVendaBinding.inflate(inflater)
             return binding.root
         }
 
@@ -85,4 +81,5 @@ class DiversosFragment : Fragment(R.layout.fragment_diversos) {
             }
 
         }
-    }
+}
+    
