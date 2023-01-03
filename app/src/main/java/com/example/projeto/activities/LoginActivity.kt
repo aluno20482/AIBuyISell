@@ -84,32 +84,12 @@ class LoginActivity : MainActivity() {
         Log.i("Primeiro Nome", user.firstName)
         Log.i("Ultimo Nome", user.lastName)
         Log.i("Email", user.email)
-
-
     }
-
 
     private fun verAddProduct() {
         val intent = Intent(this, AddItemActivity::class.java)
         startActivity(intent)
     }
-
-
-
-
-    private fun verFavs() {
-        // Sign in success, agora vamos para a proxima activity
-        //val intent = Intent(this, FavoriteCategoryFragment::class.java)
-        //startActivity(intent)
-    }
-
-
-    private fun verEmailAEnviar() {
-        val intent = Intent(this, SubmitEmailActivity::class.java)
-        startActivity(intent)
-
-    }
-
 
     //Efetuar Login
     private fun performLogin() {

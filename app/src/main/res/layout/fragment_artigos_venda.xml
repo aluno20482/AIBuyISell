@@ -8,6 +8,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerVenda"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,6 +25,7 @@
             android:indeterminateTint="@color/colorBlue"/>
 
         <androidx.recyclerview.widget.RecyclerView
+           
             android:id="@+id/rMelhoresOportunidades"
             android:layout_width="0dp"
             android:layout_height="match_parent"

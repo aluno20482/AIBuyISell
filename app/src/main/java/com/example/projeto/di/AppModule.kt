@@ -17,9 +17,4 @@ object AppModule {
     @Singleton
     fun provideFirebaseFirestoreDatabase() = Firebase.firestore
 
-    //@Provides
-    //fun provideIntroductionSP(
-    //    application: Application
-   // ) = application.getSharedPreferences(INTRODUCTION_SP, NODE_PRIVATE)
-
 }

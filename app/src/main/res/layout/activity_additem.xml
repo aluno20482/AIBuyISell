@@ -1,82 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.AddItemActivity"
     android:fillViewport="true"
+    android:background="@color/g_icon_tint"
     app:menu="@menu/toolbar_menu" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/productsInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Informações gerais do produto:"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:hint="Nome" />
 
 
             <EditText
-                android:id="@+id/edCategory"
+                android:id="@+id/edMarca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Categoria"/>
-
-            <EditText
-                android:id="@+id/edDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Descrição do produto (Opcional)"
-                />
+                android:hint="Marca (Opcional)" />
 
             <EditText
                 android:id="@+id/edPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Preço"
-                android:inputType="number"/>
+                android:inputType="number" />
 
-            <EditText
-                android:id="@+id/offerPercentage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Porcentagem da oferta (opcional)"
-                android:inputType="number"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -85,127 +72,110 @@
             android:id="@+id/layoutDetalhe"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/productsInfo"
-            app:layout_constraintStart_toStartOf="@id/productsInfo"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@id/productsInfo"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            app:layout_constraintStart_toStartOf="@id/productsInfo"
+            app:layout_constraintTop_toBottomOf="@id/productsInfo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonColorPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:text="Categoria"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detalhes do produto:"
+                android:text="Descrição do produto:"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edSizes"
+                android:id="@+id/edDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tamanhos (Opcional) | use , entre cada novo tamanho"
-                android:inputType="number"/>
+                android:gravity="start"
+                android:lines="4" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <Button
-                    android:id="@+id/buttonColorPicker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Categoria"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:id="@+id/tvSelectedColors"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"/>
+
             </LinearLayout>
 
-
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/buttonTirarFoto"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_background"
                     android:text="Tirar Foto"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:id="@+id/tvTirarFoto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"/>
-            </LinearLayout>
+                    android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/buttonImagesPicker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Carregar Fotos"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"/>
+
                 <TextView
                     android:id="@+id/tvSelectedImages"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginStart="20dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp"
+
+                    />
+
+                <Button
+                    android:id="@+id/buttonImagesPicker"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_background"
+                    android:text="Carregar Fotos"
+                    android:textSize="14sp" />
             </LinearLayout>
 
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-            <Button
-                android:id="@+id/saveProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Guaradr Produto"/>
-
         </LinearLayout>
+
         <LinearLayout
             app:layout_constraintTop_toBottomOf="@id/layoutDetalhe"
-            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
+            <Button
+                android:id="@+id/saveProduct"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:elevation="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_height="match_parent"
+                android:background="@drawable/button_additem"
+                android:text="Guaradr Produto" />
 
         </LinearLayout>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</LinearLayout>

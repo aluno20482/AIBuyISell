@@ -28,13 +28,14 @@
         app:layout_constraintTop_toBottomOf="@+id/idViewPager" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_marca_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Overview"
+        android:layout_marginTop="4dp"
+        android:text="Marca"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_detail" />
 
@@ -47,8 +48,9 @@
         android:layout_marginEnd="16dp"
         android:text="Aqui fica a descricao"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_marca_detail" />
 
     <TextView
         android:id="@+id/textView4"
@@ -80,35 +82,67 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc_detail" />
 
-    <Button
-        android:id="@+id/btn_contactarVendedor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Contactar Vendedor"
-        android:layout_marginTop="10sp"
-        android:layout_marginStart="16sp"/>
 
-    <Button
-        android:id="@+id/btn_adicionarFavoritos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="10dp"
-        android:text="Adicionar aos Favoritos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_contactarVendedor" />
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView4"
+            tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/btn_removerFavoritos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="64dp"
-        android:text="Remover dos Favoritos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_contactarVendedor" />
+            <Button
+                android:id="@+id/btn_contactarVendedor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contactar Vendedor"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"/>
+
+            <Button
+                android:id="@+id/btn_adicionarFavoritos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="10dp"
+                android:text="Adicionar aos Favoritos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout1"
+            tools:ignore="MissingConstraints">
+
+            <Button
+                android:id="@+id/btn_removerFavoritos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="16sp"
+                android:text="Remover dos Favoritos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"/>
+
+            <Button
+                android:id="@+id/btn_apagar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="16sp"
+                android:text="Apagar Produto"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,7 @@ class SubmitEmailActivity : AppCompatActivity() {
         val preferences = this
             .getSharedPreferences(Constants.USEREMAIL, AppCompatActivity.MODE_PRIVATE)
 
-        val userEmail = preferences.getString("email", "noEmail@gmail.com")
+        val userEmail = preferences.getString("email", "")
         binding.activitySubmitEmailEmailDestinatario.setText(userEmail.toString())
 
         //Ao clicar no botão obetem os valores de entrada e chama o metedo enviarEmail

@@ -15,6 +15,7 @@ import com.example.projeto.activities.SubmitEmailActivity
 import com.example.projeto.databinding.ProductItemBinding
 import com.example.projeto.models.Product
 import com.example.projeto.utils.Constants
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHolder>() {
@@ -28,11 +29,9 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
 
     }
 
-
     inner class SpecialProductViewHolder(private val binding: ProductItemBinding):
 
         RecyclerView.ViewHolder(binding.root){
-
             fun bind(product: Product){
                 binding.apply {
                     //o glide auxiliar na transição das imagens para a view
@@ -40,14 +39,14 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
                     tvName.text = product.name
                     tvPrice.text = product.price.toString() + " €"
                     tvName.text = product.name
-
                 }
             }
         }
 
     val diffCallback = object :DiffUtil.ItemCallback<Product>(){
+
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-           return oldItem.Id == newItem.Id
+           return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -65,8 +64,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
         )
     }
 
-
-
     override fun onBindViewHolder(holder: SpecialProductViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
@@ -74,27 +71,30 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
         //passar os dados para a view do detalhe ao se clicar em qualquer produto. Cada produto está dentro da recyclerview
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)
-            val intent2 = Intent(context, SubmitEmailActivity::class.java)
-            intent2.putExtra("email",product.userEmail)
+
             intent.putExtra("nome", product.name)
             intent.putExtra("image", product.images?.get(0))
             intent.putExtra("price", product.price.toString())
+            intent.putExtra("descricao",product.description)
+            intent.putExtra("marca",product.marca)
+            intent.putExtra("ProductId", product.id)
+            intent.putExtra("productUser",product.userID)
 
 
             imagesArray  = product.images?.toTypedArray()!!
             intent.putExtra("imagens", imagesArray)
+            //atividade dos detalhes
+            context!!.startActivity(intent)
 
-            context!!.startActivity(intent2)
-
+            //shared preferences para passar o email para a "submitEmailActivity"
             val preferences = context!!
                 .getSharedPreferences(Constants.USEREMAIL, AppCompatActivity.MODE_PRIVATE)
-
             val editor = preferences.edit()
             editor.putString("email", product.userEmail)
             editor.apply()
         }
-
     }
+
 
     override fun getItemCount(): Int {
        return differ.currentList.size

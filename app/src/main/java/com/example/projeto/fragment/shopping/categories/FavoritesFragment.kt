@@ -66,11 +66,6 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     }
 
 
-
-
-
-
-
     fun showLoading(){
 
         binding.sportCategoryPB.visibility =View.VISIBLE
@@ -88,6 +83,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
             layoutManager = GridLayoutManager(requireContext(),2)
             adapter = PrductAdapter
         }
+
 
     }
 }

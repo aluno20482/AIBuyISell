@@ -32,7 +32,7 @@ class DiversosViewModel @Inject constructor (
         }
         // adiconar favoritos
 
-        firestore.collection("Products").whereEqualTo("category", "Diversos")
+        firestore.collection("Products").whereEqualTo("category", "Diversos").whereNotEqualTo("userID",userId )
            .get().addOnSuccessListener { result ->
                //conversao da informaçao da firebase numa lista de objetos de produtos
                val specialProductList = result.toObjects(Product::class.java)

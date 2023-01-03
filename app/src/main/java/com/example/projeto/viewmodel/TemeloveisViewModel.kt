@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projeto.models.Product
 import com.example.projeto.utils.Resource
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,7 @@ class TemeloveisViewModel @Inject constructor (
 
     private val _normalProducs = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val normalProducts : StateFlow<Resource<List<Product>>> = _normalProducs
+    val userId = FirebaseAuth.getInstance().currentUser!!.uid // Obter o ID do usuário
 
     init {
         fetchProducts()
@@ -31,7 +33,7 @@ class TemeloveisViewModel @Inject constructor (
             _normalProducs.emit(Resource.Loading())
         }
 
-        firestore.collection("Products").whereEqualTo("category", "Telemóveis")
+        firestore.collection("Products").whereEqualTo("category", "Telemóveis").whereNotEqualTo("userID",userId )
             .get().addOnSuccessListener { result ->
                 //conversao da informaçao da firebase numa lista de objetos de produtos
                 val specialProductList = result.toObjects(Product::class.java)

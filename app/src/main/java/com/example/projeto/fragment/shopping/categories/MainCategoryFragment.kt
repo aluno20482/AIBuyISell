@@ -80,7 +80,6 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     private fun setupProductRv() {
        PrductAdapter = ProductAdapter()
         binding.rMelhoresOportunidades.apply {
-            //binding.rMelhoresOportunidades.setLayoutManager(GridLayoutManager(requireContext(),2))
             layoutManager = GridLayoutManager(requireContext(),2)
             adapter = PrductAdapter
         }

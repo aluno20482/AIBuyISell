@@ -1,7 +1,9 @@
 package com.example.projeto.activities
 
 import android.Manifest
+import android.app.Activity
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 import com.example.projeto.databinding.ActivityCamaraBinding
+import com.example.projeto.utils.Constants
 
 
 class CamaraActivity : AppCompatActivity() {
@@ -88,15 +91,20 @@ class CamaraActivity : AppCompatActivity() {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(TAG, "A captura da foto falhou: ${exc.message}", exc)
                 }
-
-                override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val msg = "Captura de foto bem-sucedida: ${output.savedUri}"
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    val msg = "Sucesso: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
+                    returnResult(output.savedUri.toString())
                 }
             }
         )
+    }
+    //enviar a informaçao no intent
+    fun returnResult(Uri: String) {
+        val resultIntent =  Intent(this, AddItemActivity::class.java)
+        resultIntent.putExtra("Uri",Uri)
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
     }
 
 
@@ -106,6 +114,7 @@ class CamaraActivity : AppCompatActivity() {
         grantResults:
         IntArray,
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
