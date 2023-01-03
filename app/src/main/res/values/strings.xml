@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">AI Shop</string>
+    <string name="app_name">I buy I sell AI </string>
     <string name="register_sucess">Registo com Sucesso!</string>
-    <string name="please_wait"> Please Wait&#8230;</string>
+    <string name="please_wait"> Por favor, aguarde &#8230;</string>
 
     <string name="informacaoCurso"> Desenvolvimento de Aplicações Móveis</string>
     <string name="informacaoCurso2"> Licenciatura em Eng. Informática 3º ano, 1º semestre Ano Letivo 2022/23</string>

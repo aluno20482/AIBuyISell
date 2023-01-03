@@ -101,6 +101,7 @@ class ProductDetailActivity() : AppCompatActivity() {
         }
         CheckIfCanDelete(btnApagar,btnAdicionaFavoritos,btnRemoverFavoritos,btn_contactarVendedor)
 
+
         btnApagar.setOnClickListener{
             if (productId != null) {
                 Log.e("userId", userId)
@@ -108,6 +109,7 @@ class ProductDetailActivity() : AppCompatActivity() {
                 deleteProductFromDatabase(productId)
             }
         }
+
 
         btnRemoverFavoritos.setOnClickListener{
             if (product_name != null) {
@@ -217,6 +219,8 @@ class ProductDetailActivity() : AppCompatActivity() {
             }
         }
     }
+
+
 
     fun updateRvFavs(){
         val fragmentManager: FragmentManager = supportFragmentManager
