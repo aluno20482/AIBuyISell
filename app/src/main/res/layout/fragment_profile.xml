@@ -29,6 +29,22 @@
 
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center_horizontal"
+            android:text="OS MEUS DADOS PESSOAIS :"
+            android:textColor="@color/black"
+            android:textSize="22sp"/>
+
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/foguetesemfundo"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
             android:id="@+id/frag_profile__mostrar_Nome_Completo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,14 +76,26 @@
             />
 
 
+        <TextView
+            android:id="@+id/frag_profile_n_mostrar_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            />
+
+
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_Editar_Dados_Perfil"
+                android:id="@+id/button_Editar_Dados_Perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/button_background"
-            android:text="Editar Dados Perfil"
+            android:text="Editar Dados "
             android:textAllCaps="false"
             android:textSize="21sp" />
 

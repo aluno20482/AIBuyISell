@@ -29,7 +29,6 @@ class LoginActivity : MainActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-
         //Botao Registar Redireciona para a pagina de registo
         val registerText: TextView = findViewById(R.id.textView_registerNow)
         registerText.setOnClickListener {
@@ -43,7 +42,6 @@ class LoginActivity : MainActivity() {
             val intent = Intent(this, InformationActivity::class.java)
             startActivity(intent)
         }
-
 
         //Clicar em recupear pass
         val recuperarPass: TextView = findViewById(R.id.textView_recuperar_pass)
@@ -93,22 +91,25 @@ class LoginActivity : MainActivity() {
 
     //Efetuar Login
     private fun performLogin() {
-        //Circulo de progresso
-        showProgressDialog()
         //Valores Introduzidos nos campos Email e Password
         var email = findViewById<EditText>(R.id.editText_Email)
         var password = findViewById<EditText>(R.id.editText_Password)
 
 
-        //se os 2 campos email e password estiverem vazios, devolve a mensagem ao ultizador
-        if (email.text.isEmpty() || password.text.isEmpty()) {
-            Toast.makeText(this, "Por favor preencha todos os campos",
+        //se os campos estiverem vazios, devolve as respetivas mensagens
+        if (email.text.isEmpty()) {
+            Toast.makeText(this, "Por favor introduza o campo de E-mail",
                 Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-
+            return
+        }
+        if (password.text.isEmpty()) {
+            Toast.makeText(this, "Por favor introduza o campo de Palavra-Passe",
+                Toast.LENGTH_SHORT).show()
+            return
         }
 
+        //Circulo de progresso
+        showProgressDialog()
 
         val inputEmail = email.text.toString()
         val inputPassword = password.text.toString()

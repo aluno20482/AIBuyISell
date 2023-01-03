@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import com.example.projeto.R
 import com.example.projeto.activities.LoginActivity
+import com.example.projeto.activities.UserProfileActivity
 import com.example.projeto.databinding.FragmentProfileBinding
 import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -31,18 +32,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
 
 
-/*
-        //BOTAO EDITAR DADOS
-        val editarDadosButton = binding.buttonEditarDadosPerfil
-        editarDadosButton.setOnClickListener {
-            //Metedo ir  para a tela
-           // IrParaJanelaEditarDados()
-        }
-
-        //BOTAO LOGOUT
-*/
-
-
 
     }
 
@@ -52,9 +41,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         mostarDadosUtilizador()
 
+
+        //Ação do botão editar dados
+        val editarDadosButton = binding.buttonEditarDadosPerfil
+        editarDadosButton.setOnClickListener {
+            //Metedo ir  para a tela
+            IrParaJanelaEditarDados()
+        }
+
+        //Ação do botão Logout
         val loginButton = binding.buttonLogout
         loginButton.setOnClickListener {
             performLogout()
+
         }
 
     }
@@ -70,20 +69,23 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val telefone = sharedPreferences.getString(Constants.LOGGED_IN_CONTACTO, "")!!
         val morada = sharedPreferences.getString(Constants.LOGGED_IN_MORADA, "")!!
 
-        binding.fragProfileMostrarNomeCompleto.text = "Bem vindo: $username"
+        binding.fragProfileMostrarNomeCompleto.text = "Nome: $username"
         binding.fragProfileMostrarContacto.text = "Telefone:  $telefone"
-        binding.fragProfileNMostrarMorada.text = "Minha Morada : $morada"
+        binding.fragProfileNMostrarMorada.text = "Morada: $morada"
+
     }
 
 
-    /*
+
     private fun IrParaJanelaEditarDados() {
 
         //passar contexto + class
-        val JanelaEditar = Intent(this, UserProfileActivity::class.java)
+        val JanelaEditar = Intent(activity, UserProfileActivity::class.java)
         startActivity(JanelaEditar)
 
-    }*/
+    }
+
+
 
 
     //logou da firabase juntamente com a limpeza da pilha de activities/fragments para ninguem conseguir voltar a entrar na app

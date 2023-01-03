@@ -8,32 +8,6 @@
     tools:context=".activities.UserProfileActivity">
 
 
-<!--android:background="@drawable/app_gradient_color_backgorund"-->
-  <!--
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar_user_profile_Activity"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:layout_marginTop="4dp"
-
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-    >
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingStart="@dimen/toolbar_title_paddingStart"
-        android:paddingEnd="0dp"
-        android:textColor="@color/white"
-
-        android:textStyle="bold"
-        />
-
-  </androidx.appcompat.widget.Toolbar>
--->
 
 
 
@@ -46,15 +20,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toTopOf="parent">
 
-    <!--
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/profile_user_photo_margin"
-        android:background="@color/colorBlue"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_user_placeholder"/>
--->
+
 
   </FrameLayout>
 
@@ -70,67 +36,100 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="30dp"
           android:layout_gravity="center_horizontal"
-          android:text="REGISTER"
-          android:textColor="@color/white"
-          android:textSize="31sp"/>
+          android:layout_marginBottom="30dp"
+          android:text="ALTERAR DADOS PESSOAIS:"
+          android:textColor="@color/black"
+          android:textSize="22sp" />
 
+
+      <ImageView
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_gravity="center_horizontal"
+          android:src="@drawable/foguetesemfundo" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="Primeiro Nome:" />
 
       <EditText
           android:id="@+id/editText_primeiroNome_user_bd"
-          android:layout_marginStart="20dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginTop="10dp"
-          android:hint="Primeiro Nome"
-          android:drawablePadding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="20dp"
           android:background="@drawable/login_edit_background"
-          android:padding="10dp"/>
+          android:drawablePadding="10dp"
+          android:hint="Introduza o Primeiro Nome"
+          android:padding="10dp" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="Último Nome:" />
 
       <EditText
           android:id="@+id/editText_ultimoNome_user_bd"
-          android:layout_marginStart="20dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginTop="10dp"
-          android:hint="Último Nome"
-          android:drawablePadding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="20dp"
           android:background="@drawable/login_edit_background"
-          android:padding="10dp"/>
+          android:drawablePadding="10dp"
+          android:hint="Introduza o Último Nome"
+          android:padding="10dp"
+          />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="Morada:" />
 
       <EditText
           android:id="@+id/editText_morada_user_bd"
-          android:layout_marginStart="20dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginTop="10dp"
-          android:hint="Morada"
-          android:drawablePadding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="20dp"
           android:background="@drawable/login_edit_background"
-          android:padding="10dp"/>
+          android:drawablePadding="10dp"
+          android:hint="Introduza a Morada"
+          android:padding="10dp" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="Telefone:" />
 
       <EditText
           android:id="@+id/editText_telemovel_user_bd"
-          android:layout_marginStart="20dp"
-          android:layout_marginEnd="20dp"
-          android:layout_marginTop="10dp"
-          android:hint="Telefone"
-          android:drawablePadding="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="20dp"
           android:background="@drawable/login_edit_background"
-          android:padding="10dp"/>
-
+          android:drawablePadding="10dp"
+          android:hint="Introduza o Telefone"
+          android:padding="10dp" />
 
 
       <androidx.appcompat.widget.AppCompatButton

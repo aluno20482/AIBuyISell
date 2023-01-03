@@ -8,6 +8,9 @@ object Constants {
     const val MINHALOJA: String = "Loja"
     const val USEREMAIL: String = "email"
 
+    const val LOGGED_IN_USERNAME_FRIST: String = "logged_in_username_frist"
+    const val LOGGED_IN_USERNAME_LAST: String = "logged_in_username_last"
+
     val Uris: String =""
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val LOGGED_IN_CONTACTO: String = "logged_in_contacto"
