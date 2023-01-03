@@ -1,20 +1,20 @@
 package com.example.projeto.fragment.shopping.categories
 
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import com.example.projeto.R
+import com.example.projeto.activities.LoginActivity
 import com.example.projeto.databinding.FragmentProfileBinding
 import com.example.projeto.utils.Constants
-
-
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -29,6 +29,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.inflate(inflater)
         return binding.root
 
+
+
 /*
         //BOTAO EDITAR DADOS
         val editarDadosButton = binding.buttonEditarDadosPerfil
@@ -38,13 +40,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         //BOTAO LOGOUT
-
-        val loginButton = binding.buttonLogout
-        loginButton.setOnClickListener {
-           // performLogout()
-        }
-
 */
+
+
+
     }
 
 
@@ -52,6 +51,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mostarDadosUtilizador()
+
+        val loginButton = binding.buttonLogout
+        loginButton.setOnClickListener {
+            performLogout()
+        }
+
     }
 
 
@@ -78,24 +83,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val JanelaEditar = Intent(this, UserProfileActivity::class.java)
         startActivity(JanelaEditar)
 
-    }
+    }*/
 
 
+    //logou da firabase juntamente com a limpeza da pilha de activities/fragments para ninguem conseguir voltar a entrar na app
+    //sem estar devidamente logado
     private fun performLogout() {
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
 
-        FirebaseAuth.getInstance().signOut();
-        //Logout success, voltar para a activity do login
-        // Sign in success, agora vamos para a proxima activity
+     }
 
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
 
-        Toast.makeText(baseContext, "Logout Sucess.",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
-     */
 
 
 }
