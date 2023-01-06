@@ -26,11 +26,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
-
     }
 
+    /**Função responsável por popular o ViewHolder com as informações de cada Produto
+     * Estes produtos são inseridos dentro do layout "productItem" que por sua vez é inserido dentro de uma recyclerView*/
     inner class SpecialProductViewHolder(private val binding: ProductItemBinding):
-
         RecyclerView.ViewHolder(binding.root){
             fun bind(product: Product){
                 binding.apply {
@@ -43,12 +43,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
             }
         }
 
-    val diffCallback = object :DiffUtil.ItemCallback<Product>(){
 
+    val diffCallback = object :DiffUtil.ItemCallback<Product>(){
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
            return oldItem.id == newItem.id
         }
-
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem == newItem
         }
@@ -79,7 +78,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
             intent.putExtra("marca",product.marca)
             intent.putExtra("ProductId", product.id)
             intent.putExtra("productUser",product.userID)
-
+            intent.putExtra("position", position.toString())
 
             imagesArray  = product.images?.toTypedArray()!!
             intent.putExtra("imagens", imagesArray)
@@ -90,6 +89,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
             val preferences = context!!
                 .getSharedPreferences(Constants.USEREMAIL, AppCompatActivity.MODE_PRIVATE)
             val editor = preferences.edit()
+
             editor.putString("email", product.userEmail)
             editor.apply()
         }

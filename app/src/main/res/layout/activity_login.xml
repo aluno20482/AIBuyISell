@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,132 +7,119 @@
     android:background="@drawable/login_background"
     tools:context=".activities.LoginActivity">
 
-    <ScrollView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="119dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/foguetesemfundo" />
+
+        <EditText
+            android:id="@+id/editText_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="true">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_edit_background"
+            android:hint="@string/login_email"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
 
-            <ImageView
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:src="@drawable/foguetesemfundo"
-                android:layout_gravity="center_horizontal" />
-
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
             <EditText
-                android:id="@+id/editText_Email"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:id="@+id/editText_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="E-mail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:background="@drawable/login_edit_background"
-                android:padding="10dp"/>
+                android:hint="@string/login_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColorHint="@color/white" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp">
-
-                <EditText
-                    android:id="@+id/editText_Password"
-                    android:layout_marginTop="10dp"
-                    android:inputType="textPassword"
-                    android:hint="Palavra-Passe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/login_edit_background"
-                    android:padding="10dp"
-                    />
-
-                <ImageView
-                    android:id="@+id/imgShowPass"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_toRightOf="@+id/editText_Password"
-                    android:padding="3dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="17dp"
-                    android:src="@drawable/show"/>
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/textView_recuperar_pass"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Esqueceste-te da palavra-passe?"
+            <ImageView
+                android:id="@+id/imgShowPass"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="end"
-                android:padding="10dp" />
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="10dp"
+                android:padding="3dp"
+                android:src="@drawable/show" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_login"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button_background"
-                android:text="INICIAR SESSÃO"
-                android:textAllCaps="false"
-                android:textSize="21sp" />
+        </FrameLayout>
 
+        <TextView
+            android:id="@+id/textView_recuperar_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="10dp"
+            android:text="@string/login_forgetUrPassword"
+            android:textColor="@color/white" />
 
+        <ProgressBar
+            android:id="@+id/mainCategoryPB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/colorBlue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-
-                android:id="@+id/button_mudaPSlider"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button_background"
-                android:text="Slider"
-                android:textAllCaps="false"
-                android:textSize="21sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                android:id="@+id/button_CriaProd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button_background"
-                android:text="Vender Produto"
-                android:textAllCaps="false"
-                android:textSize="21sp" />
-
-
-
-            <TextView
-                android:id="@+id/textView_registerNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Inscrever-se"
-                android:textSize="35sp"
-                android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/textView_informacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ACERCA DA AI SHOP"
-                android:textSize="15sp"
-                android:layout_gravity="center_horizontal" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:text="@string/login_iniciarSessao"
+            android:textAllCaps="false"
+            android:textSize="21sp" />
 
 
 
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/textView_registerNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/login_inscrever_se"
+            android:textColor="@color/white"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/textView_informacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/login_acerca_da_ai_shop"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

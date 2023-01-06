@@ -30,9 +30,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.inflate(inflater)
         return binding.root
 
-
-
-
     }
 
 
@@ -53,9 +50,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val loginButton = binding.buttonLogout
         loginButton.setOnClickListener {
             performLogout()
-
         }
-
     }
 
 
@@ -75,18 +70,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     }
 
-
-
     private fun IrParaJanelaEditarDados() {
-
         //passar contexto + class
         val JanelaEditar = Intent(activity, UserProfileActivity::class.java)
         startActivity(JanelaEditar)
-
     }
-
-
-
 
     //logou da firabase juntamente com a limpeza da pilha de activities/fragments para ninguem conseguir voltar a entrar na app
     //sem estar devidamente logado
@@ -96,10 +84,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
      }
-
-
-
-
 }

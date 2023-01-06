@@ -17,11 +17,6 @@
         android:label="Telemóveis"
         tools:layout="@layout/fragment_telemoveis" />
 
-    <fragment
-        android:id="@+id/nav_favoritos"
-        android:name="com.example.projeto.fragment.categories.FavoritesFragment"
-        android:label="Favoritos"
-        tools:layout="@layout/fragment_favorites"/>
 
     <fragment
         android:id="@+id/nav_meusProdutos"
@@ -58,8 +53,6 @@
         android:label="Decoração"
         tools:layout="@layout/activity_additem"
         />
-
-    <include app:graph="@navigation/shopping_graph" />
 
 
 </navigation>

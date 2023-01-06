@@ -28,8 +28,6 @@ class UserProfileActivity : AppCompatActivity() {
         val guardar: TextView = findViewById(R.id.user_profile_button_Editar_Dados)
 
         guardar.setOnClickListener {
-
-
             //Declarar variaveis para pode icializar as referências  EditText
             val firstNameText: EditText = findViewById(R.id.editText_primeiroNome_user_bd)
             val lastNameText: EditText = findViewById(R.id.editText_ultimoNome_user_bd)
@@ -70,44 +68,34 @@ class UserProfileActivity : AppCompatActivity() {
                 mobileTextValue,
                 addressTextValue)
 
-            //hideProgressDialog();
             Toast.makeText(baseContext, "Dados alterados .",
                 Toast.LENGTH_SHORT
             ).show()
 
-
         }
-
         displayUserData()
-
     }
-
-
+    /**
+     * Mostra os dados do utilizador logado*/
     private fun displayUserData() {
         val sharedPreferences = getSharedPreferences(Constants.MINHALOJA, MODE_PRIVATE)
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-
         val primeiro = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME_FRIST, "")!!
         val ultimo = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME_LAST, "")!!
-
         val telefone = sharedPreferences.getString(Constants.LOGGED_IN_CONTACTO, "")!!
         val morada = sharedPreferences.getString(Constants.LOGGED_IN_MORADA, "")!!
 
-
         //Colocar para se poder usar o  id do text view
-
         val primeiroNomeTXT = findViewById<TextView>(R.id.editText_primeiroNome_user_bd)
         val ultimoNomeTXT = findViewById<TextView>(R.id.editText_ultimoNome_user_bd)
         val telefoneTXT = findViewById<TextView>(R.id.editText_telemovel_user_bd)
         val moradaTXT = findViewById<TextView>(R.id.editText_morada_user_bd)
-
 
         //Mostar Nome ao inciar app
         primeiroNomeTXT.text = "$primeiro"
         ultimoNomeTXT.text = "$ultimo"
         telefoneTXT.text = "$telefone"
         moradaTXT.text = "$morada"
-
 
         // Obtém o ID do utlizador com login efetuado
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
@@ -126,7 +114,6 @@ class UserProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Falha ao recuperar os dados", Toast.LENGTH_SHORT).show()
             }
     }
-
 }
 
 

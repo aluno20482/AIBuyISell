@@ -4,13 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.example.projeto.R
-import com.example.projeto.databinding.ActivityAdditemBinding
 import com.example.projeto.databinding.ActivitySubmitEmailBinding
 import com.example.projeto.utils.Constants
-import kotlin.math.log
 
 class SubmitEmailActivity : AppCompatActivity() {
 
@@ -44,13 +40,12 @@ class SubmitEmailActivity : AppCompatActivity() {
         }
     }
 
-
+    /**função que envia o email para o utilizador que colocou o item para venda em causa*/
     private fun enviarEmail(emailDestinatario: String, assunto: String, mensagem: String) {
 
         //ACTION_SEND ação para iniciar um cliente de e-mail instalado em seu dispositivo Android.
         val mIntent = Intent(Intent.ACTION_SEND)
 
-        //Para enviar um e-mail, necessário  mailto: como URI usando o método setData()
         mIntent.data = Uri.parse("mailto:")
         //tipo de dados será text/plain usando o método setType()
         mIntent.type = "text/plain"
@@ -72,6 +67,5 @@ class SubmitEmailActivity : AppCompatActivity() {
             //inicia intenção de e-mail, mensagem que aparece na inteção
             startActivity(Intent.createChooser(mIntent, "Escolha um cliente de e-mail..."))
         }
-
     }
 }

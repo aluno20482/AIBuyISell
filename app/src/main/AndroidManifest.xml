@@ -32,7 +32,8 @@
         tools:targetApi="31">
         <activity
             android:name=".activities.CamaraActivity"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -76,7 +77,8 @@
             android:name=".activities.LoginActivity"
             android:exported="true"
             android:theme="@style/LoginPage"
-            android:windowSoftInputMode="adjustResize">
+            android:screenOrientation="portrait"
+  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

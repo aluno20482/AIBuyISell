@@ -19,15 +19,14 @@ import org.osmdroid.views.overlay.compass.CompassOverlay
 
 class InformationActivity : AppCompatActivity() {
 
-    private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
 
-    //var global para toda a class
+    //vars global para toda a class
     private lateinit var map: MapView
+    private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_information)
-
 
 
         //avaliar se a pessoa deu permissão para usar os recursos
@@ -42,27 +41,16 @@ class InformationActivity : AppCompatActivity() {
                 Manifest.permission.READ_EXTERNAL_STORAGE
             )
         )
-
         //adiconar OpenStreetMap to activity
         showMap()
-
     }
 
-
-
-
-
-
-
-
-
-    //Abre o mapa na atividade
+    /**Abre o mapa na atividade*/
     private fun showMap() {
 
         //org -> para configurar o mapa
         //definir apenas um mapa em todo o programa
         Configuration.getInstance().setUserAgentValue(this.getPackageName())
-
 
         //vai buscar a view
         map = findViewById(R.id.map)  //erro nao pode ser nulo
@@ -73,23 +61,20 @@ class InformationActivity : AppCompatActivity() {
         map.zoomController.setVisibility(CustomZoomButtonsController.Visibility.ALWAYS)
         map.setMultiTouchControls(true) // para poder fazer zoom com os dedos
 
-
         //bosula dentro do mapa
         var compassOverlay = CompassOverlay(this, map)
         compassOverlay.enableCompass()
         map.overlays.add(compassOverlay)
 
         //ponto 1
-        var point = GeoPoint(39.60068, -8.38967)       // 39.60199, -8.39675
+        var point = GeoPoint(39.60068, -8.38967)  // 39.60199, -8.39675
         var startMarker = Marker(map)
         startMarker.position = point
         //coloca no centro ao clicar na mão
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
 
         startMarker.infoWindow = MarkerWindow(map, this, "IPT")
-
         map.overlays.add(startMarker)
-
 
         Handler(Looper.getMainLooper()).postDelayed({
             map.controller.setCenter(point)
@@ -97,22 +82,19 @@ class InformationActivity : AppCompatActivity() {
         }, 1000) // waits one second to center map
     }
 
-
-    //mapa e parado
+    /**mapa é parado*/
     override fun onPause() {
         super.onPause()
         map.onResume()
     }
 
-
-    //resumo mapa
+    /**resumo mapa*/
     override fun onResume() {
         super.onResume()
         map.onResume()
     }
 
-
-    //funcao vai receber um array de strings
+    /**funcao vai receber um array de strings*/
     private fun requestPermissionsIfNecessary(permissions: Array<out String>) {
         val permissionsToRequest = ArrayList<String>();
         permissions.forEach { permission ->
@@ -132,8 +114,5 @@ class InformationActivity : AppCompatActivity() {
                 REQUEST_PERMISSIONS_REQUEST_CODE
             );
         }
-
-
     }
-
 }

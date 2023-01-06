@@ -31,12 +31,10 @@ import com.example.projeto.utils.Constants
 class CamaraActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityCamaraBinding
-
     private var imageCapture: ImageCapture? = null
-
     private lateinit var cameraExecutor: ExecutorService
 
-    //Este codigo base foi desenvolvido durante a aula prática
+    /**ste codigo base foi desenvolvido durante a aula prática*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,7 +57,7 @@ class CamaraActivity : AppCompatActivity() {
     }
 
 
-    //função para tirar fotos
+    /**função para tirar fotos*/
     private fun tirarFotos() {
         // Obtenha uma referência estável do caso de uso de captura de imagem modificável
         val imageCapture = imageCapture ?: return
@@ -75,15 +73,14 @@ class CamaraActivity : AppCompatActivity() {
             }
         }
 
-        // Cria objeto de opções de saída que contém arquivo + metadados
+        /** Cria objeto de opções de saída que contém arquivo + metadados*/
         val outputOptions = ImageCapture.OutputFileOptions
             .Builder(contentResolver,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 contentValues)
             .build()
 
-        // Configura o ouvinte de captura de imagem, que é acionado após a foto ter
-        // foram tomadas
+        /** Configura o ouvinte de captura de imagem, que é acionado após a foto ter foram tomadas*/
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
@@ -92,14 +89,12 @@ class CamaraActivity : AppCompatActivity() {
                     Log.e(TAG, "A captura da foto falhou: ${exc.message}", exc)
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val msg = "Sucesso: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     returnResult(output.savedUri.toString())
                 }
             }
         )
     }
-    //enviar a informaçao no intent
+    /**enviar a informaçao no intent*/
     fun returnResult(Uri: String) {
         val resultIntent =  Intent(this, AddItemActivity::class.java)
         resultIntent.putExtra("Uri",Uri)
@@ -107,8 +102,7 @@ class CamaraActivity : AppCompatActivity() {
         finish()
     }
 
-
-    //função reponsável por resultado de permissões de solicitação
+    /**função reponsável por resultado de permissões de solicitação*/
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>,
         grantResults:
@@ -127,7 +121,7 @@ class CamaraActivity : AppCompatActivity() {
         }
     }
 
-    //função para iniciar a cãmara
+    /**função para iniciar a cãmara*/
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
@@ -164,13 +158,13 @@ class CamaraActivity : AppCompatActivity() {
     }
 
 
-    //todas as permissões concedidas
+    /**todas as permissões concedidas*/
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    //ao destruir
+    /**ao destruir*/
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()

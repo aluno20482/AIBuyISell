@@ -39,6 +39,7 @@ class DecoracaoFragment : Fragment(R.layout.fragment_decoracao) {
             return binding.root
         }
 
+        /**Aqui vão ser carreados para o Adaptador os Produtos provenientes da chamada à basa de dados do viewModel*/
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
@@ -63,18 +64,17 @@ class DecoracaoFragment : Fragment(R.layout.fragment_decoracao) {
                 }
             }
         }
-
+        /**Mostra a loadingBar*/
         fun showLoading(){
 
             binding.sportCategoryPB.visibility = View.VISIBLE
         }
-
+        /**Esconde a loadingBar*/
         fun  hideLoading(){
             binding.sportCategoryPB.visibility = View.INVISIBLE
         }
 
-
-        //preparar o layout para receber os dados (layoutManager + adapter)
+        /**preparar o layout para receber os dados (layoutManager + adapter)*/
         private fun setupProductRv() {
             ProductAdapter = ProductAdapter()
             binding.rTodosOsProdutos.apply {

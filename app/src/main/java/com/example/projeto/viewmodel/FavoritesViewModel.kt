@@ -1,7 +1,5 @@
 package com.example.projeto.viewmodel
 
-
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projeto.models.Product

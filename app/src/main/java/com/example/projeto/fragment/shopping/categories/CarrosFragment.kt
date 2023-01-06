@@ -23,63 +23,63 @@ import kotlinx.coroutines.flow.collectLatest
 class CarrosFragment : Fragment(R.layout.fragment_carros) {
 
 
-        private lateinit var binding : FragmentArtigosVendaBinding
-        private lateinit var ProductAdapter : ProductAdapter
+    private lateinit var binding: FragmentArtigosVendaBinding
+    private lateinit var ProductAdapter: ProductAdapter
 
-        private val viewModel by viewModels<CarrosViewModel>()
+    private val viewModel by viewModels<CarrosViewModel>()
 
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            binding = FragmentArtigosVendaBinding.inflate(inflater)
-            return binding.root
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentArtigosVendaBinding.inflate(inflater)
+        return binding.root
+    }
+    /**Aqui vão ser carreados para o Adaptador os Produtos provenientes da chamada à basa de dados do viewModel*/
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-
-            setupProductRv()
-            lifecycleScope.launchWhenStarted {
-                viewModel.normalProducts.collectLatest {
-                    when(it){
-                        is Resource.Loading->{
-                            showLoading()
-                        }
-                        is Resource.Success->{
-                            ProductAdapter.differ.submitList(it.data)
-                            hideLoading()
-                        }
-                        is Resource.Error->{
-                            hideLoading()
-                            Log.e(ContentValues.TAG, it.message.toString())
-                            Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
-                        }
-                        else -> {}
+        setupProductRv()
+        lifecycleScope.launchWhenStarted {
+            viewModel.normalProducts.collectLatest {
+                when (it) {
+                    is Resource.Loading -> {
+                        showLoading()
                     }
+                    is Resource.Success -> {
+                        ProductAdapter.differ.submitList(it.data)
+                        hideLoading()
+                    }
+                    is Resource.Error -> {
+                        hideLoading()
+                        Log.e(ContentValues.TAG, it.message.toString())
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {}
                 }
             }
         }
+    }
 
-        fun showLoading(){
+    /**Mostra a loadingBar*/
+    fun showLoading() {
+        binding.mainCategoryPB.visibility = View.VISIBLE
+    }
 
-            binding.mainCategoryPB.visibility = View.VISIBLE
+    /**Esconde a loadingBar*/
+    fun hideLoading() {
+        binding.mainCategoryPB.visibility = View.INVISIBLE
+    }
+
+    /**preparar o layout para receber os dados (layoutManager + adapter)*/
+    private fun setupProductRv() {
+        ProductAdapter = ProductAdapter()
+        binding.rMelhoresOportunidades.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = ProductAdapter
         }
 
-        fun  hideLoading(){
-            binding.mainCategoryPB.visibility = View.INVISIBLE
-        }
-
-
-        //preparar o layout para receber os dados (layoutManager + adapter)
-        private fun setupProductRv() {
-            ProductAdapter = ProductAdapter()
-            binding.rMelhoresOportunidades.apply {
-                layoutManager = GridLayoutManager(requireContext(),2)
-                adapter = ProductAdapter
-            }
-
-        }
+    }
 }
     

@@ -31,4 +31,20 @@
 
 
     <string name="email_sent_sucess"> Email enviado com Sucesso</string>
+    <string name="StringSlider">I buy I sell AI</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_password">Palavra-Passe</string>
+    <string name="login_forgetUrPassword">Esqueceste-te da palavra-passe?</string>
+    <string name="login_iniciarSessao">INICIAR SESSÃO</string>
+    <string name="login_inscrever_se">Inscrever-se</string>
+    <string name="login_acerca_da_ai_shop">ACERCA DA AI SHOP</string>
+    <string name="addProd_informa_es_gerais_do_produto">Informações gerais do produto:</string>
+    <string name="addProd_nome">Nome</string>
+    <string name="addProd_marca_opcional">Marca (Opcional)</string>
+    <string name="addProd_preco">Preço</string>
+    <string name="addProd_descricao_o_do_produto">Descrição do produto:</string>
+    <string name="addProd_tirar_foto">Tirar Foto</string>
+    <string name="addProd_carregar_fotos">Carregar Fotos</string>
+    <string name="addProd_guardar_produto">Guardar Produto</string>
+    <string name="addFoto_tirar_foto">Tirar Foto</string>
 </resources>

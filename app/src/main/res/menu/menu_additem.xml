@@ -10,7 +10,7 @@
             android:title="Decoração"/>
         <item
             android:id="@+id/menu_option4"
-            android:title="Carros, motas e barcos"/>
+            android:title="Carros e Automóveis"/>
         <item
             android:id="@+id/menu_option5"
             android:title="Diversos"/>

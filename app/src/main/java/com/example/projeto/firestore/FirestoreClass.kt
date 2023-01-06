@@ -34,20 +34,18 @@ class FirestoreClass {
             .addOnSuccessListener {
 
                 //Aqui chame uma função de atividade base para transferir o resultado para ela
-                activity.userResgistrationSucess()
-                activity.hideProgressDialog()
+                //activity.userResgistrationSucess()
+                //activity.hideProgressDialog()
             }
             .addOnFailureListener { e ->
-                activity.hideProgressDialog()
+                //activity.hideProgressDialog()
                 Log.e(
                     activity.javaClass.simpleName,
                     "Erro ao registar o utlizador",
                     e
                 )
-
             }
     }
-
 
     fun getCurrentUserID(): String {
 
@@ -70,10 +68,7 @@ class FirestoreClass {
     }
 
 
-
-
-
-    // Mostar detalhes do user
+    /**Mostar detalhes do user*/
     fun getUsersDetails(activity: Activity) {
 
         // Aqui passamos o nome da coleção da qual queremos os dados
@@ -83,18 +78,9 @@ class FirestoreClass {
             .document(getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
-
                 Log.i(activity.javaClass.simpleName, document.toString())
-
                 // Aqui recebemos o instantâneo do documento que é convertido no objeto do modelo de dados do usuário
                 val user = document.toObject(User::class.java)!!
-
-
-                //teste update base de dados
-                // mFireStore.collection(Constants.USERS).document(getCurrentUserID()).update("lastName", "John")
-
-
-                //Context.getSharedPreferences("mySharedPrefData",MODE_PRIVATE)
 
                 val sharedPreferences =
                     activity.getSharedPreferences(
@@ -103,11 +89,7 @@ class FirestoreClass {
                         Context.MODE_PRIVATE
                     )
 
-
-                //context.getSharedPreferences("CASPreferences", Context.MODE_PRIVATE);
-
                 val editorNome: SharedPreferences.Editor = sharedPreferences.edit()
-                //key :         LOGGED_IN_USERNAME  Telmo Silva
                 editorNome.putString(
                     Constants.LOGGED_IN_USERNAME,
                     "${user.firstName} ${user.lastName}"
@@ -129,8 +111,6 @@ class FirestoreClass {
                 )
                 editorMorada.apply()
 
-
-
                 //INICIO
                 when (activity) {
                     is LoginActivity -> {
@@ -139,11 +119,8 @@ class FirestoreClass {
                         activity.userLoggedInSucess(user)
                     }
                 }
-
-                //FIM
             }
             .addOnFailureListener { e ->
-
             }
     }
 

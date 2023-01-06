@@ -14,25 +14,25 @@ import com.example.projeto.R
 import com.example.projeto.activities.ProductDetailActivity
 import java.util.*
 
+//Adaptador para o slider de imagens presente na ProductDetailActivity
 class ViewPagerAdapter(var context: Context, val imageList: List<Uri>) : PagerAdapter() {
 
-    //retorna o tamanho da lista
+    /**retorna o tamanho da lista*/
     override fun getCount(): Int {
         return imageList.size
     }
 
-    //retornar o objeto
+    /**retornar o objeto*/
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view === `object` as RelativeLayout
     }
 
-    //inicializar o item e fazer o inflate do layout file
+    /**inicializar o item e fazer o inflate do layout file*/
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
         //inicializar o inflater
         val mLayoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
 
         // fazer o inflate do image_slider_item.
         val itemView: View = mLayoutInflater.inflate(R.layout.image_slider_item, container, false)
@@ -51,7 +51,7 @@ class ViewPagerAdapter(var context: Context, val imageList: List<Uri>) : PagerAd
         return itemView
     }
 
-    //apagar um item
+    /**apagar um item*/
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         //remover a view
         container.removeView(`object` as RelativeLayout)

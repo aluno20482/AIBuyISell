@@ -14,20 +14,21 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.projeto.R
 import com.example.projeto.adapters.ProductAdapter
 import com.example.projeto.adapters.ViewPagerAdapter
-import com.example.projeto.fragment.categories.FavoritesFragment
 import com.example.projeto.fragment.shopping.categories.ArtigosVendaFragment
 import com.example.projeto.viewmodel.ArtigosVendaViewModel
-import com.example.projeto.viewmodel.FavoritesViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
@@ -39,8 +40,8 @@ class ProductDetailActivity() : AppCompatActivity() {
     val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
     val db = FirebaseFirestore.getInstance()
     private lateinit var ProductAdapter : ProductAdapter
-    private val viewModel by viewModels<FavoritesViewModel>()
-    private val viewModelP by viewModels<ArtigosVendaViewModel>()
+    private val viewModel by viewModels<ArtigosVendaViewModel>()
+
 
 
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
@@ -60,9 +61,7 @@ class ProductDetailActivity() : AppCompatActivity() {
 
         val product_name_view = findViewById<TextView>(R.id.tv_name_detail)
         val product_price_view = findViewById<TextView>(R.id.tv_elevation_detail)
-        val btnAdicionaFavoritos = findViewById<Button>(R.id.btn_adicionarFavoritos)
         val btnApagar = findViewById<Button>(R.id.btn_apagar)
-        val btnRemoverFavoritos = findViewById<Button>(R.id.btn_removerFavoritos)
         val btn_contactarVendedor = findViewById<Button>(R.id.btn_contactarVendedor)
         val product_marca_view =  findViewById<TextView>(R.id.tv_marca_detail)
         val product_desc_view =  findViewById<TextView>(R.id.tv_desc_detail)
@@ -88,39 +87,12 @@ class ProductDetailActivity() : AppCompatActivity() {
 
         ProductAdapter = ProductAdapter()
 
-        btnAdicionaFavoritos.setOnClickListener{
-            if (product_name != null) {
-                adFavs(product_name)
-                lifecycleScope.launchWhenStarted {
-                    viewModel.normalProducts.collectLatest {
-                        ProductAdapter.differ.submitList(it.data)
-                        ProductAdapter.notifyDataSetChanged()
-                    }
-                }
-            }
-        }
-        CheckIfCanDelete(btnApagar,btnAdicionaFavoritos,btnRemoverFavoritos,btn_contactarVendedor)
-
+        CheckIfCanDelete(btnApagar,btn_contactarVendedor)
 
         btnApagar.setOnClickListener{
             if (productId != null) {
-                Log.e("userId", userId)
-                Log.e("Name",product_name.toString())
                 deleteProductFromDatabase(productId)
-            }
-        }
 
-
-        btnRemoverFavoritos.setOnClickListener{
-            if (product_name != null) {
-                removeFavs(product_name)
-                lifecycleScope.launchWhenStarted {
-                    viewModel.normalProducts.collectLatest {
-                        ProductAdapter.notifyDataSetChanged()
-                        ProductAdapter.differ.submitList(it.data)
-
-                    }
-                }
             }
         }
 
@@ -130,79 +102,18 @@ class ProductDetailActivity() : AppCompatActivity() {
         }
     }
 
-    //Adicona aos favoritos
-    @SuppressLint("NotifyDataSetChanged")
-    fun adFavs(product_name : String){
 
-        val product_price = intent.getStringExtra("price")
-
-        val favorite = hashMapOf(
-            "userId" to userId,
-            "name" to product_name,
-            "images" to imageList,
-            "price" to product_price?.toFloat()
-        )
-
-
-        val collectionRef = db.collection("favorites")
-
-        val query = collectionRef
-            .whereEqualTo("name", product_name)
-            .whereEqualTo("userId", userId)
-
-
-        val querySnapshot = query.get().addOnCompleteListener {  task ->
-            if (task.isSuccessful) {
-                val querySnapshot = task.result
-                if (querySnapshot.size() > 0) {
-
-                    //Produto já existe nos favoritos
-                    Toast.makeText(this, "Este produto já foi adicionado aos favoritos", Toast.LENGTH_SHORT).show()
-                } else {
-                    //Produto não existe, podemos adicionar
-                    FirebaseFirestore.getInstance().collection("favorites").add(favorite)
-                        .addOnSuccessListener { documentReference ->
-                            Toast.makeText(this, "Produto Adicionado aos favoritos", Toast.LENGTH_SHORT).show()
-                            updateRvFavs()
-
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(this, "Problema a adicionar produto aos favoritos", Toast.LENGTH_SHORT).show()
-                        }
-                }
-            }
-        }
-    }
-
-    //Adicona aos favoritos
-    fun removeFavs(product_name : String){
-        val collectionRef = db.collection("favorites")
-        val query = collectionRef
-            .whereEqualTo("name", product_name)
-            .whereEqualTo("userId", userId).limit(1)
-        val querySnapshot = query.get().addOnCompleteListener {  task ->
-            if (task.isSuccessful) {
-                val querySnapshot = task.result
-                if(querySnapshot.documents.isNotEmpty()){
-                    val document = querySnapshot.documents[0]
-                    document.reference.delete()
-                    Toast.makeText(this, "Produto Removido dos favoritos", Toast.LENGTH_SHORT).show()
-                    updateRvFavs()
-                }
-            }
-        }
-    }
-
-    fun CheckIfCanDelete(btnDel: Button,btnFavs: Button,bntRem : Button,btnContact:Button){
+    /**Verifica se quem está a ver um produto é o seu "criador", se sim o botão de contactar vendedor desaparece
+     * e o botão de apagar aparece */
+    fun CheckIfCanDelete(btnApagar : Button,btnContact:Button){
         val productUserId = intent.getStringExtra("productUser")
         if (productUserId == userId){
-            btnDel.isVisible = true
-            btnFavs.isVisible = false
-            bntRem.isVisible = false
+            btnApagar.isVisible = true
             btnContact.isVisible=false
         }
     }
 
+    /**Apaga um produto da base de dados*/
     private fun deleteProductFromDatabase(productId: String) {
         val collectionRef = db.collection("Products")
         val query = collectionRef
@@ -214,33 +125,23 @@ class ProductDetailActivity() : AppCompatActivity() {
                     val document = querySnapshot.documents[0]
                     document.reference.delete()
                     Toast.makeText(this, "Produto Removido ", Toast.LENGTH_SHORT).show()
-                    updateRvVenda()
+                    viewModel.fetchProducts()
+                    //updateRvVenda()
                 }
             }
         }
     }
 
-
-
-    fun updateRvFavs(){
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val newFragment: Fragment = FavoritesFragment()
-        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.containerFavs, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
     fun updateRvVenda(){
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val newFragment: Fragment = ArtigosVendaFragment()
+        val newFragment: Fragment =  ArtigosVendaFragment()
+        //val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentManager: FragmentManager = Fragment().childFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.containerVenda, newFragment);
-        transaction.addToBackStack(null);
+
+        transaction.replace(R.id.nav_host_fragment_content_main, newFragment)
+        transaction.addToBackStack(null)
         transaction.commit();
     }
-
-
-
 }
 
 

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
@@ -18,7 +19,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-class RegisterActivity : MainActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
@@ -29,9 +30,9 @@ class RegisterActivity : MainActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-        val loginText:TextView = findViewById(R.id.textView_loginNow)
+        val loginText: TextView = findViewById(R.id.textView_loginNow)
 
-        loginText.setOnClickListener{
+        loginText.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -43,9 +44,8 @@ class RegisterActivity : MainActivity() {
     }
 
 
-
     //register user
-    private fun performSignUp(){
+    private fun performSignUp() {
         //showProgressDialog()
 
 
@@ -54,19 +54,20 @@ class RegisterActivity : MainActivity() {
         var primeiroNome = findViewById<EditText>(R.id.editText_primeiroNome)
         var ultimoNome = findViewById<EditText>(R.id.editText_ultimoNome)
 
-        if(email.text.isEmpty() || password.text.isEmpty()){
-            Toast.makeText(this,"Please fill all the fields",
-            Toast.LENGTH_SHORT
+        if (email.text.isEmpty() || password.text.isEmpty()) {
+            Toast.makeText(
+                this, "Please fill all the fields",
+                Toast.LENGTH_SHORT
             ).show()
         }
 
-        val inputEmail = email.text.toString().trim{ it <= ' '}
-        val inputPassword = password.text.toString().trim{ it <= ' '}
+        val inputEmail = email.text.toString().trim { it <= ' ' }
+        val inputPassword = password.text.toString().trim { it <= ' ' }
 
-        auth.createUserWithEmailAndPassword(inputEmail,inputPassword)
+        auth.createUserWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->
 
-                showProgressDialog();
+                //showProgressDialog();
 
                 //If the registartion is sucessfuly done
                 if (task.isSuccessful) {
@@ -93,60 +94,41 @@ class RegisterActivity : MainActivity() {
                         //.add(userInfo)
                         .addOnSuccessListener {
                             userResgistrationSucess()
-                            hideProgressDialog()
+                            //hideProgressDialog()
                         }
                         .addOnFailureListener { e ->
 
-                            hideProgressDialog()
+                            //hideProgressDialog()
                             Log.e(
                                 javaClass.simpleName,
                                 "Error while registering the user.",
                                 e
                             )
-                            Toast.makeText(baseContext, "deu erro",
+                            Toast.makeText(
+                                baseContext, "deu erro",
                                 Toast.LENGTH_SHORT
                             ).show()
-
                         }
-
-
-                    // Sign in success, agora vamos para a proxima activity
-                    //val intent = Intent(this, MainActivity::class.java)
-                    //startActivity(intent)
-
-                    /*
-                    Toast.makeText(baseContext, "Authentication Sucess.",
-                       Toast.LENGTH_SHORT
-                    ).show()
-
-                } else {
-
-                    hideProgressDialog()
-                    Toast.makeText(baseContext, "Falha na autenticação",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
-                */
-                }
-
             }
-            .addOnFailureListener{
-                hideProgressDialog()
-                Toast.makeText(this,"Error occured ${it.localizedMessage}",
+            .addOnFailureListener {
+                //hideProgressDialog()
+                Toast.makeText(
+                    this, "Error occured ${it.localizedMessage}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
     }
 
     //Devolve a mensagem quando o user se regista
-    fun userResgistrationSucess(){
+    fun userResgistrationSucess() {
         //Hide the progress bar
-        hideProgressDialog()
+        //hideProgressDialog()
 
         Toast.makeText(
             this@RegisterActivity,
             resources.getString(R.string.register_sucess),
-            Toast.LENGTH_SHORT).show()
+            Toast.LENGTH_SHORT
+        ).show()
     }
-
 }

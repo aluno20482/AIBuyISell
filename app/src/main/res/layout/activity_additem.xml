@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddItemActivity"
+    android:background="@drawable/login_background"
     android:fillViewport="true"
-    android:background="@color/g_icon_tint"
-    app:menu="@menu/toolbar_menu" >
+    android:orientation="horizontal"
+    tools:context=".activities.AddItemActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,8 +38,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informações gerais do produto:"
-                android:textColor="@color/black"
+                android:paddingTop="10dp"
+                android:text="@string/addProd_informa_es_gerais_do_produto"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -48,21 +49,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Nome" />
+                android:backgroundTint="@color/white"
+                android:hint="@string/addProd_nome"
+                android:paddingTop="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
 
             <EditText
                 android:id="@+id/edMarca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Marca (Opcional)" />
+                android:backgroundTint="@color/white"
+                android:hint="@string/addProd_marca_opcional"
+                android:paddingTop="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/edPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Preço"
-                android:inputType="number" />
+                android:backgroundTint="@color/white"
+                android:hint="@string/addProd_preco"
+                android:inputType="numberDecimal"
+                android:paddingTop="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -81,15 +94,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/buttonColorPicker"
+                    android:id="@+id/buttonCategoryPicker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
                     android:text="Categoria"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -97,8 +112,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrição do produto:"
-                android:textColor="@color/black"
+                android:paddingTop="10dp"
+                android:text="@string/addProd_descricao_o_do_produto"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -106,8 +123,10 @@
                 android:id="@+id/edDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
                 android:gravity="start"
-                android:lines="4" />
+                android:lines="4"
+                android:textColor="@color/white" />
 
 
             <LinearLayout
@@ -120,6 +139,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
@@ -130,7 +150,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/button_background"
-                    android:text="Tirar Foto"
+                    android:text="@string/addProd_tirar_foto"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
 
@@ -138,40 +159,40 @@
                     android:id="@+id/tvSelectedImages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20dp"
-
-                    />
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/buttonImagesPicker"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/button_background"
-                    android:text="Carregar Fotos"
+                    android:text="@string/addProd_carregar_fotos"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            app:layout_constraintTop_toBottomOf="@id/layoutDetalhe"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutDetalhe"
             tools:ignore="MissingConstraints">
 
             <Button
                 android:id="@+id/saveProduct"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_additem"
-                android:text="Guaradr Produto" />
+                android:background="@drawable/button_additem2"
+                android:text="@string/addProd_guardar_produto"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

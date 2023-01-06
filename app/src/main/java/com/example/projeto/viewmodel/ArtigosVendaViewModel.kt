@@ -44,8 +44,5 @@ class ArtigosVendaViewModel @Inject constructor (
                   _normalProducs.emit(Resource.Error(it.message.toString()))
               }
           }
-
-
     }
-
 }

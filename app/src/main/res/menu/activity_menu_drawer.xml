@@ -29,11 +29,6 @@
             android:title="Outras Vendas" />
 
         <item
-            android:id="@+id/nav_favoritos"
-            android:icon="@drawable/icone_favorito"
-            android:title="Favoritos" />
-
-        <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/icon_profile"
             android:title="Perfil" />

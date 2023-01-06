@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.util.*
-
+@AndroidEntryPoint
 class AddItemActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAdditemBinding.inflate(layoutInflater) }
@@ -45,6 +46,8 @@ class AddItemActivity : AppCompatActivity() {
     val storage: FirebaseStorage = FirebaseStorage.getInstance()
     val storageRef: StorageReference = storage.reference
     var cat = ""
+    val db = FirebaseFirestore.getInstance()
+    var controlo = false
 
     lateinit var imgFromCamara: String
 
@@ -59,6 +62,7 @@ class AddItemActivity : AppCompatActivity() {
         //criação do menu de categorias
         menuCategorias()
 
+        //setSupportActionBar(binding.appBarMain.toolbar)
 
         val selecImagesActivityResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -80,7 +84,9 @@ class AddItemActivity : AppCompatActivity() {
             intent.type = "image/"
             selecImagesActivityResult.launch(intent)
         }
+
         binding.saveProduct.setOnClickListener {
+            //checkForProductInDb()
             saveProduct()
         }
 
@@ -106,9 +112,12 @@ class AddItemActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * função que permite ao utilizador escolher uma categoria para o produto
+     */
     fun menuCategorias(): String {
         val categoria = ""
-        binding.buttonColorPicker.setOnClickListener {
+        binding.buttonCategoryPicker.setOnClickListener {
             val popupMenu = PopupMenu(this, it)
             popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
@@ -143,29 +152,18 @@ class AddItemActivity : AppCompatActivity() {
         return categoria
     }
 
-    //mostrar a quantidade de imagens que forem selecionadas
+    /**
+     * mostrar a quantidade de imagens que forem selecionadas
+     */
     fun updateImages() {
         binding.tvSelectedImages.text = selectedImages.size.toString()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.saveProduct) {
-            val productValidate = validate()
-            if (!productValidate) {
-                Toast.makeText(this, "Input inválido", Toast.LENGTH_SHORT).show()
-                return false
-            }
-            saveProduct()
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
-    //guardar o produto na firebase
+    /**
+     * guardar o produto na firebase
+     */
     private fun saveProduct() {
 
         val name = binding.edName.text.toString().trim()
@@ -179,6 +177,7 @@ class AddItemActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             withContext(Dispatchers.Main) {
                 showProgressBar()
+                binding.saveProduct.isEnabled = false
             }
 
             try {
@@ -217,14 +216,28 @@ class AddItemActivity : AppCompatActivity() {
 
             mFireStore.collection("Products").add(product).addOnSuccessListener {
                 hideProgressBar()
+                binding.saveProduct.isEnabled = true
+                Toast.makeText(
+                    this@AddItemActivity,
+                    "Produto colocado para venda!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }.addOnFailureListener {
                 Log.e("error", it.message.toString())
                 hideProgressBar()
+                binding.saveProduct.isEnabled = true
+                Toast.makeText(
+                    this@AddItemActivity,
+                    "Ocorreu um erro, tente mais tarde!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
-
+    /**
+     * função que transforma a imagem em bytes para permitir guardar a mesma na firebase
+     * */
     fun getImageToByte(): List<ByteArray> {
         val imgByteArray = mutableListOf<ByteArray>()
         selectedImages.forEach {
@@ -238,14 +251,18 @@ class AddItemActivity : AppCompatActivity() {
         return imgByteArray
     }
 
+    /**
+     * mostra barra de loading
+     * */
     fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
     }
-
+    /**
+     * esconde barra de loading
+     * */
     fun hideProgressBar() {
         binding.progressBar.visibility = View.INVISIBLE
     }
-
 
     //validar inputs na criacao do produto
     fun validate(): Boolean {
@@ -254,6 +271,40 @@ class AddItemActivity : AppCompatActivity() {
 
         return true
     }
+    /**
+     * apagar campos de descrição do produto após guardar o mesmo
+     * */
+    fun deleteCampos() {
+        binding.tvSelectedImages.text = ""
+        binding.edMarca.text = null
+        binding.edPrice.text = null
+        binding.edName.text = null
+    }
 
-
+    /**
+     * verifica se o cliente ja possui produtos á venda na base de dados
+     * */
+    private fun checkForProductInDb() {
+        val collectionRef = db.collection("Products")
+        val query = collectionRef.whereEqualTo("userID", userId)
+        //o addOnCompleteListener permite que o codigo de guardar o produto nao seja
+        // executado antes da query à base de dados seja terminado
+        val querySnapshot = query.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val querySnapshot = task.result
+                if (querySnapshot.documents.isNotEmpty()) {
+                    Log.e("info", "User already has a product in the database")
+                    Toast.makeText(
+                        this,
+                        "O cliente já apresenta um artigo para venda," +
+                                "por favor apague-o para puder anunciar outro artigo para venda!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    saveProduct()
+                    deleteCampos()
+                }
+            }
+        }
+    }
 }
