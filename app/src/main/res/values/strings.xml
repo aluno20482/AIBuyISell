@@ -49,4 +49,15 @@
     <string name="addFoto_tirar_foto">Tirar Foto</string>
     <string name="dadosPessoal_editar_dados">Editar Dados</string>
     <string name="dadosPessoal_logout">Logout</string>
+
+
+    <!--Registar Utlizador -->
+    <string name="pag_registo_voltar_Atraz">Eu já tenho uma conta. Entrar agora</string>
+    <string name="pag_registo_criar_conta">CRIAR CONTA</string>
+    <string name="pag_registo_pass">Palavra-Passe</string>
+    <string name="pag_registo_email">Email</string>
+    <string name="pag_registo_primeiro_nome">Primeiro Nome</string>
+    <string name="pag_registo_ultimo_nome">Último Nome </string>
+    <string name="pag_registo_info">O registo é fácil e grátis! </string>
+
 </resources>

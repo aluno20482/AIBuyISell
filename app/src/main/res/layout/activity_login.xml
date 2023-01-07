@@ -109,6 +109,10 @@
             android:textColor="@color/white"
             android:textSize="35sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
         <TextView
             android:id="@+id/textView_informacao"
             android:layout_width="wrap_content"

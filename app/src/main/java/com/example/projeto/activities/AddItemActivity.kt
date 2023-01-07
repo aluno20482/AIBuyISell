@@ -95,6 +95,7 @@ class AddItemActivity : AppCompatActivity() {
 
         }
     }
+
     /**permite voltar para o fragment anterior*/
     override fun onSupportNavigateUp(): Boolean {
         finish()

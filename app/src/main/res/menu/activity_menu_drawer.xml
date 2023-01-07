@@ -34,11 +34,11 @@
             android:title="Perfil" />
         <item
             android:id="@+id/nav_meusProdutos"
-            android:icon="@drawable/icon_profile"
+            android:icon="@drawable/artigos"
             android:title="Meus Artigos à Venda" />
         <item
             android:id="@+id/nav_vender"
-            android:icon="@drawable/icon_profile"
+            android:icon="@drawable/icone_venda"
             android:title="Vender Artigo" />
 
     </group>
