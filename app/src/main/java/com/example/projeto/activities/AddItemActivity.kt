@@ -1,17 +1,13 @@
 package com.example.projeto.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.projeto.R
 import com.example.projeto.databinding.ActivityAdditemBinding
 import com.example.projeto.models.Product
-import com.example.projeto.models.User
-import com.example.projeto.utils.Constants
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -35,6 +28,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.util.*
+
 @AndroidEntryPoint
 class AddItemActivity : AppCompatActivity() {
 
@@ -61,6 +55,10 @@ class AddItemActivity : AppCompatActivity() {
 
         //criação do menu de categorias
         menuCategorias()
+
+        //adicionar a barra manualmente a esta atividade visto que nao herda a barra como os framentos adicionados ao slidermenu
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
         //setSupportActionBar(binding.appBarMain.toolbar)
 
@@ -96,6 +94,11 @@ class AddItemActivity : AppCompatActivity() {
             startActivityForResult(intent, IMAGE_REQUEST_CODE)
 
         }
+    }
+    /**permite voltar para o fragment anterior*/
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
     //ao lancar a atividade da camara, este metodo vai ficar a espera do resultado da mesma

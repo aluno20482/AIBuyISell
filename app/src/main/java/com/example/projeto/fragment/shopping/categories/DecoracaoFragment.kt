@@ -13,12 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projeto.R
 import com.example.projeto.adapters.ProductAdapter
-import com.example.projeto.databinding.FragmentArtigosVendaBinding
 import com.example.projeto.databinding.FragmentDecoracaoBinding
-
 import com.example.projeto.utils.Resource
 import com.example.projeto.viewmodel.DecoracaoViewModel
-import com.example.projeto.viewmodel.DiversosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -63,15 +60,27 @@ class DecoracaoFragment : Fragment(R.layout.fragment_decoracao) {
                     }
                 }
             }
+
+            val mySwipeRefreshLayout = binding.swiperefresh
+            mySwipeRefreshLayout.setOnRefreshListener {
+                refreshView()
+                mySwipeRefreshLayout.isRefreshing=false
+            }
         }
-        /**Mostra a loadingBar*/
+    /** faz o refresh da view com o scrol para baixo*/
+    private fun refreshView(){
+        setupProductRv()
+        viewModel.fetchProducts()
+    }
+
+    /**Mostra a loadingBar*/
         fun showLoading(){
 
-            binding.sportCategoryPB.visibility = View.VISIBLE
+            binding.decoracaoCategoryPB.visibility = View.VISIBLE
         }
         /**Esconde a loadingBar*/
         fun  hideLoading(){
-            binding.sportCategoryPB.visibility = View.INVISIBLE
+            binding.decoracaoCategoryPB.visibility = View.INVISIBLE
         }
 
         /**preparar o layout para receber os dados (layoutManager + adapter)*/

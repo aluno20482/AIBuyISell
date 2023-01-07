@@ -47,4 +47,6 @@
     <string name="addProd_carregar_fotos">Carregar Fotos</string>
     <string name="addProd_guardar_produto">Guardar Produto</string>
     <string name="addFoto_tirar_foto">Tirar Foto</string>
+    <string name="dadosPessoal_editar_dados">Editar Dados</string>
+    <string name="dadosPessoal_logout">Logout</string>
 </resources>

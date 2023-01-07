@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projeto.R
 import com.example.projeto.adapters.ProductAdapter
-import com.example.projeto.databinding.FragmentArtigosVendaBinding
+import com.example.projeto.databinding.FragmentCarrosBinding
 import com.example.projeto.utils.Resource
 import com.example.projeto.viewmodel.CarrosViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +23,7 @@ import kotlinx.coroutines.flow.collectLatest
 class CarrosFragment : Fragment(R.layout.fragment_carros) {
 
 
-    private lateinit var binding: FragmentArtigosVendaBinding
+    private lateinit var binding: FragmentCarrosBinding
     private lateinit var ProductAdapter: ProductAdapter
 
     private val viewModel by viewModels<CarrosViewModel>()
@@ -33,9 +33,10 @@ class CarrosFragment : Fragment(R.layout.fragment_carros) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentArtigosVendaBinding.inflate(inflater)
+        binding = FragmentCarrosBinding.inflate(inflater)
         return binding.root
     }
+
     /**Aqui vão ser carreados para o Adaptador os Produtos provenientes da chamada à basa de dados do viewModel*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,22 +61,34 @@ class CarrosFragment : Fragment(R.layout.fragment_carros) {
                 }
             }
         }
+
+        val mySwipeRefreshLayout = binding.swiperefresh
+        mySwipeRefreshLayout.setOnRefreshListener {
+            refreshView()
+            mySwipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    /** faz o refresh da view com o scrol para baixo*/
+    private fun refreshView() {
+        setupProductRv()
+        viewModel.fetchProducts()
     }
 
     /**Mostra a loadingBar*/
     fun showLoading() {
-        binding.mainCategoryPB.visibility = View.VISIBLE
+        binding.carrCategoryPB.visibility = View.VISIBLE
     }
 
     /**Esconde a loadingBar*/
     fun hideLoading() {
-        binding.mainCategoryPB.visibility = View.INVISIBLE
+        binding.carrCategoryPB.visibility = View.INVISIBLE
     }
 
     /**preparar o layout para receber os dados (layoutManager + adapter)*/
     private fun setupProductRv() {
         ProductAdapter = ProductAdapter()
-        binding.rMelhoresOportunidades.apply {
+        binding.rTodosOsProdutos.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = ProductAdapter
         }

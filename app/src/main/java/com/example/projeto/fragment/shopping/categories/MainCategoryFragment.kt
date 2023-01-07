@@ -26,7 +26,6 @@ import kotlinx.coroutines.flow.collectLatest
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
-    private val firestore = FirebaseFirestore.getInstance()
     private lateinit var binding : FragmentMainCategoryBinding
     private lateinit var PrductAdapter : ProductAdapter
 
@@ -66,6 +65,17 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                 }
             }
         }
+        val mySwipeRefreshLayout = binding.swiperefresh
+        mySwipeRefreshLayout.setOnRefreshListener {
+            refreshView()
+            mySwipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    /** faz o refresh da view com o scrol para baixo*/
+    private fun refreshView() {
+        setupProductRv()
+        viewModel.fetchProducts()
     }
 
     fun showLoading(){
