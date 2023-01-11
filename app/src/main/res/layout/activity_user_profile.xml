@@ -1,157 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.UserProfileActivity">
+    tools:context=".activities.EditProfileActivity"
+    android:background="@drawable/login_background">
 
 
-
-
-
-  <FrameLayout
-      android:id="@+id/fl_user_iamge"
-      android:layout_width="@dimen/profile_user_image_size"
-      android:layout_height="@dimen/profile_user_image_size"
-      android:layout_marginTop="@dimen/profile_user_image_marginTop"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toTopOf="parent">
-
-
-
-  </FrameLayout>
-
-
-
-
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_centerVertical="true">
-
-
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:theme="@style/Theme.Projeto.AppBarOverlay"
+        tools:ignore="MissingConstraints">
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginBottom="30dp"
-          android:text="ALTERAR DADOS PESSOAIS:"
-          android:textColor="@color/black"
-          android:textSize="22sp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/nav_bar"
+            app:popupTheme="@style/Theme.Projeto.PopupOverlay" />
 
+    </com.google.android.material.appbar.AppBarLayout>
 
-      <ImageView
-          android:layout_width="170dp"
-          android:layout_height="170dp"
-          android:layout_gravity="center_horizontal"
-          android:src="@drawable/foguetesemfundo" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:text="Primeiro Nome:" />
-
-      <EditText
-          android:id="@+id/editText_primeiroNome_user_bd"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginEnd="20dp"
-          android:background="@drawable/login_edit_background"
-          android:drawablePadding="10dp"
-          android:hint="Introduza o Primeiro Nome"
-          android:padding="10dp" />
+    <FrameLayout
+        android:id="@+id/fl_user_iamge"
+        android:layout_width="@dimen/profile_user_image_size"
+        android:layout_height="@dimen/profile_user_image_size"
+        android:layout_marginTop="@dimen/profile_user_image_marginTop"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:text="Último Nome:" />
-
-      <EditText
-          android:id="@+id/editText_ultimoNome_user_bd"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginEnd="20dp"
-          android:background="@drawable/login_edit_background"
-          android:drawablePadding="10dp"
-          android:hint="Introduza o Último Nome"
-          android:padding="10dp"
-          />
+    </FrameLayout>
 
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:text="Morada:" />
-
-      <EditText
-          android:id="@+id/editText_morada_user_bd"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginEnd="20dp"
-          android:background="@drawable/login_edit_background"
-          android:drawablePadding="10dp"
-          android:hint="Introduza a Morada"
-          android:padding="10dp" />
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:text="Telefone:" />
-
-      <EditText
-          android:id="@+id/editText_telemovel_user_bd"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginEnd="20dp"
-          android:background="@drawable/login_edit_background"
-          android:drawablePadding="10dp"
-          android:hint="Introduza o Telefone"
-          android:padding="10dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
 
 
-      <androidx.appcompat.widget.AppCompatButton
-          android:id="@+id/user_profile_button_Editar_Dados"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginTop="30dp"
-          android:layout_marginBottom="30dp"
-          android:background="@drawable/button_background"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
-          android:text="GUARDAR"
-          android:textAllCaps="false"
-          android:textSize="21sp" />
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@drawable/user_image_background" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp"
+                android:text="@string/editDados_alterar_dados_pessoais"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
 
 
-    </LinearLayout>
-  </ScrollView>
+            <ImageView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/foguetesemfundo" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:text="@string/editDados_primeiro_nome" />
+
+            <EditText
+                android:id="@+id/editText_primeiroNome_user_bd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/login_edit_background"
+                android:drawablePadding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="@string/editDados_introduza_o_primeiro_nome"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="@string/editDados_ltimo_nome" />
+
+            <EditText
+                android:id="@+id/editText_ultimoNome_user_bd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColorHint="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/login_edit_background"
+                android:drawablePadding="10dp"
+                android:hint="@string/editDados_introduza_o_ltimo_nome"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="@string/editDados_morada" />
+
+            <EditText
+                android:id="@+id/editText_morada_user_bd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/white"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/white"
+                android:background="@drawable/login_edit_background"
+                android:drawablePadding="10dp"
+                android:hint="@string/editDados_introduza_a_morada"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:padding="10dp"
+                android:text="@string/editDados_telefone" />
+
+            <EditText
+                android:id="@+id/editText_telemovel_user_bd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:textColorHint="@color/white"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/login_edit_background"
+                android:drawablePadding="10dp"
+                android:hint="@string/editDados_introduza_o_telefone"
+                android:padding="10dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/user_profile_button_Editar_Dados"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="@string/editDados_guardar"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="21sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/user_image_background" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

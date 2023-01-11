@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor (
             _Products.emit(Resource.Loading())
         }
 
-        firestore.collection("Products").whereEqualTo("category", "Diversos").whereNotEqualTo("userID",userId )
+        firestore.collection("Products").whereNotEqualTo("userID",userId )
             .get().addOnSuccessListener { result ->
                 //conversao da informaçao da firebase numa lista de objetos de produtos
                 val specialProductList = result.toObjects(Product::class.java)

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--on below line we are creating an image view-->
     <ImageView
         android:id="@+id/idIVImage"
         android:layout_width="300dp"

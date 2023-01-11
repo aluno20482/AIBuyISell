@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.projeto.fragment.shopping.categories.MainCategoryFragment"
-        android:label="Home"
+        android:label="I buy I sell AI"
         tools:layout="@layout/fragment_main_category" />
 
     <fragment
@@ -16,7 +16,6 @@
         android:name="com.example.projeto.fragment.categories.TelemoveisFragment"
         android:label="Telemóveis"
         tools:layout="@layout/fragment_telemoveis" />
-
 
     <fragment
         android:id="@+id/nav_meusProdutos"
@@ -53,6 +52,10 @@
         android:label="Decoração"
         tools:layout="@layout/activity_additem"
         />
+    <activity
+        android:id="@+id/hilt_ProductDetailActivity"
+        android:name="com.example.projeto.activities.Hilt_ProductDetailActivity"
+        android:label="Hilt_ProductDetailActivity" />
 
 
 </navigation>

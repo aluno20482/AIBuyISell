@@ -60,8 +60,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.UserProfileActivity"
-            android:exported="false">
+            android:name=".activities.EditProfileActivity"
+            android:exported="false"
+           >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -107,7 +108,9 @@
         </activity>
         <activity
             android:name=".activities.ProductDetailActivity"
-            android:exported="false">
+            android:exported="false"
+
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

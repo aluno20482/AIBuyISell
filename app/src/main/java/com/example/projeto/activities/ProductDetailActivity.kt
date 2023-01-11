@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -14,26 +13,21 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.projeto.R
 import com.example.projeto.adapters.ProductAdapter
 import com.example.projeto.adapters.ViewPagerAdapter
+import com.example.projeto.databinding.ActivityProductDetailBinding
 import com.example.projeto.fragment.shopping.categories.ArtigosVendaFragment
 import com.example.projeto.viewmodel.ArtigosVendaViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
 
 @AndroidEntryPoint
 class ProductDetailActivity() : AppCompatActivity() {
 
+    private val binding by lazy { ActivityProductDetailBinding.inflate(layoutInflater) }
     lateinit var viewPager: ViewPager
     lateinit var viewPagerAdapter: ViewPagerAdapter
     lateinit var imageList : List<Uri>
@@ -43,14 +37,12 @@ class ProductDetailActivity() : AppCompatActivity() {
     private val viewModel by viewModels<ArtigosVendaViewModel>()
 
 
-
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_detail)
+        setContentView(binding.root)
 
         val intent = intent
-
         val productId = intent.getStringExtra("ProductId")
         val product_name = intent.getStringExtra("nome")
         val product_price = intent.getStringExtra("price")
@@ -66,6 +58,11 @@ class ProductDetailActivity() : AppCompatActivity() {
         val product_marca_view =  findViewById<TextView>(R.id.tv_marca_detail)
         val product_desc_view =  findViewById<TextView>(R.id.tv_desc_detail)
         viewPager = findViewById(R.id.idViewPager)
+
+        //adicionar a barra manualmente a esta atividade visto que nao herda a barra como os framentos adicionados ao slidermenu
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
 
         //fazer o parse para Uri do array de strings que vem do intent do productAdapter
         imageList = arrayListOf()
@@ -101,6 +98,11 @@ class ProductDetailActivity() : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    /**permite voltar para o fragment anterior*/
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 
 
     /**Verifica se quem está a ver um produto é o seu "criador", se sim o botão de contactar vendedor desaparece
@@ -126,22 +128,11 @@ class ProductDetailActivity() : AppCompatActivity() {
                     document.reference.delete()
                     Toast.makeText(this, "Produto Removido ", Toast.LENGTH_SHORT).show()
                     viewModel.fetchProducts()
-                    //updateRvVenda()
                 }
             }
         }
     }
 
-    fun updateRvVenda(){
-        val newFragment: Fragment =  ArtigosVendaFragment()
-        //val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentManager: FragmentManager = Fragment().childFragmentManager
-        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-
-        transaction.replace(R.id.nav_host_fragment_content_main, newFragment)
-        transaction.addToBackStack(null)
-        transaction.commit();
-    }
 }
 
 

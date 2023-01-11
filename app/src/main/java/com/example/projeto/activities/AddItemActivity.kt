@@ -1,5 +1,6 @@
 package com.example.projeto.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -32,26 +33,35 @@ import java.util.*
 @AndroidEntryPoint
 class AddItemActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityAdditemBinding.inflate(layoutInflater) }
-    val mFireStore = FirebaseFirestore.getInstance()
 
+    private val binding by lazy { ActivityAdditemBinding.inflate(layoutInflater) }
+    private val mFireStore = FirebaseFirestore.getInstance()
     private val selectedImages = mutableListOf<Uri>()
     val userId = FirebaseAuth.getInstance().currentUser!!.uid // Get the user's ID
-    val storage: FirebaseStorage = FirebaseStorage.getInstance()
-    val storageRef: StorageReference = storage.reference
+    private val storage: FirebaseStorage = FirebaseStorage.getInstance()
+    private val storageRef: StorageReference = storage.reference
     var cat = ""
-    val db = FirebaseFirestore.getInstance()
-    var controlo = false
+    lateinit var name : String
+    lateinit var marca : String
+    lateinit var desc : String
+    lateinit var price : String
 
-    lateinit var imgFromCamara: String
 
     companion object {
-        val IMAGE_REQUEST_CODE = 1
+        const val IMAGE_REQUEST_CODE = 1
     }
 
+    @SuppressLint("IntentReset")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        //referencias do produto
+        name = binding.edName.text.toString().trim()
+        marca = binding.edMarca.text.toString().trim()
+        desc = binding.edDesc.text.toString().trim()
+        price = binding.edPrice.text.toString().trim()
+
 
         //criação do menu de categorias
         menuCategorias()
@@ -60,16 +70,25 @@ class AddItemActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
-        //setSupportActionBar(binding.appBarMain.toolbar)
 
         val selecImagesActivityResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     val intent = result.data
-                    //val imageBitmap = intent?.extras?.get("data") as Bitmap
-                    val imageUri = intent?.data
-                    imageUri?.let {
-                        selectedImages.add(it)
+                    //aqui tratamos o caso em que o utilizador enviou mais que uma foto
+                    //clipdata-> coleçao de fotos
+                    if (intent?.clipData != null) {
+                        for (i in 0 until intent.clipData!!.itemCount) {
+                            val imageUri = intent.clipData!!.getItemAt(i).uri
+                            selectedImages.add(imageUri)
+                        }
+                        // apenas uma foto
+                        //data-> apenas um elemento
+                    } else if (intent?.data != null) {
+                        val imageUri = intent.data
+                        if (imageUri != null) {
+                            selectedImages.add(imageUri)
+                        }
                     }
                 }
                 //fazer o update do layout depois de obter as imagens
@@ -80,12 +99,17 @@ class AddItemActivity : AppCompatActivity() {
         binding.buttonImagesPicker.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/"
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
             selecImagesActivityResult.launch(intent)
         }
 
         binding.saveProduct.setOnClickListener {
-            //checkForProductInDb()
-            saveProduct()
+            if(verificarCampos())
+                 saveProduct()
+            else{
+                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         //Tirar fotos
@@ -99,6 +123,15 @@ class AddItemActivity : AppCompatActivity() {
     /**permite voltar para o fragment anterior*/
     override fun onSupportNavigateUp(): Boolean {
         finish()
+        return true
+    }
+    fun  verificarCampos(): Boolean{
+        if (name.isEmpty() || desc.isEmpty()  || price.isEmpty() || cat.isEmpty())
+            return false
+
+        else if(selectedImages.size == 0)
+            return false
+
         return true
     }
 
@@ -163,17 +196,11 @@ class AddItemActivity : AppCompatActivity() {
         binding.tvSelectedImages.text = selectedImages.size.toString()
     }
 
-
-
     /**
      * guardar o produto na firebase
      */
     private fun saveProduct() {
 
-        val name = binding.edName.text.toString().trim()
-        val marca = binding.edMarca.text.toString().trim()
-        val desc = binding.edDesc.text.toString().trim()
-        val price = binding.edPrice.text.toString().trim()
         val imgByteArray = getImageToByte()
         val images = mutableListOf<String>()
 
@@ -261,6 +288,7 @@ class AddItemActivity : AppCompatActivity() {
     fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
     }
+
     /**
      * esconde barra de loading
      * */
@@ -275,6 +303,7 @@ class AddItemActivity : AppCompatActivity() {
 
         return true
     }
+
     /**
      * apagar campos de descrição do produto após guardar o mesmo
      * */
@@ -285,30 +314,5 @@ class AddItemActivity : AppCompatActivity() {
         binding.edName.text = null
     }
 
-    /**
-     * verifica se o cliente ja possui produtos á venda na base de dados
-     * */
-    private fun checkForProductInDb() {
-        val collectionRef = db.collection("Products")
-        val query = collectionRef.whereEqualTo("userID", userId)
-        //o addOnCompleteListener permite que o codigo de guardar o produto nao seja
-        // executado antes da query à base de dados seja terminado
-        val querySnapshot = query.get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val querySnapshot = task.result
-                if (querySnapshot.documents.isNotEmpty()) {
-                    Log.e("info", "User already has a product in the database")
-                    Toast.makeText(
-                        this,
-                        "O cliente já apresenta um artigo para venda," +
-                                "por favor apague-o para puder anunciar outro artigo para venda!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    saveProduct()
-                    deleteCampos()
-                }
-            }
-        }
-    }
+
 }

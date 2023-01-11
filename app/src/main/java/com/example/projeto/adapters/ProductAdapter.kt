@@ -95,7 +95,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.SpecialProductViewHol
         }
     }
 
-
     override fun getItemCount(): Int {
        return differ.currentList.size
     }

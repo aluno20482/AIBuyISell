@@ -3,14 +3,14 @@
 
         <item
             android:id="@+id/menu_option2"
-            android:title="Telemóveis e Tablets"/>
+            android:title="@string/Categoria_telem_veis_e_tablets"/>
         <item
             android:id="@+id/menu_option3"
-            android:title="Decoração"/>
+            android:title="@string/Categoria_decora_o"/>
         <item
             android:id="@+id/menu_option4"
-            android:title="Carros e Automóveis"/>
+            android:title="@string/Categoria_carros_e_autom_veis"/>
         <item
             android:id="@+id/menu_option5"
-            android:title="Diversos"/>
+            android:title="@string/Categoria_diversos"/>
 </menu>

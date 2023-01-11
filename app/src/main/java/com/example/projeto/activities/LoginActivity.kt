@@ -13,15 +13,12 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
 import com.example.projeto.R
 import com.example.projeto.firestore.FirestoreClass
 import com.example.projeto.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
-
 
 class LoginActivity :AppCompatActivity() {
 
@@ -35,7 +32,7 @@ class LoginActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        supportActionBar?.hide();
         // Initialize Firebase Auth
         auth = Firebase.auth
         PB = findViewById(R.id.mainCategoryPB)
@@ -77,7 +74,7 @@ class LoginActivity :AppCompatActivity() {
         }
 
     }
-
+    /**funcao para mostrar ou esconder a pass no login*/
     private fun view_hide_pass() {
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()){
             password.transformationMethod = null

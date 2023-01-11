@@ -1,18 +1,16 @@
 package com.example.projeto.fragment.shopping.categories
 
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import com.example.projeto.R
 import com.example.projeto.activities.LoginActivity
-import com.example.projeto.activities.UserProfileActivity
+import com.example.projeto.activities.EditProfileActivity
 import com.example.projeto.databinding.FragmentProfileBinding
 import com.example.projeto.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -72,8 +70,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun IrParaJanelaEditarDados() {
         //passar contexto + class
-        val JanelaEditar = Intent(activity, UserProfileActivity::class.java)
+        val JanelaEditar = Intent(activity, EditProfileActivity::class.java)
         startActivity(JanelaEditar)
+
     }
 
     //logou da firabase juntamente com a limpeza da pilha de activities/fragments para ninguem conseguir voltar a entrar na app

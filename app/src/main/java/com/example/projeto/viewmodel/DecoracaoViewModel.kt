@@ -14,36 +14,38 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DecoracaoViewModel @Inject constructor (
+class DecoracaoViewModel @Inject constructor(
     private val firestore: FirebaseFirestore
-) :ViewModel() {
+) : ViewModel() {
 
     private val _normalProducs = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
-    val normalProducts : StateFlow<Resource<List<Product>>> = _normalProducs
+    val normalProducts: StateFlow<Resource<List<Product>>> = _normalProducs
     val userId = FirebaseAuth.getInstance().currentUser!!.uid // Obter o ID do usuário
 
     init {
         fetchProducts()
     }
 
-    fun fetchProducts(){
+    /**chamada à base de dados*/
+    fun fetchProducts() {
         viewModelScope.launch {
             _normalProducs.emit(Resource.Loading())
         }
         // adiconar favoritos
 
-        firestore.collection("Products").whereEqualTo("category", "Decoracao").whereNotEqualTo("userID",userId )
-           .get().addOnSuccessListener { result ->
-               //conversao da informaçao da firebase numa lista de objetos de produtos
-               val specialProductList = result.toObjects(Product::class.java)
-               viewModelScope.launch {
-                   _normalProducs.emit(Resource.Success(specialProductList))
-               }
-           }.addOnFailureListener{
-               viewModelScope.launch {
-                  _normalProducs.emit(Resource.Error(it.message.toString()))
-              }
-          }
+        firestore.collection("Products").whereEqualTo("category", "Decoracao")
+            .whereNotEqualTo("userID", userId)
+            .get().addOnSuccessListener { result ->
+                //conversao da informaçao da firebase numa lista de objetos de produtos
+                val specialProductList = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _normalProducs.emit(Resource.Success(specialProductList))
+                }
+            }.addOnFailureListener {
+                viewModelScope.launch {
+                    _normalProducs.emit(Resource.Error(it.message.toString()))
+                }
+            }
 
 
     }

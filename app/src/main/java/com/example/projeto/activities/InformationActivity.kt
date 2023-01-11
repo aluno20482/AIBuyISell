@@ -19,8 +19,7 @@ import org.osmdroid.views.overlay.compass.CompassOverlay
 
 class InformationActivity : AppCompatActivity() {
 
-
-    //vars global para toda a class
+    //vars globais para toda a classe
     private lateinit var map: MapView
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
 

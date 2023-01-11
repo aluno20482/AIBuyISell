@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/login_background"
     tools:context=".activities.SubmitEmailActivity">
 
     <!--Para-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Para: "
-        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/Sendemail_para"
+        android:textColor="@color/white"
         android:layout_margin="16dp"
         android:textSize="26sp"
         android:textStyle="bold"/>
@@ -22,15 +23,18 @@
         android:id="@+id/activity_submit_email_Email_Destinatario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         android:layout_marginHorizontal="16dp"
-        android:hint="Endereço de email"/>
+        android:hint="@string/SendEmail_endere_o_de_email"/>
 
     <!--Assunto-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Assunto:"
-        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/SendEmail_assunto"
+        android:textColor="@color/white"
         android:layout_margin="16dp"
         android:textSize="26sp"
         android:textStyle="bold"/>
@@ -40,14 +44,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:hint="Assunto do Email"/>
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
+        android:hint="@string/SendEmail_assunto_do_email"/>
 
     <!--Mensagem-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mensagem:"
-        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/SendEmail_mensagem"
+        android:textColor="@color/white"
         android:layout_margin="16dp"
         android:textSize="26sp"
         android:textStyle="bold"/>
@@ -57,8 +64,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:hint="Introduza a mensagem que pretende enviar ao vendedor"
+        android:hint="@string/SendEmail_introduza_a_mensagem_que_pretende_enviar_ao_vendedor"
         android:lines="10"
+        android:backgroundTint="@color/white"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:gravity="start"/>
 
     <!--Botão-->
@@ -66,7 +76,9 @@
         android:id="@+id/activity_submit_email_botao_enviar_email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="Enviar Mensagem"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        android:text="@string/SendEmail_enviar_mensagem"
         android:textSize="20sp"
         android:layout_margin="20dp"/>
 
