@@ -154,36 +154,36 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:gravity="center"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/buttonTirarFoto"
-                    android:layout_width="160dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10sp"
                     android:background="@drawable/button_background"
                     android:text="@string/addProd_tirar_foto"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
-
 
                 <TextView
                     android:id="@+id/tvSelectedImages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/buttonImagesPicker"
-                    android:layout_width="160dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="5sp"
+                    android:paddingEnd="5sp"
                     android:layout_marginStart="6dp"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/button_background"
                     android:text="@string/addProd_carregar_fotos"
                     android:textColor="@color/white"
