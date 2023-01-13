@@ -19,7 +19,7 @@
 
 
     <application
-        android:name=".IBUYISELL"
+        android:name="com.exampleAI.projeto.IBUYISELL"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -31,7 +31,7 @@
         tools:replace="android:allowBackup"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CamaraActivity"
+            android:name="com.exampleAI.projeto.activities.CamaraActivity"
             android:exported="false"
             android:screenOrientation="portrait" >
             <meta-data
@@ -39,28 +39,28 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.SubmitEmailActivity"
+            android:name="com.exampleAI.projeto.activities.SubmitEmailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.InformationActivity"
+            android:name="com.exampleAI.projeto.activities.InformationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name="com.exampleAI.projeto.activities.ForgotPasswordActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.EditProfileActivity"
+            android:name="com.exampleAI.projeto.activities.EditProfileActivity"
             android:exported="false"
            >
             <meta-data
@@ -69,7 +69,7 @@
         </activity>
 
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.exampleAI.projeto.activities.LoginActivity"
             android:exported="true"
             android:theme="@style/LoginPage"
             android:screenOrientation="portrait"
@@ -85,7 +85,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="com.exampleAI.projeto.activities.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -93,21 +93,21 @@
         </activity>
 
         <activity
-            android:name=".activities.AddItemActivity"
+            android:name="com.exampleAI.projeto.activities.AddItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.MenuActivity"
+            android:name="com.exampleAI.projeto.activities.MenuActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.ProductDetailActivity"
+            android:name="com.exampleAI.projeto.activities.ProductDetailActivity"
             android:exported="false"
 
             >

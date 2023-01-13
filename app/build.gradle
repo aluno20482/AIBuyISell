@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.projeto'
+    namespace 'com.exampleAI.projeto'
     compileSdk 32
 
 
@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.projeto"
+        applicationId "com.exampleAI.projeto"
         minSdk 21
         targetSdk 32
         versionCode 1
