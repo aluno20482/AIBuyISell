@@ -30,9 +30,11 @@ import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.util.*
 
+
+//video auxiliar da classe, mas completado com mais funções
+//https://www.youtube.com/watch?v=xk1BKoJ8Nk4&list=PLzZEuVaFb9ExqUwxMoXg0Li0wYW2IeAkz&index=15
 @AndroidEntryPoint
 class AddItemActivity : AppCompatActivity() {
-
 
     private val binding by lazy { ActivityAdditemBinding.inflate(layoutInflater) }
     private val mFireStore = FirebaseFirestore.getInstance()

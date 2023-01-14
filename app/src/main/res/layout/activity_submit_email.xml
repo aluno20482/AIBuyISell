@@ -9,6 +9,21 @@
     android:background="@drawable/login_background"
     tools:context=".activities.SubmitEmailActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Projeto.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/nav_bar"
+            app:popupTheme="@style/Theme.Projeto.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <!--Para-->
     <TextView
         android:layout_width="wrap_content"

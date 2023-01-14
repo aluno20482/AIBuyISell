@@ -38,6 +38,9 @@ class SubmitEmailActivity : AppCompatActivity() {
             //chamadar o método para intenção de enviar e-mail, com os parâmetros de entrada
             enviarEmail(emailDestinatario, assunto, mensagem)
         }
+        //adicionar a barra manualmente a esta atividade visto que nao herda a barra como os framentos adicionados ao slidermenu
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
     }
 
     /**função que envia o email para o utilizador que colocou o item para venda em causa*/
@@ -67,5 +70,10 @@ class SubmitEmailActivity : AppCompatActivity() {
             //inicia intenção de e-mail, mensagem que aparece na inteção
             startActivity(Intent.createChooser(mIntent, "Escolha um cliente de e-mail..."))
         }
+    }
+    /**permite voltar para o fragment anterior*/
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
