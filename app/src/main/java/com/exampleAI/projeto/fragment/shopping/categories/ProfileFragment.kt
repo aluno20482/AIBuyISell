@@ -27,9 +27,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater)
         return binding.root
-
     }
-
 
     //vista para mostar dados do ultizador
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

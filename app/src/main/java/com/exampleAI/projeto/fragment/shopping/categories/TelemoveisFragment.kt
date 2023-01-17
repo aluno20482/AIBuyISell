@@ -59,6 +59,17 @@ class TelemoveisFragment : Fragment() {
                 }
             }
         }
+        val mySwipeRefreshLayout = binding.swiperefresh
+        mySwipeRefreshLayout.setOnRefreshListener {
+            refreshView()
+            mySwipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    /** faz o refresh da view com o scrol para baixo*/
+    private fun refreshView() {
+        setupProductRv()
+        viewModel.fetchProducts()
     }
 
     fun showLoading(){

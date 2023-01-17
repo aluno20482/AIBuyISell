@@ -30,6 +30,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rTodosOsProdutos"
+                android:layout_marginTop="8dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginStartRV"
